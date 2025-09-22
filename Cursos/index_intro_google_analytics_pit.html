@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Microcurso: Google Analytics</title>
+    <!-- Estilos globales para la barra de navegación y base -->
+    <link rel="stylesheet" href="../STYLES/prueba-style.css">
+    <!-- Estilos específicos para la página del curso -->
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+<header class="navbar">
+    <div class="container">
+        <div class="logo">
+            <!-- La ruta ahora sube un nivel para encontrar la carpeta IMG -->
+            <img src="../IMG/emprendeia-logo.png" alt="EmprendeIA Logo">
+            <div class="logo-text">
+                <span>
+                    <span style="color: #FCD25A">E</span>
+                    <span style="color: #FCD25A">m</span>
+                    <span style="color: #5EBF8D">p</span>
+                    <span style="color: #5EBF8D">r</span>
+                    <span style="color: #5EBF8D">e</span>
+                    <span style="color: #F37C2D">n</span>
+                    <span style="color: #F37C2D">d</span>
+                    <span style="color: #F37C2D">e</span>
+                    <span style="color: #4285F4">I</span>
+                    <span style="color: #4285F4">A</span>
+                </span>
+                <span class="powered-by">Powered by Google</span>
+            </div>
+        </div>
+        <nav class="nav-links">
+            <ul>
+                <!-- Los enlaces ahora apuntan a la página principal con sus anclas -->
+                <li><a href="../prueba.html#inicio">Inicio</a></li>
+                <li><a href="../nosotros.html">Nosotros</a></li>
+                <li><a href="../prueba.html#cursos">Cursos</a></li>
+                <li><a href="../chatbot-main/chatbot-main/templates/index.html">IA</a></li>
+                <li><a href="../prueba.html#contacto">Contacto</a></li>
+                <li class="dropdown">
+                    <!-- El enlace principal y los del menú desplegable apuntan a la sección de comunidades -->
+                    <a href="../prueba.html#inscripcion">Comunidad <i class="fas fa-chevron-down"></i></a>
+                    <div class="dropdown-content">
+                        <a href="../prueba.html#inscripcion">Creadoras IA</a>
+                        <a href="../prueba.html#inscripcion">Innovadores del Futuro</a>
+                        <a href="../prueba.html#inscripcion">Legado Emprendedor</a>
+                    </div>
+                </li>
+            </ul>
+            <div class="nav-actions">
+                <a href="../Usuario/usuario.html" class="btn btn-primary">ACCEDE</a>
+                <button id="theme-toggle" class="btn-theme"><i class="fas fa-moon"></i></button>
+                <select class="language-selector">
+                    <option value="es">🇲🇽</option>
+                    <option value="en">🇺🇸</option>
+                    <option value="fr">🇫🇷</option>
+                    <option value="de">🇩🇪</option>
+                    <option value="it">🇮🇹</option>
+                </select>
+            </div>
+        </nav>
+        <div class="menu-toggle">
+            <i class="fas fa-bars"></i>
+        </div>
+    </div>
+</header>
+
+<div class="sidebar">
+    <button class="sidebar-toggle-btn" id="sidebar-toggle">
+        <i class="fas fa-chevron-left"></i>
+    </button>
+    <div class="sidebar-content">
+        <div class="course-title">Emprende IA: Programas de Formación</div>
+        <div class="sidebar-section">
+            <div class="sidebar-subtitle">Programas Disponibles</div>
+            <ul class="module-list">
+                <li class="module-item active" data-target="microcurso-content">
+                    <div class="module-header">
+                        <span class="module-text active">Microcurso: Google Analytics</span>
+                    </div>
+                    <ul class="sub-menu visible">
+                        <li class="sub-menu-item active" data-target="dia-1-content">Día 1</li>
+                        <li class="sub-menu-item" data-target="dia-2-content">Día 2</li>
+                        <li class="sub-menu-item" data-target="dia-3-content">Día 3</li>
+                        <li class="sub-menu-item" data-target="dia-4-content">Día 4</li>
+                        <li class="sub-menu-item" data-target="dia-5-content">Día 5</li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+<div class="main-content">
+    <div class="course-section" id="microcurso-content">
+        <div class="section-header">
+            Microcurso: Introducción a Google Analytics para Emprendedores en 5 Días 
+        </div>
+        <div class="section-body">
+            <p>Este microcurso es una inmersión rápida en el mundo del análisis de datos para tu negocio en línea.  En solo cinco días, aprenderás a usar Google Analytics para entender el comportamiento de tus clientes, optimizar tu sitio web y tomar decisiones de marketing basadas en datos, no en suposiciones.  Pasarás de la intuición a la información, dándote una ventaja competitiva en el mercado. </p>
+            <h4>Lo que aprenderás:</h4>
+            <ul>
+                <li>La diferencia entre una "buena idea" y una "idea de negocio validada por el mercado". </li>
+                <li>Cómo usar la inteligencia artificial para analizar tendencias de mercado en tiempo real. </li>
+                <li>A configurar y navegar por las métricas esenciales de Google Analytics. </li>
+                <li>Cómo identificar los canales de tráfico más efectivos para tu negocio. </li>
+                <li>A utilizar los datos para mejorar la experiencia del usuario y aumentar las conversiones. </li>
+            </ul>
+            <h4>Contenido por Día</h4>
+            <div class="day-content" id="dia-1-content">
+                <h5>Día 1: El Problema Antes que la Idea</h5>
+                <p><strong>Lección:</strong> La mayoría de las startups fracasan porque no existe una necesidad real para su producto.  Antes de pensar en tu solución, el primer paso es enamorarte del problema.  La validación se hace con datos, no con suposiciones.  En este módulo, conectarás el problema que resolviste con las métricas que te dirán si tu solución está funcionando. </p>
+                <p><strong>Tarea:</strong> Define los tres principales objetivos de tu sitio web y los tres indicadores clave de rendimiento (KPIs) para cada uno. </p>
+            </div>
+            <div class="day-content" id="dia-2-content">
+                <h5>Día 2: Configuración y Métricas Esenciales</h5>
+                <p><strong>Lección:</strong> Un negocio no puede ser para todos. Del mismo modo, no todas las métricas son relevantes para tu negocio.  Aprenderás a configurar Google Analytics y a interpretar los datos más importantes: número de usuarios, sesiones, tasa de rebote y tiempo promedio en la página. </p>
+                <p><strong>Tarea:</strong> Instala el código de Google Analytics en tu sitio web.  Familiarízate con los principales informes de la plataforma, como Audiencia, Adquisición y Comportamiento. </p>
+            </div>
+            <div class="day-content" id="dia-3-content">
+                <h5>Día 3: El Viaje del Usuario (Tu Diferenciador)</h5>
+                <p><strong>Lección:</strong> ¿Qué hace a tu solución especial?  Aquí es donde pasas de un "garabato en una libreta" a un concepto de negocio.  En este módulo, seguirás el camino que un usuario toma en tu sitio web para descubrir puntos de fricción y oportunidades de mejora. </p>
+                <p><strong>Tarea:</strong> Utiliza los informes de "Flujo de Comportamiento" para visualizar cómo los usuarios navegan en tu sitio.  Identifica al menos dos páginas con una alta tasa de abandono y anota posibles razones. </p>
+            </div>
+            <div class="day-content" id="dia-4-content">
+                <h5>Día 4: Optimización y Pruebas</h5>
+                <p><strong>Lección:</strong> Un empresario exitoso sabe escuchar y pivotar.  Con los datos de tu lado, puedes probar diferentes variaciones de tu sitio web (A/B testing) para mejorar la experiencia del usuario y aumentar las conversiones. </p>
+                <p><strong>Tarea:</strong> Con base en tus hallazgos del Día 3, implementa un cambio en una de las páginas con alta tasa de abandono.  Lanza una encuesta simple para medir el interés y documenta tus hallazgos. </p>
+            </div>
+            <div class="day-content" id="dia-5-content">
+                <h5>Día 5: La Presentación Final (Tu Primer Pitch)</h5>
+                <p><strong>Lección:</strong> Un gran *pitch deck* es un factor clave en el 68% de las decisiones de inversión en la fase inicial.  Ahora que tu idea está validada, es momento de presentarla.  Los datos que has recopilado son un activo crucial para atraer inversionistas. </p>
+            </div>
+            <h4>Resultado:</h4>
+            <p>Un **análisis completo del rendimiento de tu sitio web**, una **lista de mejoras basada en datos** y la confianza para usar Google Analytics como una herramienta estratégica para tu crecimiento. </p>
+            <h4>Mentor - Experto en Analítica Digital</h4>
+            <div class="mentor-box">
+                <img src="../IMG/mentor de microcursos.png" alt="Foto del Mentor" loading="lazy" decoding="async" width="150" height="150">
+                <div class="mentor-info">
+                    <p>Nuestro mentor es un ex-empleado de Google que trabajó en el equipo de Analytics. Se especializa en la interpretación de datos, la optimización de la tasa de conversión (CRO) y la construcción de estrategias de marketing basadas en datos. Ha ayudado a innumerables empresas a convertir datos en ganancias.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+    <!-- Footer -->
+    <footer id="contacto" class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <!-- Columna 1: Logo y Descripción -->
+                <div class="footer-col">
+                    <div class="logo">
+                        <video src="../IMG/video/Video_Generado_Por_Gemini.mp4" class="footer-logo" autoplay loop muted playsinline loading="lazy"></video>
+                    </div>
+                    <p>Transformamos ideas en realidades exitosas.</p>
+                </div>
+                <!-- Columna 2: Enlaces de Exploración -->
+                <div class="footer-col">
+                    <h4>Explorar</h4>
+                    <ul>
+                        <li><a href="../prueba.html#inicio">Inicio</a></li>
+                        <li><a href="../prueba.html#cursos">Cursos</a></li>
+                        <li><a href="../chatbot-main/chatbot-main/templates/index.html">AI Studio</a></li>
+                        <li><a href="../prueba.html#testimonios">Testimonios</a></li>
+                        <li><a href="../prueba.html#faq">FAQ</a></li>
+                    </ul>
+                </div>
+                <!-- Columna 3: Enlaces Legales -->
+                <div class="footer-col">
+                    <h4>Legal</h4>
+                    <ul>
+                        <li><a href="#">Términos y Condiciones</a></li>
+                        <li><a href="#">Política de Privacidad</a></li>
+                        <li><a href="#">Política de Cookies</a></li>
+                    </ul>
+                </div>
+                <!-- Columna 4: Redes Sociales -->
+                <div class="footer-col">
+                    <h4>Síguenos</h4>
+                    <div class="social-icons">
+                        <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                        <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 EmprendeIA. Todos los derechos reservados.</p>
+            </div>
+        </div>
+    </footer>
+<script src="../script.js"></script> <!-- Script para la barra de navegación y funciones globales -->
+<script src="script.js"></script>    <!-- Script para la navegación interna del curso -->
+</body>
+</html>

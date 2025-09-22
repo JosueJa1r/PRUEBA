@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nosotros - EmprendeIA</title>
+    <link rel="stylesheet" href="STYLES/prueba-style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        .about-section {
+            padding: 80px 0;
+            background-color: var(--light-gray); /* Fondo de sección más suave */
+        }
+        .about-section .container {
+            text-align: center;
+        }
+        .about-section h1 {
+            font-size: 2.8em;
+            margin-bottom: 20px;
+        }
+        .about-section .section-description {
+            font-size: 1.1em;
+            color: #666;
+            max-width: 800px;
+            margin: 0 auto 60px auto;
+        }
+        .team-heading {
+            font-size: 2.5em;
+            margin-bottom: 50px;
+        }
+        .team-grid {
+            display: flex;
+            flex-direction: column;
+            gap: 60px;
+            align-items: center;
+        }
+        .team-member-card {
+            display: flex;
+            flex-direction: column; /* Apila los elementos */
+            gap: 25px; /* Espacio entre la cabecera y la biografía */
+            max-width: 800px; /* Limita el ancho para mejor legibilidad */
+            width: 100%;
+            background-color: #fff; /* Fondo blanco para la tarjeta */
+            padding: 30px;
+            box-shadow: var(--box-shadow-light);
+            overflow: visible;
+            border-radius: var(--border-radius-base);
+            border-top: 4px solid var(--primary-blue); /* Acento de color */
+        }
+        .team-member-card:hover {
+            box-shadow: none;
+        }
+        .team-member-card img {
+            width: 200px; /* Ancho de la imagen */
+            height: auto; /* La altura se ajusta para mostrar la imagen completa */
+            border-radius: var(--border-radius-base); /* Cambiado para esquinas redondeadas */
+            box-shadow: var(--box-shadow-light);
+            flex-shrink: 0;
+        }
+        /* Nueva cabecera para imagen y resumen */
+        .team-member-header {
+            display: flex;
+            align-items: flex-start;
+            gap: 30px;
+        }
+        /* Reemplaza a .team-member-info para la parte superior */
+        .team-member-summary {
+            padding-top: 10px;
+            text-align: left;
+        }
+        .team-member-summary h3 {
+            font-size: 1.6em;
+            margin-bottom: 5px;
+        }
+        .team-member-summary .role {
+            font-size: 1em;
+            font-weight: 600;
+            color: var(--primary-blue);
+            margin-bottom: 15px;
+        }
+        /* Biografía colapsable */
+        .team-member-bio-full {
+            font-size: 0.9em;
+            color: #555;
+            line-height: 1.7;
+            text-align: left;
+            width: 100%;
+        }
+        .team-member-bio-full .bio {
+            margin: 0;
+        }
+        .social-links-team {
+            display: flex;
+            gap: 12px;
+            justify-content: flex-start; /* Alinea a la izquierda */
+        }
+        .social-links-team a {
+            color: #555;
+            font-size: 1.2em;
+            transition: color 0.3s ease;
+        }
+        .social-links-team a:hover {
+            color: var(--primary-blue);
+        }
+
+        /* Dark Mode for About Page */
+        body.dark-mode .about-section {
+            background-color: #1a1a1a;
+        }
+        body.dark-mode .about-section .section-description {
+            color: #b0b0b0;
+        }
+        body.dark-mode .team-member-card {
+            background-color: #1c1c1e;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+            border-top-color: #69b4ff;
+        }
+        body.dark-mode .team-member-card img {
+            box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+        }
+        body.dark-mode .team-member-summary .role {
+            color: #69b4ff;
+        }
+        body.dark-mode .team-member-bio-full {
+            color: #b0b0b0;
+        }
+        body.dark-mode .social-links-team a {
+            color: #b0b0b0;
+        }
+        body.dark-mode .social-links-team a:hover {
+            color: #69b4ff;
+        }
+
+        /* --- Media Queries for Responsiveness --- */
+        @media (max-width: 768px) {
+            .about-section {
+                padding: 60px 20px;
+            }
+            .about-section h1 {
+                font-size: 2.2em;
+            }
+            .team-member-header {
+                flex-direction: column;
+                align-items: center;
+                gap: 20px;
+                width: 100%;
+            }
+            .team-member-summary {
+                padding-top: 0;
+                text-align: center;
+            }
+            .social-links-team {
+                justify-content: center;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header / Navbar -->
+    <header class="navbar">
+        <div class="container">
+            <div class="logo">
+                <img src="IMG/emprendeia-logo.png" alt="EmprendeIA Logo">
+                <div class="logo-text">
+                    <span>
+                        <span style="color: #FCD25A">E</span>
+                        <span style="color: #FCD25A">m</span>
+                        <span style="color: #5EBF8D">p</span>
+                        <span style="color: #5EBF8D">r</span>
+                        <span style="color: #5EBF8D">e</span>
+                        <span style="color: #F37C2D">n</span>
+                        <span style="color: #F37C2D">d</span>
+                        <span style="color: #F37C2D">e</span>
+                        <span style="color: #4285F4">I</span>
+                        <span style="color: #4285F4">A</span>
+                    </span>
+                    <span class="powered-by">Powered by Google</span>
+                </div>
+            </div>
+            <nav class="nav-links">
+                <ul>
+                    <li><a href="prueba.html#inicio">Inicio</a></li>
+                    <li><a href="nosotros.html" class="active-link">Nosotros</a></li>
+                    <li><a href="prueba.html#cursos">Cursos</a></li>
+                    <li><a href="chatbot-main/chatbot-main/templates/index.html">IA</a></li>
+                    <li><a href="prueba.html#contacto">Contacto</a></li>
+                    <li class="dropdown">
+                        <a href="prueba.html#inscripcion">Comunidad <i class="fas fa-chevron-down"></i></a>
+                        <div class="dropdown-content">
+                            <a href="prueba.html#inscripcion">Creadoras IA</a>
+                            <a href="prueba.html#inscripcion">Innovadores del Futuro</a>
+                            <a href="prueba.html#inscripcion">Legado Emprendedor</a>
+                        </div>
+                    </li>
+                </ul>
+                <div class="nav-actions">
+                    <a href="Usuario/usuario.html" class="btn btn-primary">ACCEDE</a>
+                    <button id="theme-toggle" class="btn-theme"><i class="fas fa-moon"></i></button>
+                    <select class="language-selector">
+                        <option value="es">🇲🇽</option>
+                        <option value="en">🇺🇸</option>
+                        <option value="fr">🇫🇷</option>
+                        <option value="de">🇩🇪</option>
+                        <option value="it">🇮🇹</option>
+                    </select>
+                </div>
+            </nav>
+            <div class="menu-toggle">
+                <i class="fas fa-bars"></i>
+            </div>
+        </div>
+    </header>
+
+    <!-- About Section -->
+    <section class="about-section">
+        <div class="container">
+            <h1>Nuestro Equipo</h1>
+            <p class="section-description">Conoce a las mentes apasionadas que impulsan EmprendeIA. Estamos dedicados a empoderar a la próxima generación de emprendedores con las herramientas y el conocimiento para triunfar.</p>
+            
+            <h2 class="team-heading">Conoce al Equipo Fundador</h2>
+
+            <div class="team-grid">
+                <!-- Team Member 1 -->
+                <div class="team-member-card">
+                    <div class="team-member-header">
+                        <img src="IMG\Jonathan Tena - Nosotros.PNG" alt="Foto de Jonathan" loading="lazy">
+                        <div class="team-member-summary">
+                            <h3>Jonathan Tena</h3>
+                            <p class="role">Asesor Legal Estratégico y de Innovación</p>
+                            <div class="social-links-team">
+                                <a href="https://www.linkedin.com/in/jonathantenalawyer/ " aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                                <a href="https://drive.google.com/drive/folders/1Rl0hCWS_yVqfek_YhpmcrwNVVQrHzdD_?usp=sharing" aria-label="Google Drive"><i class="fab fa-google-drive"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="team-member-bio-full">
+                        <p class="bio">Jonathan es un abogado con una visión estratégica y un profundo compromiso con la vanguardia legal y tecnológica. Su práctica se centra en el Derecho Corporativo, Fiscal, Bancario y de Valores, donde aporta un enfoque integral para la estructuración de negocios, la gestión de riesgos y la resolución de consultas legales complejas.
+Su dedicación al desarrollo profesional continuo es su principal motor, lo que se refleja en un impresionante portafolio de más de 250 certificaciones, títulos y reconocimientos. Este extenso aprendizaje lo posiciona como un líder en la intersección del derecho, los negocios y la innovación. Entre sus especializaciones más destacadas se encuentran:
+Estrategia y Liderazgo: Ha completado especializaciones en Leadership Out of the Box (Queen Mary University of London), Business and Marketing Strategies e International Business (University of London), demostrando su capacidad para liderar equipos y diseñar estrategias de negocio efectivas a escala global.
+Tecnología y Privacidad: Su visión de futuro está respaldada por conocimientos avanzados en Cloud Computing Law, Privacy and Standardisation (EIT Digital Master School) y Prompt Engineering for Law (Vanderbilt University), lo que lo faculta para guiar a la organización en el complejo entorno digital.
+Propiedad Intelectual y Emprendimiento: Es un experto en la protección de activos, con especializaciones en Protecting Business Innovation y Intellectual Property Law (The Hong Kong University of Science and Technology, University of Pennsylvania), así como en los Aspectos Legales del Emprendimiento (University of Maryland).
+Derecho Público y Regulatorio: Su experiencia se profundiza con diplomados en Derecho Ambiental, Derechos Humanos y Derecho de Amparo de la Suprema Corte de Justicia de la Nación, así como con especializaciones en European Business Law y Regulatory Compliance (Lund University, University of Pennsylvania).
+Además de su sólida formación académica, Jonathan ha sido reconocido por el Programa de las Naciones Unidas para el Desarrollo (PNUD) y ha sido becado en múltiples ocasiones por Santander. Su fluidez en inglés, perfeccionada en el British Council, y su mentalidad de liderazgo, autonomía y excelencia lo convierten en un miembro indispensable de un equipo fundador de alto rendimiento.</p>
+                    </div>
+                </div>
+
+                <!-- Team Member 2 -->
+                <div class="team-member-card">
+                    <div class="team-member-header">
+                        <img src="IMG\Haggy Hernandez - Nosotros.PNG" alt="Foto de Haggy Hernandez" loading="lazy">
+                        <div class="team-member-summary">
+                            <h3>Haggy Hernandez</h3>
+                            <p class="role">Genio en Ingeniería de Software</p>
+                            <div class="social-links-team">
+                                <a href="https://www.linkedin.com/in/haggy-g-hern%C3%A1ndez-8139162b4/" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                                <a href="https://www.instagram.com/hagy_dev?igsh=ejh1Y3l6MHVnOTh3&utm_source=qr" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                                <a href="https://hagyhernandezdev.netlify.app/ " aria-label="Sitio Web"><i class="fas fa-globe"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="team-member-bio-full">
+                        <p class="bio">Haggy es un ingeniero de software visionario especializado en la arquitectura y el desarrollo de sistemas de alta calidad. Su expertise principal reside en el desarrollo backend, donde utiliza tecnologías líderes como Java, Spring Boot y Python para construir soluciones robustas y funcionales. Su enfoque en la creación de código limpio y eficiente es clave para garantizar una experiencia de usuario fluida y excepcional.
+Su versatilidad técnica es una de sus mayores fortalezas. Aunque su dominio es el backend, su conocimiento en tecnologías frontend como Angular, HTML, CSS y JavaScript le permite tener una perspectiva integral del ciclo de vida del software. Esta habilidad le faculta para no solo construir la lógica interna de los sistemas, sino también para comprender y optimizar la interacción completa del producto, asegurando la coherencia y la funcionalidad de principio a fin.
+La formación académica de Haggy en Ingeniería en Sistemas Computacionales se ha consolidado con una valiosa experiencia práctica en entornos empresariales, manejando sistemas de bases de datos clave como Oracle y MySQL. Su compromiso con la excelencia es constante, como lo demuestra su proceso actual para obtener la prestigiosa certificación Oracle Certified Professional: Java SE 17 Developer.
+En resumen, Haggy se distingue por su dedicación a la innovación y su capacidad para resolver problemas complejos, lo que lo convierte en un miembro fundamental para un equipo fundador de alto rendimiento.</p>
+                    </div>
+                </div>
+
+                <!-- Team Member 3 -->
+                <div class="team-member-card">
+                    <div class="team-member-header">
+                        <img src="IMG\Mabel Elizondo - Nosotros.PNG" alt="Foto de Mabel Elizondo" loading="lazy">
+                        <div class="team-member-summary">
+                            <h3>Mabel Elizondo.</h3>
+                            <p class="role">Prodigio en Mercadotecnia y Contenido Digital</p>
+                            <div class="social-links-team">
+                                <a href="https://www.linkedin.com/in/mabelelizondo-marketingdigital?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app " aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="team-member-bio-full">
+                        <p class="bio">Mabel es una estudiante de Mercadotecnia con una sólida experiencia en la creación de estrategias comerciales y la gestión integral de campañas digitales. Su práctica se centra en el desarrollo de contenido digital y la publicidad orientada a resultados, aportando soluciones creativas que impulsan el crecimiento de las marcas.
+A lo largo de su carrera, ha consolidado un perfil versátil que combina el conocimiento técnico con una visión de negocio. Su experiencia en la administración de negocios y en agencias de marketing ha perfeccionado sus habilidades en atención al cliente, CRM y gestión de bases de datos, lo cual le permite entender y optimizar el ciclo de vida completo de la relación con el cliente, desde la prospección inicial hasta la fidelización.
+Mabel se distingue por su enfoque estratégico y su mentalidad orientada a resultados. Su capacidad para integrar la creatividad, el análisis y el liderazgo le permite diseñar estrategias de valor que no solo atraen, sino que también convierten y retienen. Esto la convierte en una pieza clave para cualquier equipo que busque expandir su alcance y consolidar su presencia en el mercado.</p>
+                    </div>
+                </div>
+            
+            <!-- Team Member 4 -->
+                 <div class="team-member-card">
+                    <div class="team-member-header">
+                        <img src="IMG\Josue Monroy - Nosotros.PNG" alt="Foto de Josue Monroy" loading="lazy">
+                        <div class="team-member-summary">
+                            <h3>Josue Monroy</h3>
+                            <p class="role">Experto en Sistemas y Analista de Datos</p>
+                            <div class="social-links-team">
+                                <a href="https://www.linkedin.com/in/josue-monroy-758a2a2a1/" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                                <a href="https://drive.google.com/drive/folders/1u-eVQprvzrSDEJh6n1o5eQMCHk79Bc_d?usp=sharing" target="_blank" rel="noopener noreferrer" aria-label="Google Drive"><i class="fab fa-google-drive"></i></a>
+                                <a href="https://www.instagram.com/josue.monroy.5680/" target="_blank" rel="noopener noreferrer" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                                <a href="https://github.com/JosueJa1r" target="_blank" rel="noopener noreferrer" aria-label="GitHub"><i class="fab fa-github"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="team-member-bio-full">
+                        <p class="bio">Experto en Sistemas y Analista de Datos
+Josue es un profesional único, cuya trayectoria se forja en la intersección de la disciplina militar y la agudeza tecnológica. Durante sus cinco años de servicio en el ejército, desarrolló una mentalidad operativa donde la precisión, la seguridad y la fiabilidad son el núcleo de cualquier proyecto. Esta experiencia de alto riesgo le brindó la capacidad de gestionar sistemas críticos y actuar con decisión bajo presión, sentando las bases de un enfoque metódico y orientado a resultados.
+Con esta sólida base, Josue ha dirigido su carrera hacia la ingeniería de sistemas y la ciencia de datos, cursando simultáneamente dos titulaciones universitarias. Esta dualidad académica no solo es un testimonio de su ambición, sino también de su visión estratégica para dominar tanto la arquitectura de soluciones tecnológicas como el arte de transformar datos en inteligencia de negocio.
+En el ámbito profesional, ha demostrado un impacto medible y directo. Ha optimizado procesos para reducir los ciclos de facturación en un 15% y ha gestionado de manera diligente la información de más de 80,000 clientes. Estos logros demuestran su habilidad para aplicar su conocimiento técnico y su disciplina operativa para generar valor duradero y tangible.
+En resumen, Josue se perfila como un tecnólogo de nueva generación. Un profesional que no solo entiende el código y los algoritmos, sino que también comprende el imperativo de la seguridad y la eficiencia operativa, lo que lo convierte en un activo invaluable para cualquier equipo de alto rendimiento.</p>
+                    </div>
+                </div>
+            <!-- Team Member 5 -->  
+
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer id="contacto" class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <!-- Columna 1: Logo y Descripción -->
+                <div class="footer-col">
+                    <div class="logo">
+                        <video src="IMG/video/Video_Generado_Por_Gemini.mp4" class="footer-logo" autoplay loop muted playsinline loading="lazy"></video>
+                    </div>
+                    <p>Transformamos ideas en realidades exitosas.</p>
+                </div>
+                <!-- Columna 2: Enlaces de Exploración -->
+                <div class="footer-col">
+                    <h4>Explorar</h4>
+                    <ul>
+                        <li><a href="prueba.html#inicio">Inicio</a></li>
+                        <li><a href="prueba.html#cursos">Cursos</a></li>
+                        <li><a href="chatbot-main/chatbot-main/templates/index.html">AI Studio</a></li>
+                        <li><a href="prueba.html#testimonios">Testimonios</a></li>
+                        <li><a href="prueba.html#faq">FAQ</a></li>
+                    </ul>
+                </div>
+                <!-- Columna 3: Enlaces Legales -->
+                <div class="footer-col">
+                    <h4>Legal</h4>
+                    <ul>
+                        <li><a href="#">Términos y Condiciones</a></li>
+                        <li><a href="#">Política de Privacidad</a></li>
+                        <li><a href="#">Política de Cookies</a></li>
+                    </ul>
+                </div>
+                <!-- Columna 4: Redes Sociales -->
+                <div class="footer-col">
+                    <h4>Síguenos</h4>
+                    <div class="social-icons">
+                        <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                        <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 EmprendeIA. Todos los derechos reservados.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

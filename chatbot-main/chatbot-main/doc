@@ -1,0 +1,19 @@
+Guía de cómo correr el bot en tu pc.
+1.- Instala python, te recomiendo la version 3.10.0
+2.- Clona el proyecto
+3.- Abre el proyecto en tu IDE
+4.- Dirigete a la terminal y ejecuta el siguiente comando: python -m venv venv <-- este comando crea un entorno virtual en tu pc. 
+    Posteriormente ejecuta --> pip install flask python-dotenv google-generativeai <-- son las librerias que necesitas para correr el proyecto
+    Luego activa el entorno virtual --> venv\Scripts\activate
+        Si aparece un error de ejecución de scripts, ejecuta antes:
+            Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope CurrentUser
+            vuelve a ejecutar venv\Scripts\activate
+5.- Es momento de crear una apikey de Gemini, ve a Google AI Studio: https://aistudio.google.com/prompts/new_chat
+6.- Da click en Get ApiKey --> Crear clave de API 
+7.- Te va a generar una clave, crea un archivo en la raiz del proyecto llamado .env y copiala ahi dentro, con la variable: GOOGLE_API_KEY='Tu api key generada'
+8.- Ejecuta el siguiente comando desde la terminal: python app.py
+9.- Si todo sale bien, por defecto te abrirá en el puerto 5000, dirígete a tu navegador y escríbe: localhost:5000, y listo. El chatbot debería estar corriendo.
+10.- Para detener el servicio, desde la terminal presiona ctrl + c
+11.- Para desactivar el entorno virtual ejecuta: deactivate
+12.- IMPORTANTE: PARA QUE EL SERVICIO SIEMPRE ESTE CORRIENDO DEBES TENER ABIERTA LA TERMINAL EN TODO MOMENTO.
+        Si al hacer peticiones a la IA te regresas al IDE, verás que se estan ejecutando los GET correspondientes con respuesta 200 cada que se hace una nueva petición.

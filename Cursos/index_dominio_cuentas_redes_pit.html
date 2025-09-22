@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Microcurso: Redes Sociales</title>
+    <!-- Estilos globales para la barra de navegación y base -->
+    <link rel="stylesheet" href="../STYLES/prueba-style.css">
+    <!-- Estilos específicos para la página del curso -->
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+<header class="navbar">
+    <div class="container">
+        <div class="logo">
+            <!-- La ruta ahora sube un nivel para encontrar la carpeta IMG -->
+            <img src="../IMG/emprendeia-logo.png" alt="EmprendeIA Logo">
+            <div class="logo-text">
+                <span>
+                    <span style="color: #FCD25A">E</span>
+                    <span style="color: #FCD25A">m</span>
+                    <span style="color: #5EBF8D">p</span>
+                    <span style="color: #5EBF8D">r</span>
+                    <span style="color: #5EBF8D">e</span>
+                    <span style="color: #F37C2D">n</span>
+                    <span style="color: #F37C2D">d</span>
+                    <span style="color: #F37C2D">e</span>
+                    <span style="color: #4285F4">I</span>
+                    <span style="color: #4285F4">A</span>
+                </span>
+                <span class="powered-by">Powered by Google</span>
+            </div>
+        </div>
+        <nav class="nav-links">
+            <ul>
+                <!-- Los enlaces ahora apuntan a la página principal con sus anclas -->
+                <li><a href="../prueba.html#inicio">Inicio</a></li>
+                <li><a href="../nosotros.html">Nosotros</a></li>
+                <li><a href="../prueba.html#cursos">Cursos</a></li>
+                <li><a href="../chatbot-main/chatbot-main/templates/index.html">IA</a></li>
+                <li><a href="../prueba.html#contacto">Contacto</a></li>
+                <li class="dropdown">
+                    <!-- El enlace principal y los del menú desplegable apuntan a la sección de comunidades -->
+                    <a href="../prueba.html#inscripcion">Comunidad <i class="fas fa-chevron-down"></i></a>
+                    <div class="dropdown-content">
+                        <a href="../prueba.html#inscripcion">Creadoras IA</a>
+                        <a href="../prueba.html#inscripcion">Innovadores del Futuro</a>
+                        <a href="../prueba.html#inscripcion">Legado Emprendedor</a>
+                    </div>
+                </li>
+            </ul>
+            <div class="nav-actions">
+                <a href="../Usuario/usuario.html" class="btn btn-primary">ACCEDE</a>
+                <button id="theme-toggle" class="btn-theme"><i class="fas fa-moon"></i></button>
+                <select class="language-selector">
+                    <option value="es">🇲🇽</option>
+                    <option value="en">🇺🇸</option>
+                    <option value="fr">🇫🇷</option>
+                    <option value="de">🇩🇪</option>
+                    <option value="it">🇮🇹</option>
+                </select>
+            </div>
+        </nav>
+        <div class="menu-toggle">
+            <i class="fas fa-bars"></i>
+        </div>
+    </div>
+</header>
+
+<div class="sidebar">
+    <button class="sidebar-toggle-btn" id="sidebar-toggle">
+        <i class="fas fa-chevron-left"></i>
+    </button>
+    <div class="sidebar-content">
+        <div class="course-title">Emprende IA: Programas de Formación</div>
+        <div class="sidebar-section">
+            <div class="sidebar-subtitle">Programas Disponibles</div>
+            <ul class="module-list">
+                <li class="module-item active" data-target="microcurso-content">
+                    <div class="module-header">
+                        <span class="module-text active">Microcurso: Redes Sociales</span>
+                    </div>
+                    <ul class="sub-menu visible">
+                        <li class="sub-menu-item active" data-target="dia-1-content">Día 1</li>
+                        <li class="sub-menu-item" data-target="dia-2-content">Día 2</li>
+                        <li class="sub-menu-item" data-target="dia-3-content">Día 3</li>
+                        <li class="sub-menu-item" data-target="dia-4-content">Día 4</li>
+                        <li class="sub-menu-item" data-target="dia-5-content">Día 5</li>
+                        <li class="sub-menu-item" data-target="dia-6-content">Día 6</li>
+                        <li class="sub-menu-item" data-target="dia-7-content">Día 7</li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+<div class="main-content">
+    <div class="course-section" id="microcurso-content">
+        <div class="section-header">
+            Microcurso: Dominio de Cuentas de Redes Sociales para Negocios en 7 Días 
+        </div>
+        <div class="section-body">
+            <p>Este microcurso intensivo está diseñado para el emprendedor que quiere dejar de adivinar en las redes sociales y empezar a obtener resultados.  En solo una semana, aprenderás a crear una estrategia de contenido que atraiga a tu cliente ideal, dominarás las herramientas de IA para la creación de contenido y construirás una comunidad leal alrededor de tu marca.  Pasarás de tener una simple cuenta a una máquina de generación de leads. </p>
+            <h4>Lo que aprenderás:</h4>
+            <ul>
+                <li>La diferencia entre "tener presencia" y "tener impacto" en las redes sociales. </li>
+                <li>Cómo usar la inteligencia artificial para analizar tendencias y generar ideas de contenido. </li>
+                <li>Estrategias para crear un embudo de ventas efectivo en las plataformas sociales. </li>
+                <li>Cómo interpretar métricas clave para optimizar tus campañas. </li>
+            </ul>
+            <h4>Contenido por Día</h4>
+            <div class="day-content" id="dia-1-content">
+                <h5>Día 1: El Problema Antes que el Contenido</h5>
+                <p><strong>Lección:</strong> La mayoría de las marcas fallan en redes sociales porque publican sin un propósito.  El primer paso no es crear, sino escuchar.  Antes de pensar en tu próximo post, debes entender qué conversaciones ya existen en tu nicho y qué problemas tiene tu cliente ideal. </p>
+                <p><strong>Tarea:</strong> Habla con 5 personas de tu audiencia objetivo o revisa los comentarios en grupos de nicho y anota sus preguntas y frustraciones más comunes. </p>
+            </div>
+            <div class="day-content" id="dia-2-content">
+                <h5>Día 2: Tu Cliente Ideal (La Clave para la Conexión)</h5>
+                <p><strong>Lección:</strong> Un negocio no puede ser para todos, y lo mismo ocurre con el contenido.  Debes entender a fondo a quién le hablas para que tu mensaje resuene.  Un empresario exitoso sabe a quién le está hablando. </p>
+                <p><strong>Tarea:</strong> Basado en tu investigación, crea una "ficha" de tu cliente ideal, incluyendo sus hábitos digitales, las redes sociales que usa y sus puntos de dolor. </p>
+            </div>
+            <div class="day-content" id="dia-3-content">
+                <h5>Día 3: La Propuesta de Valor Única (Tu Diferenciador)</h5>
+                <p><strong>Lección:</strong> ¿Qué hace que tu contenido sea especial?  Aquí es donde pasas de ser una cuenta más a una cuenta imprescindible.  Debes definir tu voz, tus temas principales y por qué alguien debería seguirte. </p>
+                <p><strong>Tarea:</strong> Con la ayuda de una herramienta de IA, crea un "mapa de contenido" con 3 pilares temáticos que se alineen con la narrativa central de tu marca. </p>
+            </div>
+            <div class="day-content" id="dia-4-content">
+                <h5>Día 4: Prototipado Rápido de Contenido con IA</h5>
+                <p><strong>Lección:</strong> Lo que antes tomaba horas, ahora se hace en minutos.  La IA generativa acelera el tiempo de prototipado de contenido en un 70%. </p>
+                <p><strong>Tarea:</strong> Utiliza las herramientas de la plataforma para crear borradores de al menos 5 posts o videos cortos.  Usa la IA para generar ideas para guiones, títulos y hashtags. </p>
+            </div>
+            <div class="day-content" id="dia-5-content">
+                <h5>Día 5: La Presentación y la Medición</h5>
+                <p><strong>Lección:</strong> Un gran *pitch deck* es un factor clave en el 68% de las decisiones de inversión en la fase inicial.  De manera similar, una gran cuenta de redes sociales es un factor clave en la decisión de un cliente potencial de interactuar contigo.  Debes probar si la gente está dispuesta a usar tu producto o servicio. </p>
+                <p><strong>Tarea:</strong> Lanza tus posts prototipo y documenta tus hallazgos.  ¿Qué tipo de contenido generó más interacción? </p>
+            </div>
+            <div class="day-content" id="dia-6-content">
+                <h5>Día 6: Feedback y Validación (¡No te enamores de tu contenido!)</h5>
+                <p><strong>Lección:</strong> Tu idea no es perfecta.  El empresario exitoso sabe escuchar y pivotar.  Las métricas y los comentarios son tu guía. </p>
+                <p><strong>Tarea:</strong> Recopila la retroalimentación de los comentarios y las estadísticas de tus posts.  Anota al menos 3 cambios que harás en tu estrategia de contenido para la siguiente semana. </p>
+            </div>
+            <div class="day-content" id="dia-7-content">
+                <h5>Día 7: El Plan de Contenido Final</h5>
+                <p><strong>Lección:</strong> Es momento de consolidar todo lo aprendido.  Un plan de lanzamiento detallado con métricas clave y escenarios de crecimiento es lo que separa a los que tienen un hobby de los que construyen un negocio. </p>
+            </div>
+            <h4>Resultado:</h4>
+            <p>Un **plan de contenido completo** para el próximo mes, una **guía de voz de marca**, y la confianza para usar las redes sociales como una herramienta de crecimiento estratégico. </p>
+            <h4>Mentor - Experto en Marketing Digital</h4>
+            <div class="mentor-box">
+                <img src="../IMG/mentor de microcursos.png" alt="Foto del Mentor" loading="lazy" decoding="async" width="150" height="150">
+                <div class="mentor-info">
+                    <p>Nuestro mentor es un reconocido estratega de marketing digital que ha gestionado campañas para marcas globales y startups emergentes. Se especializa en la creación de comunidades online, marketing de contenidos y la optimización de embudos de conversión en redes sociales.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+    <!-- Footer -->
+    <footer id="contacto" class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <!-- Columna 1: Logo y Descripción -->
+                <div class="footer-col">
+                    <div class="logo">
+                        <video src="../IMG/video/Video_Generado_Por_Gemini.mp4" class="footer-logo" autoplay loop muted playsinline loading="lazy"></video>
+                    </div>
+                    <p>Transformamos ideas en realidades exitosas.</p>
+                </div>
+                <!-- Columna 2: Enlaces de Exploración -->
+                <div class="footer-col">
+                    <h4>Explorar</h4>
+                    <ul>
+                        <li><a href="../prueba.html#inicio">Inicio</a></li>
+                        <li><a href="../prueba.html#cursos">Cursos</a></li>
+                        <li><a href="../chatbot-main/chatbot-main/templates/index.html">AI Studio</a></li>
+                        <li><a href="../prueba.html#testimonios">Testimonios</a></li>
+                        <li><a href="../prueba.html#faq">FAQ</a></li>
+                    </ul>
+                </div>
+                <!-- Columna 3: Enlaces Legales -->
+                <div class="footer-col">
+                    <h4>Legal</h4>
+                    <ul>
+                        <li><a href="#">Términos y Condiciones</a></li>
+                        <li><a href="#">Política de Privacidad</a></li>
+                        <li><a href="#">Política de Cookies</a></li>
+                    </ul>
+                </div>
+                <!-- Columna 4: Redes Sociales -->
+                <div class="footer-col">
+                    <h4>Síguenos</h4>
+                    <div class="social-icons">
+                        <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                        <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 EmprendeIA. Todos los derechos reservados.</p>
+            </div>
+        </div>
+    </footer>
+<script src="../script.js"></script> <!-- Script para la barra de navegación y funciones globales -->
+<script src="script.js"></script>    <!-- Script para la navegación interna del curso -->
+</body>
+</html>

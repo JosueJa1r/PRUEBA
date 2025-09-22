@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bootcamp: Capital de Riesgo</title>
+    <!-- Estilos globales para la barra de navegación y base -->
+    <link rel="stylesheet" href="../STYLES/prueba-style.css">
+    <!-- Estilos específicos para la página del curso -->
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+<header class="navbar">
+    <div class="container">
+        <div class="logo">
+            <!-- La ruta ahora sube un nivel para encontrar la carpeta IMG -->
+            <img src="../IMG/emprendeia-logo.png" alt="EmprendeIA Logo">
+            <div class="logo-text">
+                <span>
+                    <span style="color: #FCD25A">E</span>
+                    <span style="color: #FCD25A">m</span>
+                    <span style="color: #5EBF8D">p</span>
+                    <span style="color: #5EBF8D">r</span>
+                    <span style="color: #5EBF8D">e</span>
+                    <span style="color: #F37C2D">n</span>
+                    <span style="color: #F37C2D">d</span>
+                    <span style="color: #F37C2D">e</span>
+                    <span style="color: #4285F4">I</span>
+                    <span style="color: #4285F4">A</span>
+                </span>
+                <span class="powered-by">Powered by Google</span>
+            </div>
+        </div>
+        <nav class="nav-links">
+            <ul>
+                <!-- Los enlaces ahora apuntan a la página principal con sus anclas -->
+                <li><a href="../prueba.html#inicio">Inicio</a></li>
+                <li><a href="../nosotros.html">Nosotros</a></li>
+                <li><a href="../prueba.html#cursos">Cursos</a></li>
+                <li><a href="../chatbot-main/chatbot-main/templates/index.html">IA</a></li>
+                <li><a href="../prueba.html#contacto">Contacto</a></li>
+                <li class="dropdown">
+                    <!-- El enlace principal y los del menú desplegable apuntan a la sección de comunidades -->
+                    <a href="../prueba.html#inscripcion">Comunidad <i class="fas fa-chevron-down"></i></a>
+                    <div class="dropdown-content">
+                        <a href="../prueba.html#inscripcion">Creadoras IA</a>
+                        <a href="../prueba.html#inscripcion">Innovadores del Futuro</a>
+                        <a href="../prueba.html#inscripcion">Legado Emprendedor</a>
+                    </div>
+                </li>
+            </ul>
+            <div class="nav-actions">
+                <a href="../Usuario/usuario.html" class="btn btn-primary">ACCEDE</a>
+                <button id="theme-toggle" class="btn-theme"><i class="fas fa-moon"></i></button>
+                <select class="language-selector">
+                    <option value="es">🇲🇽</option>
+                    <option value="en">🇺🇸</option>
+                    <option value="fr">🇫🇷</option>
+                    <option value="de">🇩🇪</option>
+                    <option value="it">🇮🇹</option>
+                </select>
+            </div>
+        </nav>
+        <div class="menu-toggle">
+            <i class="fas fa-bars"></i>
+        </div>
+    </div>
+</header>
+
+<div class="sidebar">
+    <button class="sidebar-toggle-btn" id="sidebar-toggle">
+        <i class="fas fa-chevron-left"></i>
+    </button>
+    <div class="sidebar-content">
+        <div class="course-title">Emprende IA: Programas de Formación</div>
+        <div class="sidebar-section">
+            <div class="sidebar-subtitle">Programas Disponibles</div>
+            <ul class="module-list">
+                <li class="module-item active" data-target="bootcamp-content">
+                    <div class="module-header">
+                        <span class="module-text active">Bootcamp: Capital de Riesgo</span>
+                    </div>
+                    <ul class="sub-menu visible">
+                        <li class="sub-menu-item active" data-target="modulo-1-content">Módulo 1</li>
+                        <li class="sub-menu-item" data-target="modulo-2-content">Módulo 2</li>
+                        <li class="sub-menu-item" data-target="modulo-3-content">Módulo 3</li>
+                        <li class="sub-menu-item" data-target="modulo-4-content">Módulo 4</li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+<div class="main-content">
+    <div class="course-section" id="bootcamp-content">
+        <div class="section-header">
+            Bootcamp Intensivo: Capital de Riesgo y Levantamiento de Capital 
+        </div>
+        <div class="section-body">
+            <p>Este bootcamp es tu ruta acelerada para conseguir financiamiento.  En solo 4 módulos, te sumergirás en la psicología de los inversionistas, dominarás el poder de la IA para generar tu plan financiero y crearás un *pitch* de alto impacto que te posicionará como un líder en tu industria.  Este no es un curso teórico; es una experiencia de creación práctica, impulsada por herramientas como **Emprende IA**. </p>
+            <h4>Objetivos del Bootcamp:</h4>
+            <ul>
+                <li>Crear un **plan financiero profesional** y coherente en horas, no en semanas. </li>
+                <li>Construir un *pitch deck* que conecte emocionalmente con los inversionistas. </li>
+                <li>Simular escenarios de inversión y practicar tu *pitch* antes de las reuniones reales. </li>
+                <li>Desarrollar un plan de financiamiento basado en datos, no en suposiciones. </li>
+                <li>Generar un borrador de un **pitch deck profesional** con tu nueva identidad visual. </li>
+            </ul>
+            <h4>Módulos del Bootcamp</h4>
+            <div class="module-content" id="modulo-1-content">
+                <h5>Módulo 1: La Arquitectura del Capital: Más Allá del Dinero</h5>
+                <p><strong>Lección Central:</strong> El capital no es solo dinero; es una herramienta estratégica que genera lealtad y confianza.  En este módulo, aprenderás que un negocio poderoso se construye con una narrativa que resuena con los inversionistas a un nivel emocional.  Un empresario exitoso sabe que el capital es un activo que genera lealtad y confianza. </p>
+                <p><strong>Acción con la Plataforma:</strong> Utiliza el **Asistente de Estrategia de Capital de Emprende IA** para construir la narrativa financiera de tu proyecto.  El asistente te guiará para definir la ronda de inversión que necesitas y los valores de tu marca. </p>
+                <p><strong>Entregable:</strong> La narrativa central de tu plan de financiamiento. </p>
+            </div>
+            <div class="module-content" id="modulo-2-content">
+                <h5>Módulo 2: Emprende IA: Tu Fábrica de Planes Financieros</h5>
+                <p><strong>Lección Central:</strong> La creación de planes financieros, que antes era costosa y compleja, ahora se democratiza por completo.  **Emprende IA** no es un simple generador de hojas de cálculo; es una "fábrica" de planes de inversión completa, impulsada por IA. [cite: 506, 507]</p>
+                <p><strong>Acción con la Plataforma:</strong> Con comandos conversacionales, el **Generador de Planes Financieros Inteligente de Emprende IA** te permitirá crear planes financieros, analizará las tendencias de mercado y sugerirá proyecciones de crecimiento.  En segundos, tendrás tu plan financiero listo. </p>
+                <p><strong>Entregable:</strong> Un plan financiero profesional con proyecciones a 3-5 años y un desglose de gastos. </p>
+            </div>
+            <div class="module-content" id="modulo-3-content">
+                <h5>Módulo 3: El Plan de Financiamiento Estratégico</h5>
+                <p><strong>Lección Central:</strong> Una idea brillante con un plan financiero excepcional no sirve de nada sin una estrategia para llegar a los inversionistas.  En este módulo, crearás tu plan de financiamiento, utilizando la inteligencia de datos para tomar decisiones. </p>
+                <p><strong>Acción con la Plataforma:</strong> Utiliza el **Simulador de Estrategia de Capital de Emprende IA**.  La IA simulará la efectividad de tus estrategias en diferentes mercados. </p>
+                <p><strong>Entregable:</strong> Un plan de financiamiento detallado con métricas clave y escenarios de crecimiento. </p>
+            </div>
+            <div class="module-content" id="modulo-4-content">
+                <h5>Módulo 4: El Pináculo: El Pitch de Inversión</h5>
+                <p><strong>Lección Central:</strong> La culminación de tu plan de financiamiento y tu narrativa es una presentación que persuade.  Un gran **pitch deck** es un factor clave en el 68% de las decisiones de inversión en la fase inicial.  Tu empresario interno debe ser capaz de vender no solo su producto, sino su visión. </p>
+                <p><strong>Acción con la Plataforma:</strong> El **Simulador de Fondos de Inversión de Emprende IA** te preparará para el *pitch* final. </p>
+                <p><strong>Entregable:</strong> Un **borrador de *pitch deck*** completo y pulido que cuenta una historia visualmente atractiva, un activo crucial para atraer a los inversionistas. </p>
+            </div>
+            <h4>Mentor - Experto en Capital de Riesgo</h4>
+            <div class="mentor-box">
+                <img src="../IMG/mentor de Bootcamps.png" alt="Foto del Mentor" loading="lazy" decoding="async" width="150" height="150">
+                <div class="mentor-info">
+                    <p>Nuestro mentor es un socio director en un fondo de capital de riesgo líder, con un historial probado en la identificación y financiación de startups disruptivas. Con más de una década de experiencia en Silicon Valley, se especializa en negociaciones de alto nivel, estructuración de acuerdos y escalamiento de empresas tecnológicas.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+    <!-- Footer -->
+    <footer id="contacto" class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <!-- Columna 1: Logo y Descripción -->
+                <div class="footer-col">
+                    <div class="logo">
+                        <video src="../IMG/video/Video_Generado_Por_Gemini.mp4" class="footer-logo" autoplay loop muted playsinline loading="lazy"></video>
+                    </div>
+                    <p>Transformamos ideas en realidades exitosas.</p>
+                </div>
+                <!-- Columna 2: Enlaces de Exploración -->
+                <div class="footer-col">
+                    <h4>Explorar</h4>
+                    <ul>
+                        <li><a href="../prueba.html#inicio">Inicio</a></li>
+                        <li><a href="../prueba.html#cursos">Cursos</a></li>
+                        <li><a href="../chatbot-main/chatbot-main/templates/index.html">AI Studio</a></li>
+                        <li><a href="../prueba.html#testimonios">Testimonios</a></li>
+                        <li><a href="../prueba.html#faq">FAQ</a></li>
+                    </ul>
+                </div>
+                <!-- Columna 3: Enlaces Legales -->
+                <div class="footer-col">
+                    <h4>Legal</h4>
+                    <ul>
+                        <li><a href="#">Términos y Condiciones</a></li>
+                        <li><a href="#">Política de Privacidad</a></li>
+                        <li><a href="#">Política de Cookies</a></li>
+                    </ul>
+                </div>
+                <!-- Columna 4: Redes Sociales -->
+                <div class="footer-col">
+                    <h4>Síguenos</h4>
+                    <div class="social-icons">
+                        <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                        <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 EmprendeIA. Todos los derechos reservados.</p>
+            </div>
+        </div>
+    </footer>
+<script src="../script.js"></script> <!-- Script para la barra de navegación y funciones globales -->
+<script src="script.js"></script>    <!-- Script para la navegación interna del curso -->
+</body>
+</html>

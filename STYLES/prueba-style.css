@@ -1,0 +1,1548 @@
+/* Base Styles - Tu código existente */
+:root {
+    --primary-blue: #007bff;
+    --secondary-green: #28a745;
+    --light-gray: #f8f9fa;
+    --dark-gray: #343a40;
+    --text-color: #333;
+    --heading-color: #212529;
+    --border-radius-base: 8px;
+    --box-shadow-light: 0 4px 12px rgba(0, 0, 0, 0.08);
+    --tag-green-bg: #e6ffe6;
+    --tag-green-text: #28a745;
+    --tag-yellow-bg: #fffbe6;
+    --tag-yellow-text: #ffc107;
+    --tag-red-bg: #ffe6e6;
+    --tag-red-text: #dc3545;
+    --tag-purple-bg: #f3e6ff;
+    --tag-purple-text: #6f42c1;
+    --gradient-blue: linear-gradient(45deg, #007bff, #0056b3);
+    --gradient-green: linear-gradient(45deg, #28a745, #1e7e34);
+    --gradient-hero-video: linear-gradient(135deg, #4CAF50, #2196F3); /* Verde a Azul para el borde del video */
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Montserrat', sans-serif;
+    line-height: 1.6;
+    color: var(--text-color);
+    background-color: #dbfdff;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    color: var(--heading-color);
+    margin-bottom: 1rem;
+}
+
+p {
+    margin-bottom: 1rem;
+}
+
+a {
+    color: var(--primary-blue);
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+.btn {
+    display: inline-block;
+    padding: 10px 20px;
+    border-radius: var(--border-radius-base);
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    border: none;
+    text-align: center;
+}
+
+.btn-primary {
+    background-color: var(--primary-blue);
+    color: #ffffff;
+}
+
+.btn-primary:hover {
+    background-color: #0056b3;
+    color: #fff;
+    text-decoration: none;
+}
+
+.btn-blue {
+    background-color: #007bff; /* Similar al primario */
+    color: #fff;
+}
+
+.btn-blue:hover {
+    background-color: #0056b3;
+    color: #fff;
+    text-decoration: none;
+}
+
+.btn-green {
+    background-color: var(--secondary-green);
+    color: #fff;
+}
+
+.btn-green:hover {
+    background-color: #1e7e34;
+    color: #fff;
+    text-decoration: none;
+}
+
+.btn-purple {
+    background-color: #6f42c1; /* Color de los bootcamps */
+    color: #fff;
+}
+
+.btn-purple:hover {
+    background-color: #59359a;
+    color: #fff;
+    text-decoration: none;
+}
+
+.large-btn {
+    padding: 12px 25px;
+    font-size: 1.1em;
+}
+
+.highlight-blue {
+    color: var(--primary-blue);
+}
+
+.highlight-green {
+    color: var(--secondary-green);
+}
+
+.light-bg {
+    background-color: var(--light-gray);
+}
+
+/* Navbar */
+.navbar {
+    background-color: #e2faf3;
+    padding: 20px 0; /* Ajustado para una barra más compacta */
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+.navbar .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.navbar .logo {
+    display: flex;
+    align-items: center;
+    font-weight: 700;
+    font-size: 1.2em;
+    color: var(--heading-color);
+}
+
+.navbar .logo img {
+  margin-right: 15px;
+    height: 100px; /* Aumentado para que el logo sea más grande */
+    border-radius: 50%; /* Si el logo es circular */
+}
+
+.navbar .logo-text {
+    display: flex;
+    flex-direction: column;
+    line-height: 1.1; /* Ajusta el espacio entre líneas */
+    margin-left: 10px; /* Pequeño ajuste */
+    font-size: 24px; /* Ajustado al nuevo tamaño del logo */
+    font-weight: 700;
+}
+
+.navbar .logo .powered-by {
+    font-size: 0.5em;
+    color: #757474;
+    margin-left: 0; /* Lo movemos debajo del nombre */
+    font-weight: 400;
+}
+
+.navbar .nav-links {
+    display: flex;
+    align-items: center;
+    gap: 30px; /* Espacio entre la lista de enlaces y las acciones */
+}
+
+.navbar .nav-links ul {
+    list-style: none;
+    display: flex;
+}
+
+.navbar .nav-links li {
+    margin-left: 30px;
+    position: relative;
+}
+
+.navbar .nav-links a {
+    color: var(--primary-blue);
+    font-weight: 500;
+    font-size: 0.95em;
+    padding: 5px 0;
+    transition: color 0.3s ease;
+}
+
+.navbar .nav-links a:hover,
+.navbar .nav-links a.active-link {
+    color: #0056b3; /* Color de hover consistente con los botones */
+    text-decoration: none;
+}
+
+.navbar .nav-links a.active-link {
+    font-weight: 700; /* Lo hacemos más grueso para que destaque */
+}
+
+.navbar .nav-links .dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+    border-radius: var(--border-radius-base);
+    padding: 10px 0;
+    top: 100%; /* Posiciona el dropdown debajo del elemento padre */
+    left: 0;
+}
+
+.navbar .nav-links .dropdown-content a {
+    color: var(--primary-blue); /* Color azul para los enlaces del dropdown */
+    padding: 10px 15px;
+    text-decoration: none;
+    display: block;
+    text-align: left;
+    font-weight: 500;
+}
+
+.navbar .nav-links .dropdown-content a:hover {
+    background-color: var(--light-gray);
+    color: #0056b3; /* Azul más oscuro al pasar el ratón */
+}
+
+/* Esta clase se añade con JavaScript para mostrar el menú desplegable al hacer clic */
+.navbar .nav-links .dropdown-content.show {
+    display: block;
+}
+.navbar .nav-actions {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+/* Corrige el color del texto del botón "ACCEDE" para que sea blanco */
+.navbar .nav-actions .btn-primary {
+    color: #ffffff;
+    padding: 12px 28px; /* Aumentado para hacerlo más grande */
+    font-size: 1em;
+}
+
+/* Asegura que el color del texto del botón no cambie al pasar el ratón */
+.navbar .nav-actions .btn-primary:hover {
+    color: #ffffff;
+}
+
+.navbar .lang-selector {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+}
+
+.language-selector {
+  background: transparent;
+  border: none;
+  font-size: 18px;
+  cursor: pointer;
+}
+
+.navbar .lang-selector img {
+    border-radius: 3px;
+    margin-right: 5px;
+}
+
+.navbar .lang-selector i {
+    font-size: 0.8em;
+    color: #666;
+}
+
+/* Agregado para el menú hamburguesa */
+.menu-toggle {
+    display: none; /* Oculto por defecto en desktop */
+    font-size: 1.8em;
+    cursor: pointer;
+    color: var(--heading-color);
+}
+
+/* Hero Section */
+.hero-section {
+    background-color: #eaf7ed; /* Color de fondo claro similar al de la imagen */
+    padding: 80px 0;
+    overflow: hidden;
+    position: relative;
+}
+
+.hero-section .container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 40px;
+}
+
+.hero-content {
+    flex: 1;
+    max-width: 600px;
+}
+
+.hero-content h1 {
+    font-size: 3em;
+    line-height: 1.1;
+    margin-bottom: 20px;
+}
+
+.hero-content p {
+    font-size: 1.1em;
+    color: #555;
+    margin-bottom: 30px;
+}
+
+.hero-video-container {
+    flex: 1;
+    position: relative;
+    padding: 20px; /* Padding para el "borde" del gradiente */
+    border-radius: 20px; /* Bordes redondeados del contenedor */
+    background: var(--gradient-hero-video); /* Borde de gradiente */
+    box-shadow: var(--box-shadow-light);
+    max-width: 600px;
+    min-width: 450px; /* Ajuste para que no sea muy pequeño */
+}
+
+.hero-video-container .video-placeholder {
+    position: relative;
+    padding-bottom: 56.25%; /* 16:9 Aspect Ratio */
+    height: 0;
+    overflow: hidden;
+    border-radius: 12px; /* Bordes redondeados del video interno */
+    background-color: #eee;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #999;
+}
+
+.hero-video-container .video-placeholder iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border: 0;
+}
+
+
+/* Features Section */
+.features-section {
+    padding: 80px 0;
+    text-align: center;
+}
+
+.features-section h2 {
+    font-size: 2em;
+    margin-bottom: 50px;
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+    color: var(--heading-color);
+}
+
+.features-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 30px;
+    margin-top: 40px;
+}
+
+.feature-item {
+    background-color: #fff;
+    padding: 30px;
+    border-radius: var(--border-radius-base);
+    box-shadow: var(--box-shadow-light);
+    text-align: center;
+}
+
+.feature-icon {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto 20px auto;
+    font-size: 2.2em;
+    color: #fff;
+}
+
+.bg-gradient-blue {
+    background: var(--gradient-blue);
+}
+
+.bg-gradient-green {
+    background: var(--gradient-green);
+}
+
+.feature-item h3 {
+    font-size: 1.3em;
+    margin-bottom: 10px;
+}
+
+.feature-item p {
+    font-size: 0.9em;
+    color: #666;
+}
+
+/* Habits Section */
+.habits-section {
+    padding: 80px 0;
+    background-color: #f8f9fa;
+}
+
+.habits-header {
+    text-align: center;
+    margin-bottom: 50px;
+}
+
+.habits-header h1 {
+    font-size: 2.5em;
+    font-weight: 700;
+    color: var(--heading-color);
+}
+
+.habits-content {
+    display: flex;
+    gap: 30px;
+    align-items: stretch;
+}
+
+.main-card {
+    flex: 3;
+    background-color: #fff; /* Cambiado a blanco */
+    border-radius: var(--border-radius-base);
+    padding: 40px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1); /* Sombra consistente */
+    border-top: 5px solid var(--primary-blue); /* Borde superior azul */
+}
+
+.main-card .icon-circle {
+    background-color: #e6f2ff; /* Fondo azul claro para el icono */
+    border-radius: 50%;
+    width: 90px;
+    height: 90px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 25px;
+}
+
+.main-card .icon-circle i {
+    font-size: 3em;
+    color: var(--primary-blue); /* Icono azul */
+}
+
+.main-card h2 {
+    font-size: 1.8em;
+    margin-bottom: 15px;
+    font-weight: 700;
+    color: var(--heading-color); /* Texto oscuro */
+}
+
+.main-card p {
+    font-size: 1.05em;
+    line-height: 1.7;
+    max-width: 450px;
+    color: var(--text-color); /* Texto oscuro */
+}
+
+.side-cards {
+    flex: 2;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+}
+
+.side-card {
+    border-radius: var(--border-radius-base);
+    padding: 20px;
+    background-color: #fff; /* Cambiado a blanco */
+    text-align: center;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    aspect-ratio: 1 / 1; /* Hace que el contenedor sea cuadrado */
+    border-top: 5px solid; /* Borde superior para dar color y resaltar */
+}
+
+.side-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+}
+
+.side-card .icon-circle-small {
+    /* El color de fondo se define por cada tipo de tarjeta */
+    border-radius: 50%;
+    width: 60px;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 15px;
+}
+
+.side-card .icon-circle-small i {
+    font-size: 1.8em;
+    /* El color del icono se define por cada tipo de tarjeta */
+}
+
+.side-card p {
+    font-size: 1.1em;
+    font-weight: 600;
+    margin: 0;
+    color: var(--heading-color); /* Texto oscuro sobre fondo blanco */
+}
+
+/* Colores para resaltar cada tarjeta */
+.card-personal-gestion { border-color: #6f42c1; }
+.card-personal-gestion .icon-circle-small { background-color: var(--tag-purple-bg); }
+.card-personal-gestion .icon-circle-small i { color: #6f42c1; }
+
+.card-planificacion { border-color: #17a2b8; }
+.card-planificacion .icon-circle-small { background-color: #e8f6f8; } /* Color claro cian */
+.card-planificacion .icon-circle-small i { color: #17a2b8; }
+
+.card-productividad { border-color: #ffc107; }
+.card-productividad .icon-circle-small { background-color: var(--tag-yellow-bg); }
+.card-productividad .icon-circle-small i { color: #ffc107; }
+
+.card-crecimiento { border-color: #28a745; }
+.card-crecimiento .icon-circle-small { background-color: var(--tag-green-bg); }
+.card-crecimiento .icon-circle-small i { color: #28a745; }
+
+/* Courses Section */
+.courses-section {
+    padding: 80px 0;
+    background-color: var(--light-gray); /* Fondo gris claro */
+}
+
+.courses-section .container {
+    text-align: center;
+}
+
+.courses-section h2 {
+    font-size: 2.5em;
+    margin-bottom: 10px;
+    color: var(--heading-color);
+}
+
+.courses-section .section-title-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+.courses-section .section-title-icon i {
+    font-size: 1em; /* Ajusta el tamaño del icono al texto */
+    color: var(--primary-blue); /* Color del icono */
+}
+.courses-section h2 .tag-green-outline,
+.courses-section h2 .tag-purple-outline {
+    font-size: 0.6em; /* Ajustar tamaño para que parezca parte del h2 */
+    padding: 5px 10px;
+    border-radius: 20px;
+    font-weight: 600;
+    border: 1px solid;
+}
+.courses-section h2 .tag-green-outline {
+    color: var(--secondary-green);
+    border-color: var(--secondary-green);
+    background-color: transparent;
+}
+.courses-section h2 .tag-purple-outline {
+    color: #6f42c1;
+    border-color: #6f42c1;
+    background-color: transparent;
+}
+
+
+.courses-section .section-description {
+    font-size: 1.1em;
+    color: #666;
+    margin-bottom: 40px;
+}
+
+.tabs {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 40px;
+    gap: 15px;
+}
+
+.tab-button {
+    background-color: #fff;
+    border: 1px solid #ddd;
+    padding: 12px 25px;
+    border-radius: 25px;
+    font-size: 1em;
+    font-weight: 500;
+    color: var(--text-color);
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.tab-button i {
+    color: var(--primary-blue);
+}
+
+.tab-button:hover {
+    background-color: var(--light-gray);
+    border-color: var(--primary-blue);
+}
+
+.tab-button.active {
+    background-color: var(--primary-blue);
+    color: #fff;
+    border-color: var(--primary-blue);
+}
+
+.tab-button.active i {
+    color: #fff;
+}
+
+
+.tab-content {
+    display: none;
+}
+
+.tab-content.active {
+    display: block;
+}
+
+.courses-grid {
+    display: grid;
+    /* Regla única y flexible para responsividad automática */
+    grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+    gap: 30px;
+}
+
+.course-card {
+    background-color: #ffffff;
+    border-radius: var(--border-radius-base);
+    box-shadow: var(--box-shadow-light);
+    padding: 25px;
+    text-align: left;
+    display: flex;
+    flex-direction: column;
+}
+
+.course-card .card-header {
+    display: flex;
+    align-items: flex-start; /* Mejor para títulos largos que se envuelven */
+    gap: 10px; /* Espacio entre el icono y el título */
+    margin-bottom: 15px;
+}
+
+.course-card .card-header i {
+    margin-top: 4px; /* Alinea el icono con el texto del título */
+    color: var(--primary-blue);
+    font-size: 1.1em;
+}
+
+/* Cambia el color de los iconos para la sección de finanzas */
+#cursos + .courses-section .course-card .card-header i {
+    color: var(--secondary-green);
+}
+
+/* Cambia el color de los iconos para la sección de bootcamps */
+.bootcamp-card .card-header i {
+    color: var(--tag-purple-text);
+}
+
+.course-card .card-header h4 {
+    font-size: 1.2em;
+    font-weight: 600;
+    color: var(--heading-color);
+    margin-bottom: 0; /* Quita el margen por defecto del h4 */
+}
+
+.course-card .card-header .tag {
+    font-size: 0.75em;
+    padding: 5px 10px;
+    border-radius: 20px;
+    font-weight: 600;
+    margin-left: auto; /* Empuja la etiqueta a la derecha */
+    flex-shrink: 0; /* Evita que la etiqueta se encoja */
+}
+
+.tag.tag-green {
+    background-color: var(--tag-green-bg);
+    color: var(--tag-green-text);
+}
+.tag.tag-yellow {
+    background-color: var(--tag-yellow-bg);
+    color: var(--tag-yellow-text);
+}
+.tag.tag-red {
+    background-color: var(--tag-red-bg);
+    color: var(--tag-red-text);
+}
+
+.course-card .card-description {
+    color: #666;
+    font-size: 0.95em;
+    line-height: 1.5;
+}
+
+.course-card .card-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: auto; /* Empuja el pie de página hacia abajo */
+    padding-top: 15px; /* Espacio sobre el pie de página */
+}
+
+.course-card .card-footer .duration {
+    color: #555;
+    font-size: 0.9em;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+/* Testimonials Section */
+.testimonials-section {
+    padding: 80px 0;
+    background-color: #fff;
+    overflow-x: hidden; /* Previene barras de scroll durante la animación */
+}
+
+.testimonials-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+    margin-top: 40px;
+}
+
+.testimonial-card {
+    background-color: var(--light-gray);
+    padding: 30px;
+    border-radius: var(--border-radius-base);
+    border-left: 5px solid var(--primary-blue);
+    box-shadow: var(--box-shadow-light); /* Añade sombra para dar profundidad y separación */
+
+    /* Estilos para la nueva animación de entrada (zoom y desenfoque) */
+    opacity: 0;
+    filter: blur(5px); /* Añadimos un desenfoque inicial */
+    transform: scale(0.95); /* Hacemos que empiece un poco más pequeña */
+    transition: opacity 0.6s ease-out, transform 0.6s ease-out, filter 0.6s ease-out;
+}
+
+/* Clase que se añade con JS cuando la tarjeta es visible */
+.testimonial-card.visible {
+    opacity: 1;
+    filter: blur(0); /* Quitamos el desenfoque */
+    transform: scale(1); /* La devolvemos a su tamaño original */
+}
+
+/* Retraso escalonado para un efecto más suave */
+.testimonial-card:nth-child(2) {
+    transition-delay: 0.2s;
+}
+.testimonial-card:nth-child(3) {
+    transition-delay: 0.4s;
+}
+
+.testimonial-header {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.testimonial-header img {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    margin-right: 15px;
+    object-fit: cover;
+}
+
+.testimonial-info h4 {
+    margin-bottom: 0;
+    font-size: 1.1em;
+}
+
+.testimonial-info p {
+    margin-bottom: 0;
+    font-size: 0.9em;
+    color: #666;
+}
+
+.testimonial-text {
+    font-style: italic;
+    color: #555;
+    line-height: 1.7;
+}
+
+/* CTA Section */
+.cta-section {
+    background-color: #e2faf3; /* Color igual a la barra de navegación */
+    color: var(--text-color);
+    padding: 60px 0;
+    text-align: center;
+}
+
+.cta-section h2 {
+    color: var(--heading-color);
+    font-size: 2.2em;
+}
+
+.cta-section p {
+    font-size: 1.1em;
+    margin-bottom: 30px;
+}
+
+.cta-features-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 30px; /* Aumentado para dar más separación entre los cuadros */
+    margin: 40px 0; /* Espacio entre el texto y el botón */
+}
+
+.cta-feature-item {
+    background-color: #fff;
+    border-radius: var(--border-radius-base);
+    box-shadow: var(--box-shadow-light);
+    transition: all 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden; /* Para que los bordes redondeados de la imagen funcionen */
+    text-align: left;
+    height: 420px; /* Reducido para un aspecto más compacto */
+}
+
+.cta-feature-item:hover {
+    /* Se elimina el efecto de elevación para un look más estático */
+    box-shadow: 0 8px 20px rgba(0,0,0,0.12); /* Se mantiene una sombra sutil para feedback */
+}
+
+.cta-feature-image {
+    height: 180px; /* Altura para la imagen */
+    background-color: rgba(255, 255, 255, 0.15); /* Placeholder para la imagen */
+    background-size: cover;
+    background-position: center;
+}
+
+.cta-feature-content {
+    padding: 25px;
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1; /* Ocupa el espacio restante */
+}
+
+.cta-feature-item h4 {
+    color: var(--heading-color);
+    font-size: 1.2em;
+    margin-bottom: 10px;
+}
+
+.cta-feature-item p {
+    font-size: 0.95em;
+    margin-bottom: 0;
+    color: var(--text-color);
+}
+
+.btn-cta-card {
+    background-color: var(--primary-blue); /* Estilo similar al botón "ACCEDE" */
+    color: #ffffff;
+    margin-top: auto; /* Empuja el botón al final del contenedor */
+    padding: 8px 16px;
+    align-self: flex-start; /* Alinea el botón a la izquierda */
+}
+
+.btn-cta-card:hover {
+    background-color: #0056b3;
+    color: #fff;
+    text-decoration: none;
+}
+
+/* FAQ Section */
+.faq-section {
+    padding: 80px 0;
+}
+
+.faq-container {
+    max-width: 800px;
+    margin: 40px auto 0 auto;
+}
+
+.faq-item {
+    border-bottom: 1px solid #ddd;
+    margin-bottom: 15px;
+}
+
+.faq-question {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 0;
+    cursor: pointer;
+    font-weight: 600;
+    font-size: 1.1em;
+}
+
+.faq-question i {
+    transition: transform 0.3s ease;
+}
+
+.faq-answer {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.4s ease-out, padding 0.4s ease;
+    padding: 0 10px;
+    color: #555;
+}
+
+.faq-answer p {
+    margin-bottom: 15px;
+}
+
+/* Estilos para cuando el FAQ está activo */
+.faq-item.active .faq-question i {
+    transform: rotate(180deg);
+}
+
+.faq-item.active .faq-answer {
+    padding: 10px 10px 15px 10px;
+    max-height: 300px; /* Altura suficiente para la respuesta */
+}
+
+/* AI Studio Section */
+.ai-studio-section {
+    padding: 80px 0;
+    background-color: #fff;
+}
+
+.ai-studio-content {
+    display: flex;
+    align-items: center;
+    gap: 50px;
+}
+
+.ai-studio-text {
+    flex: 1;
+}
+
+.ai-studio-text h2 {
+    font-size: 2.5em;
+}
+
+.ai-studio-text p {
+    font-size: 1.1em;
+    color: #666;
+    margin-bottom: 30px;
+}
+
+.ai-studio-text ul {
+    list-style: none;
+    margin-bottom: 30px;
+}
+
+.ai-studio-text ul li {
+    font-size: 1.05em;
+    margin-bottom: 15px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.ai-studio-text ul li i {
+    color: var(--secondary-green);
+}
+
+.ai-studio-visual {
+    flex: 1;
+    text-align: center;
+}
+
+.ai-studio-visual img {
+    max-width: 100%;
+    border-radius: var(--border-radius-base);
+    box-shadow: var(--box-shadow-light);
+}
+
+/* Footer Section */
+.footer {
+    background-color: #10141F; /* Color de fondo oscuro y profesional */
+    color: #adb5bd;
+    padding: 60px 0 0;
+}
+
+.footer-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); /* Ajuste para más espacio */
+    gap: 40px;
+    margin-bottom: 40px;
+}
+
+.footer-col .logo {
+    margin-bottom: 20px;
+}
+
+.footer-col .footer-logo {
+    height: 100px; /* Tamaño más equilibrado para el pie de página */
+    width: 100px;
+    border-radius: var(--border-radius-base); /* Cambiado a cuadrado con bordes redondeados */
+    object-fit: cover; /* Rellena el círculo sin deformar el video */
+}
+
+.footer-col p {
+    font-size: 0.9em;
+    line-height: 1.7;
+}
+
+.footer-col h4 {
+    color: #fff;
+    font-size: 1.1em;
+    margin-bottom: 20px;
+    font-weight: 600;
+}
+
+.footer-col ul {
+    list-style: none;
+}
+
+.footer-col ul li {
+    margin-bottom: 12px;
+}
+
+.footer-col ul a {
+    color: #adb5bd;
+    transition: color 0.3s ease;
+}
+
+.footer-col ul a:hover {
+    color: #fff;
+    text-decoration: none;
+}
+
+.social-icons {
+    display: flex;
+    gap: 15px;
+}
+
+.social-icons a {
+    color: #adb5bd;
+    font-size: 1.2em;
+    transition: color 0.3s ease;
+    width: 40px;
+    height: 40px;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid #495057;
+    border-radius: 50%;
+}
+
+.social-icons a:hover {
+    color: #fff;
+    border-color: var(--primary-blue);
+    background-color: var(--primary-blue);
+    text-decoration: none;
+}
+
+.footer-bottom {
+    border-top: 1px solid #495057;
+    padding: 20px 0;
+    text-align: center;
+    font-size: 0.9em;
+}
+
+/* --- Media Queries para Responsividad --- */
+
+/* Dispositivos muy pequeños (teléfonos en vertical, menos de 576px) */
+@media (max-width: 767.98px) {
+    .container {
+        padding: 0 15px; /* Reducir padding en contenedores */
+    }
+
+    /* Navbar */
+    .navbar .nav-links {
+        display: none;
+    }
+
+    .navbar .menu-toggle {
+        display: block;
+    }
+
+    /* Muestra el contenedor de los enlaces cuando el menú móvil está activo */
+    .navbar .nav-links.active-mobile {
+        display: flex;
+        flex-direction: column;
+        position: absolute;
+        top: 140px; /* Ajustado a la altura de la barra de navegación */
+        left: 0;
+        width: 100%;
+        background-color: #1c1c1e; /* Fondo consistente con el modo oscuro */
+        box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        padding: 10px 0;
+    }
+    .navbar .nav-links.active-mobile ul {
+        flex-direction: column;
+    }
+    .navbar .nav-links.active-mobile li {
+        margin: 0;
+        border-bottom: 1px solid #eee;
+    }
+    .navbar .nav-links.active-mobile a {
+        padding: 10px 20px;
+        display: block;
+        text-align: center;
+    }
+    .navbar .nav-links.active-mobile .dropdown-content {
+        position: static; /* Cambiar a estático para que fluya en el menú móvil */
+        box-shadow: none;
+        background-color: #2c2c2e; /* Un poco más claro para el submenú */
+        padding-left: 20px;
+    }
+
+    .navbar .nav-links.active-mobile .nav-actions {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 15px;
+        padding: 20px 0;
+    }
+
+    .navbar .nav-links.active-mobile a,
+    .navbar .nav-links.active-mobile .dropdown-content a {
+        color: #e0e0e0; /* Texto claro para el menú móvil */
+    }
+
+    /* Hero Section */
+    .hero-section .container {
+        flex-direction: column; /* Apilar contenido y video */
+        text-align: center;
+    }
+
+    .hero-content {
+        max-width: 100%; /* Ocupar todo el ancho disponible */
+    }
+
+    .hero-content h1 {
+        font-size: 2em; /* Reducir tamaño de fuente */
+    }
+
+    .hero-content p {
+        font-size: 1em;
+    }
+
+    .hero-video-container {
+        min-width: unset; /* Eliminar min-width fijo */
+        width: 100%; /* Ocupar todo el ancho */
+        padding: 10px; /* Reducir padding del contenedor de video */
+    }
+
+    /* Features Section */
+    .features-section h2 {
+        font-size: 1.8em;
+    }
+
+    .features-grid {
+        grid-template-columns: 1fr; /* Una columna por ítem */
+    }
+
+    /* Habits Section */
+    .habits-content {
+        flex-direction: column;
+    }
+    .main-card, .side-cards {
+        width: 100%;
+    }
+    /* Courses Section */
+    .courses-section h2 {
+        font-size: 2em;
+    }
+
+    .tabs {
+        flex-direction: column; /* Apilar botones de pestaña */
+        align-items: stretch;
+    }
+
+    .tab-button {
+        width: 100%; /* Botones de pestaña ocupan todo el ancho */
+        padding: 10px 15px;
+    }
+
+    /* Hero Section */
+    .hero-section .container {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .hero-content h1 {
+        font-size: 2.5em;
+    }
+
+    .hero-video-container {
+        min-width: unset;
+        width: 100%;
+    }
+
+    /* Features Section */
+    .features-grid {
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); /* 2 columnas */
+    }
+
+    /* Habits Section */
+    .habits-content {
+        flex-direction: column;
+    }
+    .main-card, .side-cards {
+        width: 100%;
+    }
+    /* Courses Section */
+    .tabs {
+        flex-wrap: wrap; /* Permitir que los botones se envuelvan */
+        justify-content: center;
+    }
+    .tab-button {
+        flex: 1 1 auto; /* Permitir que los botones crezcan/reduzcan */
+        max-width: 48%; /* Dos por fila */
+    }
+}
+
+/* Dispositivos medianos (tablets, 768px a 991.98px) */
+@media (min-width: 768px) and (max-width: 991.98px) {
+    /* Navbar: Mantener la disposición de escritorio pero ajustar tamaños */
+    .navbar .nav-links li {
+        margin-left: 15px; /* Reducir espacio entre enlaces */
+    }
+
+    .navbar .nav-links a {
+        font-size: 0.9em; /* Reducir un poco el tamaño de la fuente */
+    }
+
+    .navbar .nav-actions {
+        gap: 10px;
+    }
+
+    .hero-section .container {
+        flex-direction: column; /* Apilar en tablets también, si el contenido es denso */
+        text-align: center;
+    }
+
+    .hero-content h1 {
+        font-size: 2.8em;
+    }
+
+    .hero-video-container {
+        min-width: unset;
+        width: 80%; /* Un poco más centrado y no tan ancho */
+        margin: 0 auto;
+    }
+
+    .features-grid {
+        grid-template-columns: repeat(2, 1fr); /* Dos columnas */
+    }
+
+    /* Habits Section */
+    .habits-content {
+        flex-direction: column;
+    }
+    .main-card, .side-cards {
+        width: 100%;
+    }
+
+    .tabs {
+        flex-wrap: wrap; /* Permitir que los botones se envuelvan */
+        justify-content: center;
+    }
+}
+
+/* Dispositivos grandes (Laptops pequeñas, 992px a 1199.98px) */
+@media (min-width: 992px) and (max-width: 1199.98px) {
+    .container {
+        padding: 0 30px; /* Aumentar un poco el padding en pantallas más grandes */
+    }
+    /* Estilos de escritorio ya funcionan bastante bien, solo ajustes menores si son necesarios */
+    .hero-section .container {
+        gap: 30px;
+    }
+    .hero-content h1 {
+        font-size: 2.8em;
+    }
+    .hero-video-container {
+        min-width: 400px; /* Asegurar un tamaño mínimo decente */
+    }
+
+    /* Habits Section Responsive */
+    .habits-content {
+        flex-direction: column;
+    }
+    .main-card, .side-cards {
+        width: 100%;
+    }
+}
+
+/* --- Theme Toggle Button --- */
+.btn-theme {
+    background: transparent;
+    border: 1px solid #ddd;
+    color: var(--text-color);
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    font-size: 1.1em;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: background-color 0.3s, border-color 0.3s;
+}
+
+.btn-theme:hover {
+    background-color: var(--light-gray);
+    border-color: var(--primary-blue);
+}
+
+/* --- Dark Mode Styles --- */
+body.dark-mode {
+    background-color: #121212;
+    color: #e0e0e0;
+}
+
+body.dark-mode h1,
+body.dark-mode h2,
+body.dark-mode h3,
+body.dark-mode h4,
+body.dark-mode h5,
+body.dark-mode h6 {
+    color: #ffffff;
+}
+
+body.dark-mode .navbar {
+    background-color: #1c1c1e;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+}
+
+body.dark-mode .navbar .logo-text span:not(.powered-by) {
+    color: #e0e0e0; /* Color base para el logo en modo oscuro */
+}
+
+body.dark-mode .navbar .logo-text span span[style*="#4285F4"] {
+    color: #69b4ff !important; /* Azul más claro para mejor contraste */
+}
+
+body.dark-mode .navbar .logo .powered-by {
+    color: #9e9e9e; /* Gris más claro para legibilidad */
+}
+
+body.dark-mode .navbar .nav-links a {
+    color: #e0e0e0;
+}
+
+body.dark-mode .navbar .nav-links a:hover,
+body.dark-mode .navbar .nav-links a.active-link {
+    color: #ffffff;
+}
+
+body.dark-mode .navbar .dropdown-content {
+    background-color: #2c2c2e;
+}
+
+body.dark-mode .navbar .dropdown-content a {
+    color: #e0e0e0;
+}
+
+body.dark-mode .navbar .dropdown-content a:hover {
+    background-color: #3a3a3c;
+    color: #ffffff;
+}
+
+body.dark-mode .menu-toggle {
+    color: #ffffff;
+}
+
+body.dark-mode .hero-section,
+body.dark-mode .cta-section {
+    background-color: #1a1a1a;
+}
+
+body.dark-mode .hero-content p,
+body.dark-mode .cta-section p {
+    color: #b0b0b0;
+}
+
+body.dark-mode .highlight-green {
+    color: #78e095; /* Verde más claro para mejor contraste */
+}
+
+body.dark-mode .features-section,
+body.dark-mode .testimonials-section {
+    background-color: #121212;
+}
+
+body.dark-mode .feature-item,
+body.dark-mode .course-card,
+body.dark-mode .testimonial-card,
+body.dark-mode .main-card,
+body.dark-mode .side-card,
+body.dark-mode .cta-feature-item {
+    background-color: #1c1c1e;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+}
+
+body.dark-mode .feature-item p,
+body.dark-mode .course-card .card-description,
+body.dark-mode .course-card .card-footer .duration,
+body.dark-mode .testimonial-text,
+body.dark-mode .testimonial-info p,
+body.dark-mode .faq-answer,
+body.dark-mode .main-card p {
+    color: #b0b0b0;
+}
+
+/* Ajustes para la sección de hábitos en modo oscuro */
+body.dark-mode .side-card p {
+    color: #d0d0d0;
+}
+
+body.dark-mode .card-personal-gestion { border-color: #b392f0; }
+body.dark-mode .card-personal-gestion .icon-circle-small { background-color: rgba(179, 146, 240, 0.15); }
+body.dark-mode .card-personal-gestion .icon-circle-small i { color: #b392f0; }
+
+body.dark-mode .card-planificacion { border-color: #61dafb; }
+body.dark-mode .card-planificacion .icon-circle-small { background-color: rgba(97, 218, 251, 0.15); }
+body.dark-mode .card-planificacion .icon-circle-small i { color: #61dafb; }
+
+body.dark-mode .card-productividad .icon-circle-small i { color: #ffd966; }
+
+body.dark-mode .card-crecimiento { border-color: #78e095; }
+body.dark-mode .card-crecimiento .icon-circle-small { background-color: rgba(120, 224, 149, 0.15); }
+body.dark-mode .card-crecimiento .icon-circle-small i { color: #78e095; }
+
+body.dark-mode .habits-section,
+body.dark-mode .courses-section,
+body.dark-mode .faq-section {
+    background-color: #1a1a1a;
+}
+
+body.dark-mode .tab-button {
+    background-color: #2c2c2e;
+    border-color: #444;
+    color: #e0e0e0;
+}
+
+body.dark-mode .tab-button i {
+    color: #69b4ff; /* Lighter blue */
+}
+
+body.dark-mode .tab-button:hover {
+    background-color: #3a3a3c;
+    border-color: #69b4ff;
+}
+
+body.dark-mode .courses-section .section-title-icon .fa-book-open {
+    color: #69b4ff; /* Lighter blue for Microcursos title icon */
+}
+
+body.dark-mode .courses-section .section-title-icon .fa-chart-area {
+    color: #78e095; /* Lighter green for Finanzas title icon */
+}
+
+body.dark-mode .courses-section .section-title-icon .fa-bolt {
+    color: #b392f0; /* Lighter purple for Bootcamps title icon */
+}
+
+body.dark-mode .courses-section h2 .tag-green-outline {
+    color: #78e095;
+    border-color: #78e095;
+}
+body.dark-mode .courses-section h2 .tag-purple-outline {
+    color: #b392f0;
+    border-color: #b392f0;
+}
+
+body.dark-mode .course-card .card-header i {
+    color: #69b4ff; /* Lighter blue */
+}
+
+body.dark-mode #cursos + .courses-section .course-card .card-header i {
+    color: #78e095; /* Lighter green */
+}
+
+body.dark-mode .bootcamp-card .card-header i {
+    color: #b392f0; /* Lighter purple */
+}
+
+body.dark-mode .course-card .card-header h4 {
+    color: #ffffff; /* Ensure card titles are bright white */
+}
+
+body.dark-mode .tag.tag-green {
+    background-color: rgba(40, 167, 69, 0.2);
+    color: #78e095;
+}
+body.dark-mode .tag.tag-yellow {
+    background-color: rgba(255, 193, 7, 0.2);
+    color: #ffd966;
+}
+body.dark-mode .tag.tag-red {
+    background-color: rgba(220, 53, 69, 0.2);
+    color: #ff8a98;
+}
+
+body.dark-mode .faq-item {
+    border-bottom-color: #3a3a3c;
+}
+
+body.dark-mode .btn-theme {
+    border-color: #444;
+    color: #e0e0e0;
+    background-color: #2c2c2e;
+}
+
+body.dark-mode .btn-theme:hover {
+    background-color: #3a3a3c;
+    border-color: #e0e0e0;
+}
+
+
+/* Estilos para pantallas muy grandes (1200px y más) */
+/* Tu código base actual ya está diseñado para estas pantallas con max-width: 1200px */

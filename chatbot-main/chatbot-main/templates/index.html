@@ -1,0 +1,417 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Chatbot de EmprendeIA</title>
+  <link rel="stylesheet" href="../../STYLES/prueba-style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    /* Reset */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    /* --- Chat Styles --- */
+    .chat-wrapper {
+      width: 900px;
+      max-width: 100%;
+      display: flex;
+      flex-direction: column;
+      margin: 40px auto; /* Space for sticky header and centering */
+      gap: 12px;
+    }
+
+    .chat-container {
+      padding: 20px;
+      min-height: 500px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      border-radius: 20px;
+      transition: background-color 0.3s, box-shadow 0.3s;
+    }
+
+    .chatbox {
+      flex: 1;
+      padding: 15px;
+      overflow-y: auto;
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+      border-radius: 14px;
+      transition: background-color 0.3s;
+    }
+
+    .message {
+      max-width: 75%;
+      padding: 12px 18px;
+      border-radius: 14px;
+      word-wrap: break-word;
+      line-height: 1.4;
+      font-size: 0.95rem;
+      animation: fadeIn 0.3s ease-in-out;
+      border: 2px solid transparent;
+      box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+    }
+
+    .user {
+      align-self: flex-end;
+      border-bottom-right-radius: 4px;
+    }
+
+    .bot {
+      align-self: flex-start;
+      border-bottom-left-radius: 4px;
+    }
+
+    .input-container {
+      display: flex;
+      gap: 10px;
+      margin-top: 12px;
+      align-items: flex-end; /* Aligns buttons to the bottom of the textarea */
+    }
+
+    .input-container textarea {
+      flex-grow: 1; /* Allows textarea to take up available space */
+      padding: 12px 18px;
+      border-radius: 24px;
+      resize: none; /* Prevents manual resizing */
+      font-family: inherit;
+      font-size: 1rem;
+      line-height: 1.5;
+      min-height: 50px; /* Ensures a larger initial size */
+      max-height: 200px; /* Limits the height to prevent it from getting too large */
+      overflow-y: auto; /* Adds a scrollbar if content exceeds max-height */
+    }
+
+    .input-container button {
+      flex-shrink: 0; /* Prevents buttons from shrinking */
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      font-size: 1.2rem;
+    }
+
+    /* --- Light Mode Chat --- */
+    .chat-container {
+      background: #ffffff;
+      box-shadow: 0 12px 40px rgba(0, 0, 0, 0.1);
+      border: 1px solid #e0e0e0;
+    }
+    .chatbox {
+      background: #f8f9fa;
+      border: 1px solid #e9ecef;
+    }
+    .message {
+      background: #e9ecef;
+      color: #212529;
+    }
+    .user {
+      background-color: #e6f2ff;
+      border-color: #007bff;
+    }
+    .bot {
+      background-color: #f8f9fa;
+      border-color: #6c757d;
+    }
+    .input-container textarea, .input-container button {
+      background-color: #ffffff;
+      border: 1px solid #ced4da;
+      color: #212529;
+    }
+    .input-container textarea:focus {
+      border-color: var(--primary-blue);
+      box-shadow: 0 0 5px rgba(0, 123, 255, 0.25);
+    }
+    .input-container button:hover {
+      background-color: var(--primary-blue);
+      color: #fff;
+      border-color: var(--primary-blue);
+    }
+
+    /* --- Dark Mode Chat --- */
+    body.dark-mode .chat-container {
+      background: rgba(20, 20, 20, 0.9);
+      box-shadow: 0 12px 40px rgba(0, 0, 0, 0.6);
+      border: 1px solid rgba(255, 255, 255, 0.05);
+    }
+    body.dark-mode .chatbox {
+      background: #121212;
+      color: #f1f1f1;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+    }
+    body.dark-mode .message {
+      box-shadow: 0 3px 10px rgba(0, 0, 0, 0.4);
+      background: #1e1e1e;
+      color: #f1f1f1;
+    }
+    body.dark-mode .user {
+      border: 2px solid #00bf63;
+    }
+    body.dark-mode .bot {
+      border: 2px solid #8c52ff;
+    }
+    body.dark-mode .input-container textarea,
+    body.dark-mode .input-container button {
+      background: #1a1a1a;
+      color: #f1f1f1;
+      background-clip: padding-box, border-box;
+      background-origin: border-box;
+      background-image: linear-gradient(#1a1a1a, #1a1a1a),
+        linear-gradient(135deg, #8c52ff, #00bf63);
+      border: 2px solid transparent;
+    }
+    body.dark-mode .input-container textarea:focus {
+      box-shadow: 0 0 10px rgba(140, 82, 255, 0.6);
+    }
+    body.dark-mode .input-container button:hover {
+      background-image: linear-gradient(135deg, #8c52ff, #00bf63);
+      color: #fff;
+      box-shadow: 0 0 12px rgba(140, 82, 255, 0.7);
+    }
+    
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(5px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    /* 📱 Responsividad */
+    @media (max-width: 1024px) {
+      .chat-container {
+        height: auto;
+        min-height: 400px;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .chat-wrapper {
+        width: 100%;
+      }
+
+      .chat-container {
+        padding: 15px;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .message {
+        max-width: 100%;
+        font-size: 0.9rem;
+      }
+
+      .input-container textarea {
+        font-size: 0.9rem;
+        padding: 10px;
+      }
+
+      .input-container button {
+        font-size: 0.9rem;
+        padding: 10px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+    <!-- Header / Navbar -->
+    <header class="navbar">
+        <div class="container">
+            <div class="logo" onclick="window.location.href='../../prueba.html'">
+                <img src="../../IMG/emprendeia-logo.png" alt="EmprendeIA Logo">
+                <div class="logo-text">
+                    <span>
+                        <span style="color: #FCD25A">E</span>
+                        <span style="color: #FCD25A">m</span>
+                        <span style="color: #5EBF8D">p</span>
+                        <span style="color: #5EBF8D">r</span>
+                        <span style="color: #5EBF8D">e</span>
+                        <span style="color: #F37C2D">n</span>
+                        <span style="color: #F37C2D">d</span>
+                        <span style="color: #F37C2D">e</span>
+                        <span style="color: #4285F4">I</span>
+                        <span style="color: #4285F4">A</span>
+                    </span>
+                    <span class="powered-by">Powered by Google</span>
+                </div>
+            </div>
+            <nav class="nav-links">
+                <ul>
+                    <li><a href="../../prueba.html#inicio">Inicio</a></li>
+                    <li><a href="../../nosotros.html">Nosotros</a></li>
+                    <li><a href="../../prueba.html#cursos">Cursos</a></li>
+                    <li><a href="#" class="active-link">IA</a></li>
+                    <li><a href="../../prueba.html#contacto">Contacto</a></li>
+                    <li class="dropdown">
+                        <a href="../../prueba.html#inscripcion">Comunidad <i class="fas fa-chevron-down"></i></a>
+                        <div class="dropdown-content">
+                            <a href="../../prueba.html#inscripcion">Creadoras IA</a>
+                            <a href="../../prueba.html#inscripcion">Innovadores del Futuro</a>
+                            <a href="../../prueba.html#inscripcion">Legado Emprendedor</a>
+                        </div>
+                    </li>
+                </ul>
+                <div class="nav-actions">
+                    <a href="../../Usuario/usuario.html" class="btn btn-primary">ACCEDE</a>
+                    <button id="theme-toggle" class="btn-theme"><i class="fas fa-moon"></i></button>
+                    <select class="language-selector">
+                        <option value="es">🇲🇽</option>
+                        <option value="en">🇺🇸</option>
+                        <option value="fr">🇫🇷</option>
+                        <option value="de">🇩🇪</option>
+                        <option value="it">🇮🇹</option>
+                    </select>
+                </div>
+            </nav>
+            <div class="menu-toggle">
+                <i class="fas fa-bars"></i>
+            </div>
+        </div>
+    </header>
+
+  <div class="chat-wrapper">
+    <div class="chat-container">
+      <div class="chatbox" id="chatbox"></div>
+      <div class="input-container">
+        <textarea id="input" placeholder="Escribe tu mensaje..." rows="1"></textarea>
+        <button id="sendBtn" title="Enviar"><i class="fas fa-paper-plane"></i></button>
+        <button id="stopBtn" title="detenerBot">⏹️</button>
+      </div>
+    </div>
+  </div>
+    <!-- Footer -->
+    <footer id="contacto" class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <!-- Columna 1: Logo y Descripción -->
+                <div class="footer-col">
+                    <div class="logo" onclick="window.location.href='../../prueba.html'">
+                        <video src="../../IMG/video/Video_Generado_Por_Gemini.mp4" class="footer-logo" autoplay loop muted playsinline loading="lazy"></video>
+                    </div>
+                    <p>Transformamos ideas en realidades exitosas.</p>
+                </div>
+                <!-- Columna 2: Enlaces de Exploración -->
+                <div class="footer-col">
+                    <h4>Explorar</h4>
+                    <ul>
+                        <li><a href="../../prueba.html#inicio">Inicio</a></li>
+                        <li><a href="../../prueba.html#cursos">Cursos</a></li>
+                        <li><a href="#">AI Studio</a></li>
+                        <li><a href="../../prueba.html#testimonios">Testimonios</a></li>
+                        <li><a href="../../prueba.html#faq">FAQ</a></li>
+                    </ul>
+                </div>
+                <!-- Columna 3: Enlaces Legales -->
+                <div class="footer-col">
+                    <h4>Legal</h4>
+                    <ul>
+                        <li><a href="#">Términos y Condiciones</a></li>
+                        <li><a href="#">Política de Privacidad</a></li>
+                        <li><a href="#">Política de Cookies</a></li>
+                    </ul>
+                </div>
+                <!-- Columna 4: Redes Sociales -->
+                <div class="footer-col">
+                    <h4>Síguenos</h4>
+                    <div class="social-icons">
+                        <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                        <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 EmprendeIA. Todos los derechos reservados.</p>
+            </div>
+        </div>
+    </footer>
+
+  <script src="../../script.js"></script>
+  <script>
+    let stopBot = false;
+    const input = document.getElementById("input");
+    const chatbox = document.getElementById("chatbox");
+    const sendBtn = document.getElementById("sendBtn");
+    const stopBtn = document.getElementById("stopBtn");
+
+    sendBtn.addEventListener("click", sendMessage);
+
+    input.addEventListener("keydown", (e) => { // 'input' is now a textarea
+      if (e.key === "Enter" && !e.shiftKey) {
+        e.preventDefault();
+        sendMessage();
+      }
+    });
+
+    // Auto-resize textarea based on content
+    input.addEventListener('input', () => {
+        // Reset height to auto to get the correct scrollHeight
+        input.style.height = 'auto';
+        // Set the height to the scrollHeight to fit the content
+        input.style.height = (input.scrollHeight) + 'px';
+    });
+
+
+    stopBtn.addEventListener("click", () => stopBot = true);
+
+    function addMessage(text, type) {
+      const msg = document.createElement("div");
+      msg.classList.add("message", type);
+      msg.textContent = text;
+      chatbox.appendChild(msg);
+      chatbox.scrollTop = chatbox.scrollHeight;
+      return msg;
+    }
+
+    async function sendMessage() {
+      const message = input.value.trim();
+      if (!message) return;
+
+      // Reset textarea height after sending
+      input.style.height = 'auto';
+
+      addMessage(message, "user");
+      input.value = "";
+      stopBot = false;
+
+      try {
+        const response = await fetch("/chat", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ message }),
+        });
+
+        const data = await response.json();
+        if (data.reply) {
+          const botMsg = addMessage("", "bot");
+          for (let char of data.reply) {
+            if (stopBot) break;
+            botMsg.textContent += char;
+            chatbox.scrollTop = chatbox.scrollHeight;
+            await new Promise(resolve => setTimeout(resolve, 30));
+          }
+        } else {
+          addMessage("Hubo un error...", "bot");
+        }
+      } catch (error) {
+        addMessage("Error al conectar con el servidor.", "bot");
+        console.error(error);
+      }
+    }
+  </script>
+</body>
+
+</html>

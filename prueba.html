@@ -1,0 +1,578 @@
+    
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EmprendeIA - Adquiere Habilidades Emprendedoras</title>
+    <link rel="stylesheet" href="STYLES/prueba-style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <!-- Header / Navbar -->
+    <header class="navbar">
+        <div class="container">
+            <div class="logo">
+                <img src="IMG/emprendeia-logo.png" alt="EmprendeIA Logo"> <!-- Reemplaza con tu logo -->
+                <div class="logo-text">
+                    <span>
+                        <span style="color: #FCD25A">E</span>
+                        <span style="color: #FCD25A">m</span>
+                        <span style="color: #5EBF8D">p</span>
+                        <span style="color: #5EBF8D">r</span>
+                        <span style="color: #5EBF8D">e</span>
+                        <span style="color: #F37C2D">n</span>
+                        <span style="color: #F37C2D">d</span>
+                        <span style="color: #F37C2D">e</span>
+                        <span style="color: #4285F4">I</span>
+                        <span style="color: #4285F4">A</span>
+                    </span>
+                    <span class="powered-by">Powered by Google</span>
+                </div>
+            </div>
+            <nav class="nav-links">
+                <ul>
+                    <li><a href="#inicio">Inicio</a></li>
+                    <li><a href="nosotros.html">Nosotros</a></li>
+                    <li><a href="#cursos">Cursos</a></li>
+                    <li><a href="chatbot-main/chatbot-main/templates/index.html">IA</a></li>
+                    <li><a href="#contacto">Contacto</a></li>
+                    <li class="dropdown">
+                        <a href="#inscripcion">Comunidad <i class="fas fa-chevron-down"></i></a>
+                        <div class="dropdown-content">
+                            <a href="https://v0-user-types-for-website.vercel.app/creadoras">Creadoras IA</a>
+                            <a href="https://v0-user-types-for-website.vercel.app/innovadores">Innovadores del Futuro</a>
+                            <a href="https://v0-user-types-for-website.vercel.app/legado">Legado Emprendedor</a>
+                        </div>
+                    </li>
+                </ul>
+                <div class="nav-actions">
+                    <a href="Usuario/usuario.html" class="btn btn-primary">ACCEDE</a>
+                    <button id="theme-toggle" class="btn-theme"><i class="fas fa-moon"></i></button>
+                    <select class="language-selector">
+                        <option value="es">🇲🇽</option>
+                        <option value="en">🇺🇸</option>
+                        <option value="fr">🇫🇷</option>
+                        <option value="de">🇩🇪</option>
+                        <option value="it">🇮🇹</option>
+                    </select>
+                </div>
+            </nav>
+            <div class="menu-toggle">
+                <i class="fas fa-bars"></i>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="inicio" class="hero-section">
+        <div class="container">
+            <div class="hero-content">
+                <h1>ADQUIERE LAS <span class="highlight-blue">HABILIDADES</span> QUE TODO <span class="highlight-green">EMPRENDEDOR</span> NECESITA TENER</h1>
+                <p>Herramientas y acompañamiento para que tomes decisiones con claridad y crezcas con confianza.</p>
+                <a href="Usuario/usuario.html" class="btn btn-primary large-btn">INSCRIBIRME AHORA <i class="fas fa-arrow-right"></i></a>
+            </div>
+            <div class="hero-video-container">
+                <div class="video-placeholder">
+                    <p>Cargando video...</p>
+                    <!-- VIDEO DE YOUTUBE -->
+                    <iframe loading="lazy" src="https://www.youtube.com/embed/GutS8pdfIfc" title="Video de presentación de EmprendeIA" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section id="nosotros" class="features-section">
+        <div class="container">
+            <h2>Herramientas y acompañamiento para que tomes decisiones con claridad y crezcas con confianza.</h2>
+            <div class="features-grid">
+                <div class="feature-item">
+                    <div class="feature-icon bg-gradient-blue">
+                        <i class="fas fa-shield-alt"></i> <!-- Icono ejemplo -->
+                    </div>
+                    <h3>Profesional</h3>
+                    <p>Metodologías y mejores prácticas.</p>
+                </div>
+                <div class="feature-item">
+                    <div class="feature-icon bg-gradient-blue">
+                        <i class="fas fa-users"></i> <!-- Icono ejemplo -->
+                    </div>
+                    <h3>Accesible</h3>
+                    <p>Tecnología simple y clara.</p>
+                </div>
+                <div class="feature-item">
+                    <div class="feature-icon bg-gradient-green">
+                        <i class="fas fa-rocket"></i> <!-- Icono ejemplo -->
+                    </div>
+                    <h3>Dinámico</h3>
+                    <p>Aprende haciendo, paso a paso.</p>
+                </div>
+                <div class="feature-item">
+                    <div class="feature-icon bg-gradient-green">
+                        <i class="fas fa-star"></i> <!-- Icono ejemplo -->
+                    </div>
+                    <h3>Resultados</h3>
+                    <p>Enfocado en crecimiento real.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Habits Section -->
+    <section class="habits-section">
+        <div class="container">
+            <div class="habits-header">
+                <h1>15 MINUTOS AL DÍA</h1>
+            </div>
+            <div class="habits-content">
+                <div class="main-card">
+                    <div class="icon-circle">
+                        <i class="far fa-clock"></i>
+                    </div>
+                    <h2>15 MINUTOS AL DÍA</h2>
+                    <p>La salud financiera de una empresa o de una persona no se construye de la noche a la mañana, sino con pequeños hábitos constantes que, día a día, van fortaleciendo los cimientos de un futuro próspero.</p>
+                </div>
+                <div class="side-cards">
+                    <div class="side-card card-personal-gestion">
+                        <div class="icon-circle-small">
+                            <i class="far fa-user"></i>
+                        </div>
+                        <p>Gestión Personal</p>
+                    </div>
+                    <div class="side-card card-planificacion">
+                        <div class="icon-circle-small">
+                            <i class="far fa-calendar-alt"></i>
+                        </div>
+                        <p>Planificación</p>
+                    </div>
+                    <div class="side-card card-productividad">
+                        <div class="icon-circle-small">
+                            <i class="far fa-clock"></i>
+                        </div>
+                        <p>Productividad</p>
+                    </div>
+                    <div class="side-card card-crecimiento">
+                        <div class="icon-circle-small">
+                            <i class="far fa-user"></i>
+                        </div>
+                        <p>Crecimiento</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Courses Section -->
+    <section id="cursos" class="courses-section light-bg">
+        <div class="container">
+            <h2 class="section-title-icon"><i class="fas fa-book-open"></i> Microcursos <span class="tag tag-green-outline">Fundamentos</span></h2>
+            <p class="section-description">Cursos cortos y prácticos para adquirir habilidades clave rápidamente.</p>
+            <div class="courses-grid">
+                    <!-- Course Card 1 -->
+                    <div class="course-card">
+                        <div class="card-header">
+                            <i class="fas fa-book"></i>
+                            <h4>Validación de una Idea de Negocio en 7 Días</h4>
+                            <span class="tag tag-green">Principiante</span>
+                        </div>
+                        <p class="card-description">Técnicas para realizar un Test de Mínimo Producto Viable (MVP), entrevistas con clientes y análisis de mercado.</p>
+                        <div class="card-footer">
+                            <span class="duration"><i class="fas fa-clock"></i> 7 días</span>
+                            <a href="Cursos/index_validacion_ideas_negocio_pit.html" class="btn btn-blue">Ver Curso</a>
+                        </div>
+                    </div>
+                    <!-- Course Card 2 -->
+                    <div class="course-card">
+                        <div class="card-header">
+                            <i class="fas fa-users-cog"></i>
+                            <h4>Dominio de Cuentas de Redes Sociales para Negocios</h4>
+                            <span class="tag tag-green">Principiante</span>
+                        </div>
+                        <p class="card-description">Creación de contenido, estrategias de publicación para cada plataforma y análisis de métricas básicas.</p>
+                        <div class="card-footer">
+                            <span class="duration"><i class="fas fa-clock"></i> 5 días</span>
+                            <a href="Cursos/index_dominio_cuentas_redes_pit.html" class="btn btn-blue">Ver Curso</a>
+                        </div>
+                    </div>
+                    <!-- Course Card 3 -->
+                    <div class="course-card">
+                        <div class="card-header">
+                            <i class="fas fa-clipboard-list"></i>
+                            <h4>Creación de un Plan de Negocio en 10 Pasos</h4>
+                            <span class="tag tag-green">Principiante</span>
+                        </div>
+                        <p class="card-description">Estructura de un plan de negocio simplificado, desde la propuesta de valor hasta proyecciones financieras.</p>
+                        <div class="card-footer">
+                            <span class="duration"><i class="fas fa-clock"></i> 10 días</span>
+                            <a href="Cursos/index_creacion_plan_negocios_pit.html" class="btn btn-blue">Ver Curso</a>
+                        </div>
+                    </div>
+                    <!-- Course Card 4 -->
+                    <div class="course-card">
+                        <div class="card-header">
+                            <i class="fas fa-star"></i>
+                            <h4>Fundamentos de Propuesta de Valor</h4>
+                            <span class="tag tag-green">Principiante</span>
+                        </div>
+                        <p class="card-description">Metodología para identificar el problema de tu cliente y crear una oferta irresistible.</p>
+                        <div class="card-footer">
+                            <span class="duration"><i class="fas fa-clock"></i> 3 días</span>
+                            <a href="Cursos/index_fundamentos_propuesta_valor_pit.html" class="btn btn-blue">Ver Curso</a>
+                        </div>
+                    </div>
+                    <!-- Course Card 5 -->
+                    <div class="course-card">
+                        <div class="card-header">
+                            <i class="fas fa-chart-line"></i>
+                            <h4>Técnicas de Venta en la Era Digital</h4>
+                            <span class="tag tag-yellow">Intermedio</span>
+                        </div>
+                        <p class="card-description">Del embudo de ventas a la venta consultativa, manejo de objeciones y cierre de ventas online.</p>
+                        <div class="card-footer">
+                            <span class="duration"><i class="fas fa-clock"></i> 6 días</span>
+                            <a href="Cursos/index_tecnicas_venta_era_dig_pit.html" class="btn btn-blue">Ver Curso</a>
+                        </div>
+                    </div>
+                    <!-- Course Card 6 -->
+                    <div class="course-card">
+                        <div class="card-header">
+                            <i class="fas fa-chart-pie"></i>
+                            <h4>Introducción a Google Analytics para Emprendedores</h4>
+                            <span class="tag tag-green">Principiante</span>
+                        </div>
+                        <p class="card-description">Configuración, interpretación de métricas clave y uso de informes para toma de decisiones.</p>
+                        <div class="card-footer">
+                            <span class="duration"><i class="fas fa-clock"></i> 4 días</span>
+                            <a href="Cursos/index_intro_google_analytics_pit.html" class="btn btn-blue">Ver Curso</a>
+                        </div>
+                    </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Finance Courses Section -->
+    <section class="courses-section light-bg">
+        <div class="container">
+            <h2 class="section-title-icon"><i class="fas fa-chart-area"></i> Cursos de Finanzas <span class="tag tag-green-outline">Especialización</span></h2>
+            <div class="courses-grid">
+                <!-- Finance Course Card 1 -->
+                <div class="course-card">
+                    <div class="card-header">
+                        <i class="fas fa-chart-bar"></i>
+                        <h4>Finanzas para No Financieros: De la Teoría a la Práctica</h4>
+                        <span class="tag tag-yellow">Intermedio</span>
+                    </div>
+                    <p class="card-description">Conceptos básicos como estado de resultados, balance general y análisis de rentabilidad.</p>
+                    <div class="card-footer">
+                        <span class="duration"><i class="fas fa-clock"></i> 4 semanas</span>
+                        <a href="Cursos/index_finanzas_no_financieros_pit.html" class="btn btn-green">Ver Curso</a>
+                    </div>
+                </div>
+                <!-- Finance Course Card 2 -->
+                <div class="course-card">
+                    <div class="card-header">
+                        <i class="fas fa-dollar-sign"></i>
+                        <h4>Análisis de Costos y Estrategias de Fijación de Precios</h4>
+                        <span class="tag tag-yellow">Intermedio</span>
+                    </div>
+                    <p class="card-description">Identificación de costos fijos y variables, métodos de fijación de precios y maximización de márgenes.</p>
+                    <div class="card-footer">
+                        <span class="duration"><i class="fas fa-clock"></i> 3 semanas</span>
+                        <a href="Cursos/index_analisis_costos_fijacion_precios_pit.html" class="btn btn-green">Ver Curso</a>
+                    </div>
+                </div>
+                <!-- Finance Course Card 3 -->
+                <div class="course-card">
+                    <div class="card-header">
+                        <i class="fas fa-calculator"></i>
+                        <h4>Fundamentos de Contabilidad para Emprendedores</h4>
+                        <span class="tag tag-green">Principiante</span>
+                    </div>
+                    <p class="card-description">Principios contables básicos, registro de transacciones y preparación de estados financieros.</p>
+                    <div class="card-footer">
+                        <span class="duration"><i class="fas fa-clock"></i> 5 semanas</span>
+                        <a href="Cursos/index_fundamentos_conta_emprend_pit.html" class="btn btn-green">Ver Curso</a>
+                    </div>
+                </div>
+                <!-- Finance Course Card 4 -->
+                <div class="course-card">
+                    <div class="card-header">
+                        <i class="fas fa-chart-line"></i>
+                        <h4>Manejo Avanzado del Flujo de Caja y Proyecciones Financieras</h4>
+                        <span class="tag tag-red">Avanzado</span>
+                    </div>
+                    <p class="card-description">Construcción de modelos de flujo de caja y pronósticos financieros a corto y largo plazo.</p>
+                    <div class="card-footer">
+                        <span class="duration"><i class="fas fa-clock"></i> 4 semanas</span>
+                        <a href="Cursos/index_flujo_caja_proyecciones_fin_pit.html" class="btn btn-green">Ver Curso</a>
+                    </div>
+                </div>
+                <!-- Finance Course Card 5 -->
+                <div class="course-card">
+                    <div class="card-header">
+                        <i class="fas fa-money-bill-wave"></i>
+                        <h4>Estrategias de Capital: Tu Ruta para la Inversión en 7 Fases</h4>
+                        <span class="tag tag-yellow">Intermedio</span>
+                    </div>
+                    <p class="card-description">Domina las estrategias de inversión desde fundamentos hasta la creación de tu portafolio personalizado.</p>
+                    <div class="card-footer">
+                        <span class="duration"><i class="fas fa-clock"></i> 7 fases</span>
+                        <a href="Cursos/index_tu_ruta_inversion_pit.html" class="btn btn-green">Ver Curso</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Bootcamps Section -->
+    <section class="courses-section light-bg">
+        <div class="container">
+            <h2 class="section-title-icon"><i class="fas fa-bolt"></i> Bootcamps <span class="tag tag-purple-outline">Intensivos</span></h2>
+            <div class="courses-grid">
+                <!-- Bootcamp Card 1 -->
+                <div class="course-card bootcamp-card">
+                    <div class="card-header">
+                        <i class="fas fa-bolt"></i>
+                        <h4>Bootcamp Intensivo: Marca y Lanzamiento de Alto Impacto</h4>
+                        <span class="tag tag-red">Avanzado</span>
+                    </div>
+                    <p class="card-description">Ruta acelerada para crear una marca que los clientes aman, con identidad visual profesional y plan de lanzamiento estratégico.</p>
+                    <div class="card-footer">
+                        <span class="duration"><i class="fas fa-clock"></i> 4 módulos</span>
+                        <a href="Cursos/index_marca_lanzamiento_alto_imp_pit.html" class="btn btn-purple">Ver Bootcamp</a>
+                    </div>
+                </div>
+                <!-- Bootcamp Card 2 -->
+                <div class="course-card bootcamp-card">
+                    <div class="card-header">
+                        <i class="fas fa-bolt"></i>
+                        <h4>Bootcamp de Capital de Riesgo y Levantamiento de Capital</h4>
+                        <span class="tag tag-red">Avanzado</span>
+                    </div>
+                    <p class="card-description">Modelado financiero avanzado para startups, preparación de due diligence y negociación con inversionistas.</p>
+                    <div class="card-footer">
+                        <span class="duration"><i class="fas fa-clock"></i> 8 semanas</span>
+                        <a href="Cursos/index_capitatl_riesgo_levant_cap_pit.html" class="btn btn-purple">Ver Bootcamp</a>
+                    </div>
+                </div>
+                <!-- Bootcamp Card 3 -->
+                <div class="course-card bootcamp-card">
+                    <div class="card-header">
+                        <i class="fas fa-bolt"></i>
+                        <h4>Bootcamp de Crecimiento y Escalabilidad (Growth Hacking)</h4>
+                        <span class="tag tag-red">Avanzado</span>
+                    </div>
+                    <p class="card-description">Metodologías de growth hacking, experimentación continua y análisis de embudos de conversión.</p>
+                    <div class="card-footer">
+                        <span class="duration"><i class="fas fa-clock"></i> 6 semanas</span>
+                        <a href="Cursos/index_crecimiento_escalabilidad_pit.html" class="btn btn-purple">Ver Bootcamp</a>
+                    </div>
+                </div>
+                <!-- Bootcamp Card 4 -->
+                <div class="course-card bootcamp-card">
+                    <div class="card-header">
+                        <i class="fas fa-bolt"></i>
+                        <h4>Bootcamp de Estrategia Digital y Marketing de Alto Impacto</h4>
+                        <span class="tag tag-red">Avanzado</span>
+                    </div>
+                    <p class="card-description">Estrategias de marketing digital integrales, SEO avanzado, SEM y medición del ROI.</p>
+                    <div class="card-footer">
+                        <span class="duration"><i class="fas fa-clock"></i> 10 semanas</span>
+                        <a href="Cursos/index_estrategia_dig_marketing_pit.html" class="btn btn-purple">Ver Bootcamp</a>
+                    </div>
+                </div>
+                <!-- Bootcamp Card 5 -->
+                <div class="course-card bootcamp-card">
+                    <div class="card-header">
+                        <i class="fas fa-bolt"></i>
+                        <h4>Bootcamp de Inteligencia Artificial para Negocios</h4>
+                        <span class="tag tag-red">Avanzado</span>
+                    </div>
+                    <p class="card-description">Fundamentos de IA y machine learning aplicados a la empresa, herramientas de IA generativa.</p>
+                    <div class="card-footer">
+                        <span class="duration"><i class="fas fa-clock"></i> 12 semanas</span>
+                        <a href="Cursos/index_IA_negocios_pit.html" class="btn btn-purple">Ver Bootcamp</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- CTA Section -->
+    <section id="inscripcion" class="cta-section">
+        <div class="container">
+            <h2>Nuestras Comunidades</h2>
+            <p>Únete a miles de emprendedores que ya están construyendo el futuro.</p>
+            <div class="cta-features-grid">
+                <!-- Feature 1 -->
+                <div class="cta-feature-item">
+                    <div class="cta-feature-image" style="background-image: url('IMG/business-woman-professional.jpg');"></div>
+                    <div class="cta-feature-content">
+                        <h4>Creadoras IA</h4>
+                        <p>Más que una emprendedora, eres una arquitecta del futuro. Desata tu poder creativo y construye la próxima era de la innovación con nosotras.</p>
+                        <a href="https://v0-user-types-for-website.vercel.app/creadoras" class="btn btn-cta-card">Más Información</a>
+                    </div>
+                </div>
+                <!-- Feature 2 -->
+                <div class="cta-feature-item">
+                    <div class="cta-feature-image" style="background-image: url('IMG/professional-man-smiling.png');"></div>
+                    <div class="cta-feature-content">
+                        <h4>Innovadores del Futuro</h4>
+                        <p>Una invitación para jóvenes talentosos a unirse a un movimiento que busca transformar el mundo y construir el futuro a través del emprendimiento y la tecnología.</p>
+                        <a href="https://v0-user-types-for-website.vercel.app/innovadores" class="btn btn-cta-card">Más Información</a>
+                    </div>
+                </div>
+                <!-- Feature 3 -->
+                <div class="cta-feature-item">
+                    <div class="cta-feature-image" style="background-image: url('IMG/business-woman-professional.jpg');"></div>
+                    <div class="cta-feature-content">
+                        <h4>Legado Emprendedor</h4>
+                        <p>Tu conocimiento y tu trayectoria son el capital más valioso que tienes.</p>
+                        <a href="https://v0-user-types-for-website.vercel.app/legado" class="btn btn-cta-card">Más Información</a>
+                    </div>
+                </div>
+            </div>
+            <a href="https://v0-user-types-for-website.vercel.app/" class="btn btn-primary large-btn">Comienza tu viaje ahora <i class="fas fa-rocket"></i></a>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section id="testimonios" class="testimonials-section">
+        <div class="container">
+            <h2 class="section-title-icon"><i class="fas fa-comments"></i> Lo que dicen nuestros emprendedores</h2>
+            <div class="testimonials-grid">
+                <!-- Testimonial Card 1 -->
+                <div class="testimonial-card">
+                    <div class="testimonial-header">
+                        <img src="IMG/Janeth.png" alt="Avatar de Ana L." loading="lazy" decoding="async">
+                        <div class="testimonial-info">
+                            <h4>Ana L.</h4>
+                            <p>CEO de TechNova</p>
+                        </div>
+                    </div>
+                    <p class="testimonial-text">"EmprendeIA me dio la claridad que necesitaba para validar mi idea de negocio. El microcurso de MVP fue un antes y un después."</p>
+                </div>
+                <!-- Testimonial Card 2 -->
+                <div class="testimonial-card">
+                    <div class="testimonial-header">
+                        <img src="IMG/jorge.png" alt="Avatar de Carlos M." loading="lazy" decoding="async">
+                        <div class="testimonial-info">
+                            <h4>Carlos M.</h4>
+                            <p>Fundador de EcoSenda</p>
+                        </div>
+                    </div>
+                    <p class="testimonial-text">"El bootcamp de finanzas me ayudó a entender los números de mi empresa y a presentar mi proyecto a inversionistas con total confianza."</p>
+                </div>
+                <!-- Testimonial Card 3 -->
+                <div class="testimonial-card">
+                    <div class="testimonial-header">
+                        <img src="IMG/elena.png" alt="Avatar de Sofía R." loading="lazy" decoding="async">
+                        <div class="testimonial-info">
+                            <h4>Sofía R.</h4>
+                            <p>Diseñadora Freelance</p>
+                        </div>
+                    </div>
+                    <p class="testimonial-text">"Gracias a los cursos, aprendí a gestionar mis redes sociales como una profesional. ¡Mis ventas han aumentado un 40%!"</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+
+    <!-- FAQ Section -->
+    <section id="faq" class="faq-section light-bg">
+        <div class="container">
+            <h2 class="section-title-icon"><i class="fas fa-question-circle"></i> Preguntas Frecuentes</h2>
+            <div class="faq-container">
+                <!-- FAQ Item 1 -->
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>¿Necesito experiencia previa para tomar los cursos?</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>¡No! Tenemos cursos para todos los niveles. Los microcursos de "Fundamentos" son perfectos para empezar desde cero. Cada curso indica el nivel de dificultad (Principiante, Intermedio, Avanzado).</p>
+                    </div>
+                </div>
+                <!-- FAQ Item 2 -->
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>¿Qué diferencia hay entre un microcurso y un bootcamp?</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Los <strong>microcursos</strong> son cortos y enfocados en una habilidad específica (ej. validar una idea en 7 días). Los <strong>bootcamps</strong> son programas intensivos y completos que te llevan de un punto A a un punto B en un área más amplia (ej. lanzar una marca desde cero).</p>
+                    </div>
+                </div>
+                <!-- FAQ Item 3 -->
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>¿Tendré acceso a los materiales después de terminar el curso?</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Sí, una vez que te inscribes en un curso, tendrás acceso de por vida a todos los materiales, incluyendo videos, plantillas y actualizaciones futuras.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer (Opcional, pero recomendado) -->
+    <footer id="contacto" class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <!-- Columna 1: Logo y Descripción -->
+                <div class="footer-col">
+                    <div class="logo">
+                        <video src="IMG/video/Video_Generado_Por_Gemini.mp4" class="footer-logo" autoplay loop muted playsinline loading="lazy"></video>
+                    </div>
+                    <p>Transformamos ideas en realidades exitosas.</p>
+                </div>
+                <!-- Columna 2: Enlaces de Exploración -->
+                <div class="footer-col">
+                    <h4>Explorar</h4>
+                    <ul>
+                        <li><a href="#inicio">Inicio</a></li>
+                        <li><a href="#cursos">Cursos</a></li>
+                        <li><a href="chatbot-main/chatbot-main/templates/index.html">AI Studio</a></li>
+                        <li><a href="#testimonios">Testimonios</a></li>
+                        <li><a href="#faq">FAQ</a></li>
+                    </ul>
+                </div>
+                <!-- Columna 3: Enlaces Legales -->
+                <div class="footer-col">
+                    <h4>Legal</h4>
+                    <ul>
+                        <li><a href="#">Términos y Condiciones</a></li>
+                        <li><a href="#">Política de Privacidad</a></li>
+                        <li><a href="#">Política de Cookies</a></li>
+                    </ul>
+                </div>
+                <!-- Columna 4: Redes Sociales -->
+                <div class="footer-col">
+                    <h4>Síguenos</h4>
+                    <div class="social-icons">
+                        <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                        <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 EmprendeIA. Todos los derechos reservados.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
+
+  

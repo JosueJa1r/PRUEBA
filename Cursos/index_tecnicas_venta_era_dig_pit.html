@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Microcurso: Técnicas de Venta</title>
+    <!-- Estilos globales para la barra de navegación y base -->
+    <link rel="stylesheet" href="../STYLES/prueba-style.css">
+    <!-- Estilos específicos para la página del curso -->
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+<header class="navbar">
+    <div class="container">
+        <div class="logo">
+            <!-- La ruta ahora sube un nivel para encontrar la carpeta IMG -->
+            <img src="../IMG/emprendeia-logo.png" alt="EmprendeIA Logo">
+            <div class="logo-text">
+                <span>
+                    <span style="color: #FCD25A">E</span>
+                    <span style="color: #FCD25A">m</span>
+                    <span style="color: #5EBF8D">p</span>
+                    <span style="color: #5EBF8D">r</span>
+                    <span style="color: #5EBF8D">e</span>
+                    <span style="color: #F37C2D">n</span>
+                    <span style="color: #F37C2D">d</span>
+                    <span style="color: #F37C2D">e</span>
+                    <span style="color: #4285F4">I</span>
+                    <span style="color: #4285F4">A</span>
+                </span>
+                <span class="powered-by">Powered by Google</span>
+            </div>
+        </div>
+        <nav class="nav-links">
+            <ul>
+                <!-- Los enlaces ahora apuntan a la página principal con sus anclas -->
+                <li><a href="../prueba.html#inicio">Inicio</a></li>
+                <li><a href="../nosotros.html">Nosotros</a></li>
+                <li><a href="../prueba.html#cursos">Cursos</a></li>
+                <li><a href="../chatbot-main/chatbot-main/templates/index.html">IA</a></li>
+                <li><a href="../prueba.html#contacto">Contacto</a></li>
+                <li class="dropdown">
+                    <!-- El enlace principal y los del menú desplegable apuntan a la sección de comunidades -->
+                    <a href="../prueba.html#inscripcion">Comunidad <i class="fas fa-chevron-down"></i></a>
+                    <div class="dropdown-content">
+                        <a href="../prueba.html#inscripcion">Creadoras IA</a>
+                        <a href="../prueba.html#inscripcion">Innovadores del Futuro</a>
+                        <a href="../prueba.html#inscripcion">Legado Emprendedor</a>
+                    </div>
+                </li>
+            </ul>
+            <div class="nav-actions">
+                <a href="../Usuario/usuario.html" class="btn btn-primary">ACCEDE</a>
+                <button id="theme-toggle" class="btn-theme"><i class="fas fa-moon"></i></button>
+                <select class="language-selector">
+                    <option value="es">🇲🇽</option>
+                    <option value="en">🇺🇸</option>
+                    <option value="fr">🇫🇷</option>
+                    <option value="de">🇩🇪</option>
+                    <option value="it">🇮🇹</option>
+                </select>
+            </div>
+        </nav>
+        <div class="menu-toggle">
+            <i class="fas fa-bars"></i>
+        </div>
+    </div>
+</header>
+
+<div class="sidebar">
+    <button class="sidebar-toggle-btn" id="sidebar-toggle">
+        <i class="fas fa-chevron-left"></i>
+    </button>
+    <div class="sidebar-content">
+        <div class="course-title">Emprende IA: Programas de Formación</div>
+        <div class="sidebar-section">
+            <div class="sidebar-subtitle">Programas Disponibles</div>
+            <ul class="module-list">
+                <li class="module-item active" data-target="microcurso-content">
+                    <div class="module-header">
+                        <span class="module-text active">Microcurso: Técnicas de Venta</span>
+                    </div>
+                    <ul class="sub-menu visible">
+                        <li class="sub-menu-item active" data-target="dia-1-content">Día 1</li>
+                        <li class="sub-menu-item" data-target="dia-2-content">Día 2</li>
+                        <li class="sub-menu-item" data-target="dia-3-content">Día 3</li>
+                        <li class="sub-menu-item" data-target="dia-4-content">Día 4</li>
+                        <li class="sub-menu-item" data-target="dia-5-content">Día 5</li>
+                        <li class="sub-menu-item" data-target="dia-6-content">Día 6</li>
+                        <li class="sub-menu-item" data-target="dia-7-content">Día 7</li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+<div class="main-content">
+    <div class="course-section" id="microcurso-content">
+        <div class="section-header">
+            Microcurso: Técnicas de Venta en la Era Digital en 7 Días 
+        </div>
+        <div class="section-body">
+            <p>Este microcurso te enseñará a transformar el proceso de venta en una máquina eficiente, aprovechando las herramientas digitales y la inteligencia artificial.  En solo una semana, aprenderás a construir relaciones, a nutrir a tus leads y a cerrar ventas de manera efectiva en un entorno en línea.  Pasarás de la venta tradicional a una estrategia de ventas escalable y centrada en el cliente. </p>
+            <h4>Lo que aprenderás:</h4>
+            <ul>
+                <li>La diferencia entre la venta tradicional y el enfoque de ventas en la era digital. </li>
+                <li>Cómo la inteligencia artificial puede ayudarte a identificar y calificar leads de alto valor. </li>
+                <li>Estrategias de comunicación persuasiva en plataformas digitales. </li>
+                <li>Cómo utilizar el análisis de datos para optimizar tu embudo de ventas. </li>
+            </ul>
+            <h4>Contenido por Día</h4>
+            <div class="day-content" id="dia-1-content">
+                <h5>Día 1: De la Venta a la Ayuda</h5>
+                <p><strong>Lección:</strong> La venta en la era digital no se trata de empujar un producto, sino de resolver un problema y crear valor para el cliente.  El primer paso es cambiar tu mentalidad de "vendedor" a "asesor".  En este módulo, aprenderás que una marca poderosa se construye con una narrativa que conecta con los clientes a un nivel emocional. </p>
+                <p><strong>Tarea:</strong> Define al menos 3 problemas comunes que tu producto o servicio resuelve para tus clientes y redacta una breve "historia de éxito" para cada uno. </p>
+            </div>
+            <div class="day-content" id="dia-2-content">
+                <h5>Día 2: Tu Cliente Ideal (El Comprador Digital)</h5>
+                <p><strong>Lección:</strong> Un empresario exitoso sabe a quién le está hablando.  Debes entender a fondo a tu segmento de mercado para que tu producto resuene.  Esto incluye conocer sus hábitos digitales, los canales que utilizan para investigar y tomar decisiones de compra. </p>
+                <p><strong>Tarea:</strong> Basado en tu investigación, crea un "mapa del viaje del comprador" para tu cliente ideal, desde que identifica el problema hasta que realiza la compra. </p>
+            </div>
+            <div class="day-content" id="dia-3-content">
+                <h5>Día 3: El Embudo de Ventas Digital (De la Conciencia al Cierre)</h5>
+                <p><strong>Lección:</strong> Un embudo de ventas digital es el proceso por el que un prospecto pasa para convertirse en un cliente.  Aquí, pasarás de un "garabato en una libreta" a un concepto de negocio, al estructurar tu estrategia de ventas.  Un gran *pitch deck* es un factor clave en el 68% de las decisiones de inversión en la fase inicial. </p>
+                <p><strong>Tarea:</strong> Esquematiza las etapas de tu embudo de ventas (atracción, consideración, conversión) y define las acciones clave para cada una. </p>
+            </div>
+            <div class="day-content" id="dia-4-content">
+                <h5>Día 4: Herramientas Digitales e Inteligencia Artificial</h5>
+                <p><strong>Lección:</strong> Lo que antes tomaba meses, ahora se hace en horas.  La IA generativa acelera el tiempo de prototipado en un 70%.  En ventas, puedes utilizar la IA para automatizar el seguimiento, personalizar la comunicación y calificar leads. </p>
+                <p><strong>Tarea:</strong> Identifica al menos 3 herramientas digitales o de IA que puedes usar para automatizar o mejorar una etapa de tu embudo de ventas. </p>
+            </div>
+            <div class="day-content" id="dia-5-content">
+                <h5>Día 5: La Comunicación Persuasiva (Tu Pitch Deck)</h5>
+                <p><strong>Lección:</strong> Tu empresario interno debe ser capaz de vender no solo su producto, sino su visión.  El arte de la venta radica en contar una historia que conecte y persuada.  La confianza es el activo más valioso en una negociación. </p>
+                <p><strong>Tarea:</strong> Edita y perfecciona el borrador de tu *pitch*, asegurándote de que la historia fluya de manera lógica y que el mensaje sea claro y convincente. </p>
+            </div>
+            <div class="day-content" id="dia-6-content">
+                <h5>Día 6: Feedback y Optimización</h5>
+                <p><strong>Lección:</strong> Tu estrategia de ventas no es perfecta.  El empresario exitoso sabe escuchar y pivotar.  La validación se hace con datos, no con suposiciones. </p>
+                <p><strong>Tarea:</strong> Selecciona un canal de venta digital, lanza una campaña de prueba y documenta tus hallazgos.  Recopila retroalimentación y anota al menos 3 cambios que harás en tu plan. </p>
+            </div>
+            <div class="day-content" id="dia-7-content">
+                <h5>Día 7: La Presentación Final (Tu Estrategia de Cierre)</h5>
+                <p><strong>Lección:</strong> Un gran *pitch deck* es un factor clave en el 68% de las decisiones de inversión en la fase inicial.  Es momento de consolidar tu estrategia de ventas. </p>
+            </div>
+            <h4>Resultado:</h4>
+            <p>Un **plan de ventas digital completo**, un **embudo de ventas optimizado** y la confianza para cerrar tratos y convertir tu proyecto en una empresa imparable. </p>
+            <h4>Mentor - Experto en Ventas Digitales</h4>
+            <div class="mentor-box">
+                <img src="../IMG/mentor de microcursos.png" alt="Foto del Mentor" loading="lazy" decoding="async" width="150" height="150">
+                <div class="mentor-info">
+                    <p>Nuestro mentor es un autor de best-sellers y consultor de ventas que ha ayudado a empresas de Fortune 500 a transformar sus equipos de ventas para la era digital. Se especializa en la construcción de embudos de venta automatizados, la venta consultiva y el uso de la psicología para cerrar tratos de alto valor.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+    <!-- Footer -->
+    <footer id="contacto" class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <!-- Columna 1: Logo y Descripción -->
+                <div class="footer-col">
+                    <div class="logo">
+                        <video src="../IMG/video/Video_Generado_Por_Gemini.mp4" class="footer-logo" autoplay loop muted playsinline loading="lazy"></video>
+                    </div>
+                    <p>Transformamos ideas en realidades exitosas.</p>
+                </div>
+                <!-- Columna 2: Enlaces de Exploración -->
+                <div class="footer-col">
+                    <h4>Explorar</h4>
+                    <ul>
+                        <li><a href="../prueba.html#inicio">Inicio</a></li>
+                        <li><a href="../prueba.html#cursos">Cursos</a></li>
+                        <li><a href="../chatbot-main/chatbot-main/templates/index.html">AI Studio</a></li>
+                        <li><a href="../prueba.html#testimonios">Testimonios</a></li>
+                        <li><a href="../prueba.html#faq">FAQ</a></li>
+                    </ul>
+                </div>
+                <!-- Columna 3: Enlaces Legales -->
+                <div class="footer-col">
+                    <h4>Legal</h4>
+                    <ul>
+                        <li><a href="#">Términos y Condiciones</a></li>
+                        <li><a href="#">Política de Privacidad</a></li>
+                        <li><a href="#">Política de Cookies</a></li>
+                    </ul>
+                </div>
+                <!-- Columna 4: Redes Sociales -->
+                <div class="footer-col">
+                    <h4>Síguenos</h4>
+                    <div class="social-icons">
+                        <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                        <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 EmprendeIA. Todos los derechos reservados.</p>
+            </div>
+        </div>
+    </footer>
+<script src="../script.js"></script> <!-- Script para la barra de navegación y funciones globales -->
+<script src="script.js"></script>    <!-- Script para la navegación interna del curso -->
+</body>
+</html>
