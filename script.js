@@ -132,37 +132,4 @@ document.addEventListener('DOMContentLoaded', function() {
     // Aplicar el tema guardado al cargar la página
     const savedTheme = localStorage.getItem('theme') || 'light'; // 'light' es el predeterminado
     applyTheme(savedTheme);
-
-    // --- Language dropdown (flags) ---
-    const langBtn = document.getElementById('lang-btn');
-    const langMenu = document.getElementById('lang-menu');
-
-    const setLanguage = (lang) => {
-        const flagMap = { es: '🇲🇽', en: '🇺🇸', fr: '🇫🇷', de: '🇩🇪', it: '🇮🇹' };
-        const current = flagMap[lang] || '🇲🇽';
-        if (langBtn) {
-            langBtn.querySelector('.flag').textContent = current;
-        }
-        localStorage.setItem('lang', lang);
-        // Aquí podrías disparar traducciones si tienes i18n
-    };
-
-    if (langBtn && langMenu) {
-        langBtn.addEventListener('click', (e) => {
-            e.stopPropagation();
-            langMenu.classList.toggle('open');
-        });
-        langMenu.addEventListener('click', (e) => {
-            const option = e.target.closest('.lang-option');
-            if (!option) return;
-            const lang = option.getAttribute('data-lang');
-            setLanguage(lang);
-            langMenu.classList.remove('open');
-        });
-        window.addEventListener('click', () => langMenu.classList.remove('open'));
-
-        // Aplicar idioma guardado
-        const savedLang = localStorage.getItem('lang') || 'es';
-        setLanguage(savedLang);
-    }
 });
