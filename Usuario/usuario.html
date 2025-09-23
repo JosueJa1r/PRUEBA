@@ -3,71 +3,1330 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login</title>
+    <title>EmprendeIA - Acceso a la Comunidad</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-    <link rel="stylesheet" href="usuario-style.css">
+    <!-- Supabase CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
     <style>
+        /* Variables CSS para modo claro y oscuro */
+        :root {
+            --bg-primary: #ffffff;
+            --bg-secondary: #f8fafc;
+            --bg-tertiary: #f1f5f9;
+            --text-primary: #1e293b;
+            --text-secondary: #64748b;
+            --text-muted: #94a3b8;
+            --border-color: #e2e8f0;
+            --shadow-soft: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+            --shadow-medium: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+            --shadow-large: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+            --gradient-primary: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            --gradient-secondary: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            --accent-color: #3b82f6;
+            --success-color: #10b981;
+            --warning-color: #f59e0b;
+            --error-color: #ef4444;
+        }
+
+        [data-theme="dark"] {
+            --bg-primary: #0f172a;
+            --bg-secondary: #1e293b;
+            --bg-tertiary: #334155;
+            --text-primary: #f8fafc;
+            --text-secondary: #cbd5e1;
+            --text-muted: #94a3b8;
+            --border-color: #475569;
+            --shadow-soft: 0 4px 6px -1px rgba(0, 0, 0, 0.3);
+            --shadow-medium: 0 10px 15px -3px rgba(0, 0, 0, 0.3);
+            --shadow-large: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+            --gradient-primary: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            --gradient-secondary: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            --accent-color: #60a5fa;
+            --success-color: #34d399;
+            --warning-color: #fbbf24;
+            --error-color: #f87171;
+        }
+
+        * {
+            margin: 0 !important;
+            padding: 0 !important;
+            box-sizing: border-box !important;
+        }
+
+        /* Reset específico para elementos del formulario */
+        .login-box,
+        .login-box *,
+        .login-header,
+        .login-header *,
+        .btn,
+        .btn *,
+        .input-group input,
+        .google-signin-btn {
+            border-radius: inherit !important;
+            transform: inherit !important;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: var(--bg-primary);
+            color: var(--text-primary);
+            transition: all 0.3s ease;
+            min-height: 100vh;
+            position: relative;
+            overflow-x: hidden;
+        }
+
+        /* Fondo estático optimizado */
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: var(--gradient-primary);
+            opacity: 0.1;
+            z-index: -2;
+        }
+
+        /* Botón de tema original */
         .btn-theme {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background: var(--bg-primary);
+            border: 2px solid var(--border-color);
+            color: var(--text-primary);
+            padding: 12px;
+            border-radius: 50%;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: var(--shadow-medium);
+            z-index: 1000;
+            width: 50px;
+            height: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 18px;
+        }
+
+        .btn-theme:hover {
+            background: var(--accent-color);
+            color: white;
+            transform: scale(1.1);
+            box-shadow: var(--shadow-large);
+        }
+
+        /* Contenedor principal mejorado */
+        .login-container {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            position: relative;
+        }
+
+        .login-box {
+            background: var(--bg-primary) !important;
+            border-radius: 40px 20px 40px 20px !important;
+            padding: 0 !important;
+            width: 100%;
+            max-width: 550px;
+            box-shadow: var(--shadow-large) !important;
+            border: 1px solid var(--border-color) !important;
+            overflow: hidden;
+            position: relative;
+            transition: all 0.2s ease;
+        }
+
+        .login-box:hover {
+            transform: scale(1.01);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+        }
+
+        .login-box::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: var(--gradient-secondary);
+            z-index: 1;
+        }
+
+        /* Header optimizado */
+        .login-header {
+            background: var(--gradient-primary) !important;
+            padding: 60px 40px 50px 40px !important;
+            text-align: center;
+            color: white;
+            position: relative;
+            overflow: hidden;
+            border-radius: 40px 20px 0 0 !important;
+            clip-path: polygon(0 0, 100% 0, 100% 85%, 0 100%) !important;
+        }
+
+        .logo {
+            width: 100px;
+            height: 100px;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 50% 30% 50% 30%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 30px;
+            font-size: 40px;
+            border: 3px solid rgba(255, 255, 255, 0.3);
+            position: relative;
+            z-index: 2;
+            transition: all 0.2s ease;
+            cursor: pointer;
+        }
+
+        .logo:hover {
+            transform: scale(1.05);
+            background: rgba(255, 255, 255, 0.3);
+        }
+
+        .login-header h1 {
+            font-size: 36px;
+            font-weight: 800;
+            margin-bottom: 12px;
+            position: relative;
+            z-index: 2;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            color: white;
+        }
+
+        .login-header p {
+            font-size: 18px;
+            opacity: 0.9;
+            position: relative;
+            z-index: 2;
+            font-weight: 500;
+            letter-spacing: 0.5px;
+        }
+
+        /* Botón de cerrar mejorado */
+        .close-btn {
             position: absolute;
             top: 20px;
             right: 20px;
-            background: #f0f0f0;
-            border: 1px solid #ccc;
-            color: #333;
+            background: rgba(255, 255, 255, 0.2);
+            border: none;
+            color: white;
+            font-size: 24px;
             width: 40px;
             height: 40px;
             border-radius: 50%;
-            font-size: 1.1em;
             cursor: pointer;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(10px);
+            z-index: 3;
+        }
+
+        .close-btn:hover {
+            background: rgba(255, 255, 255, 0.3);
+            transform: scale(1.1);
+        }
+
+        /* Sección de usuario logueado mejorada */
+        .user-logged-in {
+            padding: 50px 40px;
+        }
+
+        .user-info {
+            display: flex;
+            align-items: center;
+            margin-bottom: 30px;
+            padding: 30px;
+            background: var(--bg-secondary);
+            border-radius: 30px 15px 30px 15px;
+            border: 1px solid var(--border-color);
+            position: relative;
+            overflow: hidden;
+            transition: all 0.4s ease;
+            transform: perspective(100px) rotateX(1deg);
+        }
+
+        .user-info::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: var(--gradient-primary);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .user-info:hover::before {
+            opacity: 1;
+        }
+
+        .user-info:hover {
+            transform: perspective(100px) rotateX(0deg) scale(1.02);
+            box-shadow: var(--shadow-medium);
+            border-color: var(--accent-color);
+            border-radius: 15px 30px 15px 30px;
+        }
+
+        .user-avatar {
+            width: 75px;
+            height: 75px;
+            border-radius: 50% 30% 50% 30%;
+            margin-right: 20px;
+            border: 3px solid var(--accent-color);
+            object-fit: cover;
+            transition: all 0.4s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .user-avatar::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: var(--gradient-primary);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            border-radius: 50%;
+        }
+
+        .user-info:hover .user-avatar::before {
+            opacity: 0.1;
+        }
+
+        .user-info:hover .user-avatar {
+            transform: scale(1.08) rotate(5deg);
+            box-shadow: 0 0 25px rgba(59, 130, 246, 0.4);
+            border-radius: 30% 50% 30% 50%;
+        }
+
+        .user-details h3 {
+            font-size: 22px;
+            font-weight: 700;
+            color: var(--text-primary);
+            margin-bottom: 8px;
+            background: linear-gradient(135deg, var(--text-primary), var(--accent-color));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .user-details p {
+            color: var(--text-secondary);
+            font-size: 14px;
+            margin-bottom: 8px;
+            font-weight: 500;
+        }
+
+        .user-community {
+            background: var(--gradient-primary);
+            color: white;
+            padding: 6px 16px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 700;
+            display: inline-block;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            box-shadow: 0 4px 12px rgba(59, 130, 246, 0.3);
+            transition: all 0.3s ease;
+        }
+
+        .user-info:hover .user-community {
+            transform: scale(1.05);
+            box-shadow: 0 6px 16px rgba(59, 130, 246, 0.4);
+        }
+
+        /* Botones de acción mejorados */
+        .user-actions {
+            display: grid;
+            gap: 15px;
+        }
+
+        .btn {
+            padding: 18px 28px !important;
+            border-radius: 25px 15px 25px 15px !important;
+            font-weight: 600;
+            font-size: 16px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            border: 2px solid transparent;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            text-decoration: none;
+            position: relative;
+            overflow: hidden;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .btn:hover {
+            transform: scale(1.02);
+            border-radius: 15px 25px 15px 25px;
+        }
+
+        .btn-primary {
+            background: var(--gradient-primary);
+            color: white;
+            box-shadow: var(--shadow-medium);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px) scale(1.02);
+            box-shadow: var(--shadow-large);
+        }
+
+        .btn-secondary {
+            background: var(--bg-secondary);
+            color: var(--text-primary);
+            border-color: var(--border-color);
+        }
+
+        .btn-secondary:hover {
+            background: var(--bg-tertiary);
+            transform: translateY(-3px) scale(1.02);
+            border-color: var(--accent-color);
+        }
+
+        .btn-outline {
+            background: transparent;
+            color: var(--text-secondary);
+            border-color: var(--border-color);
+        }
+
+        .btn-outline:hover {
+            background: var(--error-color);
+            color: white;
+            border-color: var(--error-color);
+            transform: translateY(-3px) scale(1.02);
+        }
+
+        /* Formulario de login mejorado */
+        .login-form {
+            padding: 50px 40px;
+        }
+
+        .login-options {
+            display: flex;
+            flex-direction: column;
+            gap: 25px;
+        }
+
+        .google-signin-btn {
+            background: linear-gradient(135deg, #ffffff 0%, #f8fafc 100%) !important;
+            border: 2px solid #e2e8f0 !important;
+            color: #374151 !important;
+            padding: 18px 28px !important;
+            border-radius: 16px !important;
+            font-weight: 600 !important;
+            font-size: 16px !important;
+            cursor: pointer !important;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
+            display: flex !important;
+            align-items: center !important;
+            justify-content: center !important;
+            gap: 12px !important;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1) !important;
+            position: relative !important;
+            overflow: hidden !important;
+            width: 100% !important;
+            text-decoration: none !important;
+            letter-spacing: 0.025em !important;
+        }
+
+        .google-signin-btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
+            transition: left 0.5s;
+        }
+
+        .google-signin-btn:hover {
+            background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%) !important;
+            transform: translateY(-2px) !important;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15) !important;
+            border-color: #3b82f6 !important;
+        }
+
+        .google-signin-btn:hover::before {
+            left: 100%;
+        }
+
+        .google-signin-btn:active {
+            transform: translateY(0) !important;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1) !important;
+        }
+
+        /* Estilos específicos para el modo oscuro */
+        [data-theme="dark"] .google-signin-btn {
+            background: var(--bg-secondary) !important;
+            border-color: var(--border-color) !important;
+            color: var(--text-primary) !important;
+        }
+
+        [data-theme="dark"] .google-signin-btn:hover {
+            background: var(--bg-tertiary) !important;
+            border-color: var(--accent-color) !important;
+        }
+
+        .divider {
+            text-align: center;
+            position: relative;
+            margin: 25px 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .divider::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 0;
+            right: 0;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, var(--border-color), transparent);
+        }
+
+        .divider span {
+            background: var(--bg-primary);
+            padding: 0 20px;
+            color: var(--text-muted);
+            font-weight: 600;
+            font-size: 14px;
+            position: relative;
+            z-index: 1;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .input-group {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .input-group label {
+            font-weight: 700;
+            color: var(--text-primary);
+            font-size: 14px;
+            margin-bottom: 8px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            display: block;
+        }
+
+        .input-group input {
+            padding: 16px 20px !important;
+            border: 2px solid var(--border-color) !important;
+            border-radius: 12px !important;
+            font-size: 16px !important;
+            background: var(--bg-secondary) !important;
+            color: var(--text-primary) !important;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
+            position: relative !important;
+            width: 100% !important;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05) !important;
+            font-weight: 500 !important;
+        }
+
+        .input-group input:focus {
+            outline: none !important;
+            border-color: #667eea !important;
+            box-shadow: 0 0 0 4px rgba(102, 126, 234, 0.1), 0 4px 12px rgba(0, 0, 0, 0.1) !important;
+            transform: translateY(-2px) !important;
+            background: var(--bg-primary) !important;
+        }
+
+        .input-group input::placeholder {
+            color: var(--text-muted) !important;
+            font-weight: 400 !important;
+            opacity: 0.8 !important;
+        }
+
+        .login-btn {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%) !important;
+            color: white !important;
+            border: none !important;
+            padding: 20px 36px !important;
+            border-radius: 16px !important;
+            font-weight: 700 !important;
+            font-size: 16px !important;
+            cursor: pointer !important;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
+            display: flex !important;
+            align-items: center !important;
+            justify-content: center !important;
+            gap: 12px !important;
+            box-shadow: 0 6px 20px rgba(102, 126, 234, 0.4) !important;
+            position: relative !important;
+            overflow: hidden !important;
+            width: 100% !important;
+            text-decoration: none !important;
+            text-transform: uppercase !important;
+            letter-spacing: 0.5px !important;
+        }
+
+        .login-btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+            transition: left 0.5s;
+        }
+
+        .login-btn:hover::before {
+            left: 100%;
+        }
+
+        .login-btn:hover {
+            background: linear-gradient(135deg, #5a67d8 0%, #6b46c1 100%) !important;
+            transform: translateY(-3px) !important;
+            box-shadow: 0 12px 30px rgba(102, 126, 234, 0.5) !important;
+        }
+
+        .login-footer {
+            text-align: center;
+            margin-top: 30px;
+            padding-top: 25px;
+            border-top: 1px solid var(--border-color);
+        }
+
+        .login-footer p {
+            color: var(--text-secondary);
+            font-size: 14px;
+            margin-bottom: 12px;
+            font-weight: 500;
+        }
+
+        .login-footer a {
+            color: #667eea;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .login-footer a::after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: linear-gradient(90deg, #667eea, #764ba2);
+            transition: width 0.3s ease;
+        }
+
+        .login-footer a:hover {
+            color: #5a67d8;
+        }
+
+        .login-footer a:hover::after {
+            width: 100%;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .login-box {
+                margin: 20px;
+                max-width: none;
+            }
+            
+            .login-header {
+                padding: 30px 20px;
+            }
+            
+            .login-header h1 {
+                font-size: 28px;
+            }
+            
+            .user-logged-in,
+            .login-form {
+                padding: 30px 20px;
+            }
+            
+            .btn-theme {
+                top: 20px;
+                right: 20px;
+                width: 50px;
+                height: 50px;
+                font-size: 18px;
+            }
+        }
+
+        /* Animaciones adicionales */
+        @keyframes slideUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .login-box {
+            animation: slideUp 0.6s ease-out;
+        }
+
+        /* Efectos de fondo optimizados */
+        .login-container::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle at 30% 20%, rgba(102, 126, 234, 0.05) 0%, transparent 50%),
+                        radial-gradient(circle at 70% 80%, rgba(118, 75, 162, 0.05) 0%, transparent 50%);
+            z-index: -1;
+        }
+
+        /* Estilos para el modal de comunidad */
+        .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.7);
             display: flex;
             justify-content: center;
             align-items: center;
-            z-index: 10;
+            z-index: 2000;
+            backdrop-filter: blur(10px);
+            animation: fadeIn 0.3s ease;
         }
-        /* Dark mode for login page */
-        body.dark-mode .login-container {
-            background-color: #121212;
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
         }
-        body.dark-mode .login-box {
-            background-color: #1e1e1e;
-            box-shadow: 0 0 25px rgba(0, 0, 0, 0.5);
+
+        .community-card {
+            transition: all 0.3s ease;
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
         }
-        body.dark-mode .login-box label {
-            color: #e0e0e0;
+
+        .community-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(45deg, transparent, rgba(255,255,255,0.1), transparent);
+            transform: translateX(-100%);
+            transition: transform 0.6s ease;
         }
-        body.dark-mode .login-box input {
-            background-color: #333;
-            color: #e0e0e0;
-            border-color: #555;
+
+        .community-card:hover::before {
+            transform: translateX(100%);
         }
-        body.dark-mode .close-btn,
-        body.dark-mode .btn-theme {
-            color: #aaa;
-            background: #333;
-            border-color: #555;
+
+        .community-card:hover {
+            transform: translateY(-8px) scale(1.02);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+        }
+
+        /* Mejoras para el modo oscuro */
+        [data-theme="dark"] .community-card {
+            background: var(--bg-secondary) !important;
+            border: 1px solid var(--border-color) !important;
+        }
+
+        [data-theme="dark"] .community-card:hover {
+            background: var(--bg-tertiary) !important;
+        }
+
+        /* Efectos adicionales para el modal */
+        .modal-overlay {
+            backdrop-filter: blur(15px);
+            animation: modalFadeIn 0.4s ease;
+        }
+
+        @keyframes modalFadeIn {
+            from {
+                opacity: 0;
+                backdrop-filter: blur(0px);
+            }
+            to {
+                opacity: 1;
+                backdrop-filter: blur(15px);
+            }
+        }
+
+        .community-modal-content {
+            animation: modalSlideUp 0.4s ease;
+        }
+
+        @keyframes modalSlideUp {
+            from {
+                opacity: 0;
+                transform: translateY(50px) scale(0.9);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0) scale(1);
+            }
+        /* Widget flotante de perfil */
+        .profile-widget {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background: var(--bg-primary);
+            border-radius: 20px;
+            padding: 15px;
+            box-shadow: var(--shadow-large);
+            border: 1px solid var(--border-color);
+            cursor: pointer;
+            transition: all 0.3s ease;
+            z-index: 1000;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            min-width: 200px;
+            opacity: 0;
+            transform: translateY(100px);
+            animation: slideUpWidget 0.5s ease forwards;
+        }
+
+        @keyframes slideUpWidget {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .profile-widget:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+        }
+
+        .widget-photo {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            border: 2px solid var(--accent-color);
+            object-fit: cover;
+        }
+
+        .widget-info h4 {
+            font-size: 14px;
+            font-weight: 600;
+            color: var(--text-primary);
+            margin-bottom: 2px;
+        }
+
+        .widget-info p {
+            font-size: 12px;
+            color: var(--text-secondary);
+        }
+
+        .widget-close {
+            position: absolute;
+            top: -8px;
+            right: -8px;
+            background: var(--error-color);
+            color: white;
+            border: none;
+            border-radius: 50%;
+            width: 24px;
+            height: 24px;
+            cursor: pointer;
+            font-size: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        /* Ocultar widget cuando no hay usuario */
+        .profile-widget.hidden {
+            display: none;
         }
     </style>
 </head>
 <body>
-    <button id="theme-toggle" class="btn-theme"><i class="fas fa-moon"></i></button>
+    <button id="theme-toggle" class="btn-theme" title="Cambiar tema">
+        <i class="fas fa-moon"></i>
+    </button>
     <div class="login-container">
         <div class="login-box">
             <a href="../prueba.html" class="close-btn">&times;</a>
-            <div class="input-group">
-                <label for="username">Usuario:</label>
-                <input type="text" id="username" name="username">
+            
+            <!-- Logo y título -->
+            <div class="login-header">
+                <div class="logo">
+                    <i class="fas fa-rocket"></i>
+                </div>
+                <h1>EmprendeIA</h1>
+                <p>Únete a la comunidad de emprendedores</p>
             </div>
-            <div class="input-group">
-                <label for="password">Contraseña:</label>
-                <input type="password" id="password" name="password">
+
+            <!-- Usuario logueado -->
+            <div class="user-logged-in" id="user-logged-in" style="display: none;">
+                <div class="user-info">
+                    <img src="" alt="Avatar" class="user-avatar" id="user-avatar">
+                    <div class="user-details">
+                        <h3 id="user-name">Usuario</h3>
+                        <p id="user-email">usuario@email.com</p>
+                        <span class="user-community" id="user-community">Comunidad</span>
+                    </div>
+                </div>
+                
+                    <div class="user-actions">
+                        <button class="btn btn-primary profile-btn" onclick="goToProfile()">
+                            <i class="fas fa-user"></i>
+                            Mi Perfil
+                        </button>
+                        <button class="btn btn-secondary community-btn" onclick="goToCommunity()">
+                            <i class="fas fa-users"></i>
+                            Ir a Comunidad
+                        </button>
+                        <button class="btn btn-outline signout-btn" onclick="signOut()">
+                            <i class="fas fa-sign-out-alt"></i>
+                            Cerrar Sesión
+                        </button>
+                    </div>
             </div>
-            <button class="login-btn">Iniciar Sesión</button>
-            <button class="google-login-btn">
-                <img src="https://img.icons8.com/color/16/000000/google-logo.png" alt="Google icon">
-                Continuar con Google
-            </button>
+
+            <!-- Formulario de login -->
+            <div class="login-form" id="login-form">
+                <div class="login-options">
+                    <button class="google-signin-btn" onclick="simulateGoogleLogin()">
+                        <img src="https://img.icons8.com/color/20/000000/google-logo.png" alt="Google">
+                        Continuar con Google
+                    </button>
+                    
+                    <div class="divider">
+                        <span>o</span>
+                    </div>
+                    
+                    <div class="input-group">
+                        <label for="email">Email:</label>
+                        <input type="email" id="email" name="email" placeholder="tu@email.com">
+                    </div>
+                    
+                    <div class="input-group">
+                        <label for="password">Contraseña:</label>
+                        <input type="password" id="password" name="password" placeholder="Tu contraseña">
+                    </div>
+                    
+                        <button class="login-btn" onclick="simulateEmailLogin()">
+                            <i class="fas fa-sign-in-alt"></i>
+                            Iniciar Sesión
+                        </button>
+                </div>
+                
+                <div class="login-footer">
+                    <p>¿No tienes cuenta? <a href="#" class="register-link">Regístrate aquí</a></p>
+                    <p><a href="#" class="forgot-password">¿Olvidaste tu contraseña?</a></p>
+                </div>
+            </div>
         </div>
     </div>
-    <script src="usuario-main.js"></script>
+
+    <!-- Widget flotante de perfil -->
+    <div class="profile-widget" id="profile-widget" style="display: none;">
+        <button class="widget-close" onclick="hideProfileWidget()">×</button>
+        <img src="../IMG/placeholder-user.jpg" alt="Foto de perfil" class="widget-photo" id="widget-photo">
+        <div class="widget-info">
+            <h4 id="widget-name">Usuario EmprendeIA</h4>
+            <p id="widget-community">Comunidad: General</p>
+        </div>
+    </div>
+
+        <!-- Scripts de configuración y autenticación -->
+        <script src="../config.js"></script>
+        <script src="../setup-supabase.js"></script>
+        <script src="../js/supabase-config.js"></script>
+        <script src="../js/enhanced-simulated-auth.js"></script>
+        <script src="../js/user-auth.js"></script>
+        <script src="../js/theme-manager.js"></script>
+        <script src="usuario-main.js"></script>
+    
+    <!-- Funciones de navegación -->
+    <script>
+            function goToProfile() {
+                // Redirigir a la página de perfil
+                window.location.href = '../perfil.html';
+            }
+        
+        function goToCommunity() {
+            // Crear modal con tarjetas flotantes
+            showCommunityModal();
+        }
+        
+        function showCommunityModal() {
+            // Crear modal si no existe
+            let modal = document.getElementById('community-modal');
+            if (!modal) {
+                modal = document.createElement('div');
+                modal.id = 'community-modal';
+                modal.className = 'modal-overlay';
+                    modal.innerHTML = `
+                        <div class="community-modal-content" style="
+                            background: var(--bg-primary);
+                            border-radius: 24px;
+                            padding: 40px;
+                            max-width: 1000px;
+                            width: 90%;
+                            box-shadow: var(--shadow-large);
+                            position: relative;
+                            overflow: hidden;
+                            border: 1px solid var(--border-color);
+                        ">
+                        <div style="position: absolute; top: 0; left: 0; right: 0; height: 4px; background: linear-gradient(90deg, #ec4899, #3b82f6, #f59e0b);"></div>
+                        
+                        <div style="text-align: center; margin-bottom: 40px;">
+                            <h2 style="color: var(--text-primary); font-size: 28px; font-weight: 700; margin: 0 0 10px 0;">Selecciona tu Comunidad</h2>
+                            <p style="color: var(--text-secondary); font-size: 16px; margin: 0;">Elige la comunidad que mejor se adapte a tu perfil</p>
+                        </div>
+                        
+                        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 25px; margin-bottom: 30px;">
+                            <!-- Creadoras del Futuro -->
+                            <div class="community-card" onclick="selectCommunity('creadoras')" style="
+                                background: linear-gradient(135deg, #fdf2f8 0%, #fce7f3 100%);
+                                border-radius: 20px;
+                                padding: 30px;
+                                text-align: center;
+                                cursor: pointer;
+                                transition: all 0.3s ease;
+                                border: 2px solid transparent;
+                                position: relative;
+                                overflow: hidden;
+                            ">
+                                <div style="
+                                    background: linear-gradient(135deg, #ec4899 0%, #be185d 100%);
+                                    width: 80px;
+                                    height: 80px;
+                                    border-radius: 50%;
+                                    margin: 0 auto 20px;
+                                    display: flex;
+                                    align-items: center;
+                                    justify-content: center;
+                                    box-shadow: 0 8px 25px rgba(236, 72, 153, 0.3);
+                                ">
+                                    <i class="fas fa-female" style="color: white; font-size: 32px;"></i>
+                                </div>
+                                    <h3 style="color: var(--text-primary); font-size: 22px; font-weight: 700; margin: 0 0 15px 0;">Creadoras del Futuro</h3>
+                                    <p style="color: var(--text-secondary); font-size: 14px; line-height: 1.6; margin: 0 0 20px 0;">Un espacio creado por y para mujeres visionarias que están transformando el mundo del emprendimiento.</p>
+                                <div style="
+                                    background: linear-gradient(135deg, #ec4899 0%, #be185d 100%);
+                                    color: white;
+                                    padding: 12px 24px;
+                                    border-radius: 25px;
+                                    font-weight: 600;
+                                    font-size: 14px;
+                                    display: inline-block;
+                                ">Únete Ahora</div>
+                            </div>
+                            
+                            <!-- Innovadores del Futuro -->
+                            <div class="community-card" onclick="selectCommunity('innovadores')" style="
+                                background: linear-gradient(135deg, #eff6ff 0%, #dbeafe 100%);
+                                border-radius: 20px;
+                                padding: 30px;
+                                text-align: center;
+                                cursor: pointer;
+                                transition: all 0.3s ease;
+                                border: 2px solid transparent;
+                                position: relative;
+                                overflow: hidden;
+                            ">
+                                <div style="
+                                    background: linear-gradient(135deg, #3b82f6 0%, #1d4ed8 100%);
+                                    width: 80px;
+                                    height: 80px;
+                                    border-radius: 50%;
+                                    margin: 0 auto 20px;
+                                    display: flex;
+                                    align-items: center;
+                                    justify-content: center;
+                                    box-shadow: 0 8px 25px rgba(59, 130, 246, 0.3);
+                                ">
+                                    <i class="fas fa-rocket" style="color: white; font-size: 32px;"></i>
+                                </div>
+                                    <h3 style="color: var(--text-primary); font-size: 22px; font-weight: 700; margin: 0 0 15px 0;">Innovadores del Futuro</h3>
+                                    <p style="color: var(--text-secondary); font-size: 14px; line-height: 1.6; margin: 0 0 20px 0;">Para jóvenes talentosos que buscan eficiencia y herramientas para convertir sus ideas en negocios.</p>
+                                <div style="
+                                    background: linear-gradient(135deg, #3b82f6 0%, #1d4ed8 100%);
+                                    color: white;
+                                    padding: 12px 24px;
+                                    border-radius: 25px;
+                                    font-weight: 600;
+                                    font-size: 14px;
+                                    display: inline-block;
+                                ">Únete Ahora</div>
+                            </div>
+                            
+                            <!-- Legado Emprendedor -->
+                            <div class="community-card" onclick="selectCommunity('legado')" style="
+                                background: linear-gradient(135deg, #fffbeb 0%, #fef3c7 100%);
+                                border-radius: 20px;
+                                padding: 30px;
+                                text-align: center;
+                                cursor: pointer;
+                                transition: all 0.3s ease;
+                                border: 2px solid transparent;
+                                position: relative;
+                                overflow: hidden;
+                            ">
+                                <div style="
+                                    background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%);
+                                    width: 80px;
+                                    height: 80px;
+                                    border-radius: 50%;
+                                    margin: 0 auto 20px;
+                                    display: flex;
+                                    align-items: center;
+                                    justify-content: center;
+                                    box-shadow: 0 8px 25px rgba(245, 158, 11, 0.3);
+                                ">
+                                    <i class="fas fa-crown" style="color: white; font-size: 32px;"></i>
+                                </div>
+                                    <h3 style="color: var(--text-primary); font-size: 22px; font-weight: 700; margin: 0 0 15px 0;">Legado Emprendedor</h3>
+                                    <p style="color: var(--text-secondary); font-size: 14px; line-height: 1.6; margin: 0 0 20px 0;">Para profesionales experimentados que quieren capitalizar su conocimiento y experiencia.</p>
+                                <div style="
+                                    background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%);
+                                    color: white;
+                                    padding: 12px 24px;
+                                    border-radius: 25px;
+                                    font-weight: 600;
+                                    font-size: 14px;
+                                    display: inline-block;
+                                ">Únete Ahora</div>
+                            </div>
+                        </div>
+                        
+                            <div style="text-align: center;">
+                                <button onclick="hideCommunityModal()" style="
+                                    background: var(--bg-secondary);
+                                    color: var(--text-primary);
+                                    border: 2px solid var(--border-color);
+                                    padding: 12px 24px;
+                                    border-radius: 12px;
+                                    font-size: 16px;
+                                    cursor: pointer;
+                                    margin-right: 10px;
+                                    transition: all 0.3s ease;
+                                " onmouseover="this.style.background='var(--bg-tertiary)'" onmouseout="this.style.background='var(--bg-secondary)'">Cancelar</button>
+                                <button onclick="goToMainPage()" style="
+                                    background: var(--gradient-primary);
+                                    color: white;
+                                    border: none;
+                                    padding: 12px 24px;
+                                    border-radius: 12px;
+                                    font-size: 16px;
+                                    cursor: pointer;
+                                    transition: all 0.3s ease;
+                                " onmouseover="this.style.transform='translateY(-2px)'" onmouseout="this.style.transform='translateY(0)'">Página Principal</button>
+                            </div>
+                    </div>
+                `;
+                document.body.appendChild(modal);
+            }
+            
+            // Mostrar modal
+            modal.style.display = 'flex';
+            modal.style.position = 'fixed';
+            modal.style.top = '0';
+            modal.style.left = '0';
+            modal.style.width = '100%';
+            modal.style.height = '100%';
+            modal.style.backgroundColor = 'rgba(0,0,0,0.7)';
+            modal.style.justifyContent = 'center';
+            modal.style.alignItems = 'center';
+            modal.style.zIndex = '1000';
+            
+            // Agregar efectos hover a las tarjetas
+            const cards = modal.querySelectorAll('.community-card');
+            cards.forEach(card => {
+                card.addEventListener('mouseenter', function() {
+                    this.style.transform = 'translateY(-8px)';
+                    this.style.boxShadow = '0 20px 40px rgba(0,0,0,0.15)';
+                });
+                card.addEventListener('mouseleave', function() {
+                    this.style.transform = 'translateY(0)';
+                    this.style.boxShadow = 'none';
+                });
+            });
+        }
+        
+        function hideCommunityModal() {
+            const modal = document.getElementById('community-modal');
+            if (modal) {
+                modal.style.display = 'none';
+            }
+        }
+        
+        function selectCommunity(community) {
+            hideCommunityModal();
+            
+            switch(community) {
+                case 'creadoras':
+                    window.location.href = '../creadoras.html';
+                    break;
+                case 'innovadores':
+                    window.location.href = '../innovadores.html';
+                    break;
+                case 'legado':
+                    window.location.href = '../legado.html';
+                    break;
+            }
+        }
+        
+        function goToMainPage() {
+            hideCommunityModal();
+            window.location.href = '../prueba.html';
+        }
+        
+            function signOut() {
+                // Usar el nuevo sistema de autenticación
+                if (window.simulatedAuth) {
+                    window.simulatedAuth.logout();
+                }
+            }
+
+            // Función para simular login con Google
+            function simulateGoogleLogin() {
+                console.log('🔧 Simulando login con Google...');
+                
+                // Crear usuario simulado
+                const user = {
+                    id: 'google_user_' + Date.now(),
+                    name: 'Usuario EmprendeIA',
+                    email: 'usuario@emprendeia.com',
+                    avatar: 'IMG/placeholder-user.jpg',
+                    provider: 'google',
+                    community: 'general'
+                };
+
+                // Guardar en localStorage
+                localStorage.setItem('currentUser', JSON.stringify(user));
+                localStorage.setItem('userName', user.name);
+                localStorage.setItem('userEmail', user.email);
+                localStorage.setItem('userPhoto', user.avatar);
+
+                // Mostrar sección de usuario logueado
+                const loggedInSection = document.getElementById('user-logged-in');
+                const loginForm = document.getElementById('login-form');
+                
+                if (loggedInSection) {
+                    loggedInSection.style.display = 'block';
+                    document.getElementById('user-name').textContent = user.name;
+                    document.getElementById('user-email').textContent = user.email;
+                    document.getElementById('user-avatar').src = user.avatar;
+                    document.getElementById('user-community').textContent = 'Comunidad: General';
+                }
+                
+                if (loginForm) loginForm.style.display = 'none';
+
+                // Notificar al sistema global
+                window.dispatchEvent(new CustomEvent('userLogin', { detail: user }));
+                
+                alert('✅ ¡Login exitoso con Google!');
+                console.log('✅ Usuario logueado:', user);
+            }
+
+            // Función para simular login con email
+            function simulateEmailLogin() {
+                const email = document.getElementById('email').value;
+                const password = document.getElementById('password').value;
+                
+                if (!email || !password) {
+                    alert('⚠️ Por favor completa todos los campos');
+                    return;
+                }
+                
+                console.log('🔧 Simulando login con email...');
+                
+                // Crear usuario simulado
+                const user = {
+                    id: 'email_user_' + Date.now(),
+                    name: 'Usuario EmprendeIA',
+                    email: email,
+                    avatar: 'IMG/placeholder-user.jpg',
+                    provider: 'email',
+                    community: 'general'
+                };
+
+                // Guardar en localStorage
+                localStorage.setItem('currentUser', JSON.stringify(user));
+                localStorage.setItem('userName', user.name);
+                localStorage.setItem('userEmail', user.email);
+                localStorage.setItem('userPhoto', user.avatar);
+
+                // Mostrar sección de usuario logueado
+                const loggedInSection = document.getElementById('user-logged-in');
+                const loginForm = document.getElementById('login-form');
+                
+                if (loggedInSection) {
+                    loggedInSection.style.display = 'block';
+                    document.getElementById('user-name').textContent = user.name;
+                    document.getElementById('user-email').textContent = user.email;
+                    document.getElementById('user-avatar').src = user.avatar;
+                    document.getElementById('user-community').textContent = 'Comunidad: General';
+                }
+                
+                if (loginForm) loginForm.style.display = 'none';
+
+                // Notificar al sistema global
+                window.dispatchEvent(new CustomEvent('userLogin', { detail: user }));
+                
+                alert('✅ ¡Login exitoso con email!');
+                console.log('✅ Usuario logueado:', user);
+            }
+
+            function hideProfileWidget() {
+                const widget = document.getElementById('profile-widget');
+                if (widget) {
+                    widget.style.display = 'none';
+                }
+            }
+
+            function showProfileWidget() {
+                const widget = document.getElementById('profile-widget');
+                if (widget) {
+                    widget.style.display = 'flex';
+                }
+            }
+
+            // Mostrar widget cuando el usuario esté logueado
+            function checkUserLogin() {
+                const loggedInSection = document.getElementById('user-logged-in');
+                if (loggedInSection && loggedInSection.style.display !== 'none') {
+                    showProfileWidget();
+                }
+            }
+
+            // Verificar estado de login al cargar la página
+            document.addEventListener('DOMContentLoaded', function() {
+                setTimeout(checkUserLogin, 1000);
+            });
+    </script>
 </body>
 </html>

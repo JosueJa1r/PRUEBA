@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test Login Sin Errores - EmprendeIA</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 20px;
+            background: #f8fafc;
+        }
+
+        .test-container {
+            max-width: 600px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 15px;
+            padding: 30px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+
+        .test-section {
+            margin-bottom: 30px;
+            padding: 20px;
+            border: 2px solid #e2e8f0;
+            border-radius: 10px;
+        }
+
+        .btn {
+            background: #3b82f6;
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            border-radius: 8px;
+            cursor: pointer;
+            margin: 5px;
+            font-weight: 600;
+            display: inline-block;
+            text-decoration: none;
+        }
+
+        .btn:hover {
+            background: #2563eb;
+        }
+
+        .btn-success {
+            background: #10b981;
+        }
+
+        .btn-success:hover {
+            background: #059669;
+        }
+
+        .btn-danger {
+            background: #ef4444;
+        }
+
+        .btn-danger:hover {
+            background: #dc2626;
+        }
+
+        .google-btn {
+            background: white;
+            border: 2px solid #e2e8f0;
+            color: #374151;
+            padding: 12px 24px;
+            border-radius: 8px;
+            cursor: pointer;
+            margin: 5px;
+            font-weight: 600;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .google-btn:hover {
+            background: #f9fafb;
+            border-color: #3b82f6;
+        }
+
+        .status {
+            background: #f1f5f9;
+            padding: 15px;
+            border-radius: 8px;
+            margin: 15px 0;
+        }
+
+        .input-group {
+            margin: 15px 0;
+        }
+
+        .input-group label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: 600;
+        }
+
+        .input-group input {
+            width: 100%;
+            padding: 10px;
+            border: 2px solid #e2e8f0;
+            border-radius: 8px;
+            font-size: 16px;
+        }
+
+        .input-group input:focus {
+            outline: none;
+            border-color: #3b82f6;
+        }
+    </style>
+</head>
+<body>
+    <div class="test-container">
+        <h1>🧪 Test de Login Sin Errores</h1>
+        
+        <div class="test-section">
+            <h2>Estado Actual del Usuario</h2>
+            <div class="status">
+                <p><strong>Usuario logueado:</strong> <span id="login-status">Verificando...</span></p>
+                <p><strong>Nombre:</strong> <span id="user-name">-</span></p>
+                <p><strong>Email:</strong> <span id="user-email">-</span></p>
+                <p><strong>Proveedor:</strong> <span id="user-provider">-</span></p>
+            </div>
+        </div>
+
+        <div class="test-section">
+            <h2>Opciones de Login</h2>
+            
+            <h3>1. Login con Google (Simulado)</h3>
+            <button class="google-btn" onclick="simulateGoogleLogin()">
+                <img src="https://img.icons8.com/color/20/000000/google-logo.png" alt="Google">
+                Continuar con Google
+            </button>
+            
+            <h3>2. Login con Email (Simulado)</h3>
+            <div class="input-group">
+                <label for="email">Email:</label>
+                <input type="email" id="email" placeholder="tu@email.com">
+            </div>
+            <div class="input-group">
+                <label for="password">Contraseña:</label>
+                <input type="password" id="password" placeholder="Tu contraseña">
+            </div>
+            <button class="btn" onclick="simulateEmailLogin()">
+                <i class="fas fa-sign-in-alt"></i>
+                Iniciar Sesión
+            </button>
+            
+            <h3>3. Acciones</h3>
+            <button class="btn btn-danger" onclick="simulateLogout()">Cerrar Sesión</button>
+            <button class="btn btn-success" onclick="goToMainPage()">Ir a Página Principal</button>
+            <button class="btn" onclick="checkStatus()">Verificar Estado</button>
+        </div>
+
+        <div class="test-section">
+            <h2>Log de Eventos</h2>
+            <div id="event-log" style="background: #1e293b; color: #f8fafc; padding: 15px; border-radius: 8px; font-family: monospace; max-height: 200px; overflow-y: auto;">
+                <div>🔄 Sistema iniciado...</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Sistema Global de Usuario -->
+    <script src="js/global-user-manager.js"></script>
+    
+    <script>
+        function logEvent(message) {
+            const log = document.getElementById('event-log');
+            const timestamp = new Date().toLocaleTimeString();
+            log.innerHTML += `<div>[${timestamp}] ${message}</div>`;
+            log.scrollTop = log.scrollHeight;
+        }
+
+        function simulateGoogleLogin() {
+            logEvent('🔧 Iniciando login con Google...');
+            
+            const user = {
+                id: 'google_user_' + Date.now(),
+                name: 'Usuario EmprendeIA',
+                email: 'usuario@emprendeia.com',
+                avatar: 'IMG/placeholder-user.jpg',
+                provider: 'google',
+                community: 'general'
+            };
+
+            // Guardar en localStorage
+            localStorage.setItem('currentUser', JSON.stringify(user));
+            localStorage.setItem('userName', user.name);
+            localStorage.setItem('userEmail', user.email);
+            localStorage.setItem('userPhoto', user.avatar);
+
+            // Notificar al sistema global
+            window.dispatchEvent(new CustomEvent('userLogin', { detail: user }));
+            
+            logEvent('✅ Login con Google exitoso');
+            checkStatus();
+            
+            alert('✅ ¡Login exitoso con Google!');
+        }
+
+        function simulateEmailLogin() {
+            const email = document.getElementById('email').value;
+            const password = document.getElementById('password').value;
+            
+            if (!email || !password) {
+                alert('⚠️ Por favor completa todos los campos');
+                logEvent('⚠️ Campos incompletos');
+                return;
+            }
+            
+            logEvent('🔧 Iniciando login con email...');
+            
+            const user = {
+                id: 'email_user_' + Date.now(),
+                name: 'Usuario EmprendeIA',
+                email: email,
+                avatar: 'IMG/placeholder-user.jpg',
+                provider: 'email',
+                community: 'general'
+            };
+
+            // Guardar en localStorage
+            localStorage.setItem('currentUser', JSON.stringify(user));
+            localStorage.setItem('userName', user.name);
+            localStorage.setItem('userEmail', user.email);
+            localStorage.setItem('userPhoto', user.avatar);
+
+            // Notificar al sistema global
+            window.dispatchEvent(new CustomEvent('userLogin', { detail: user }));
+            
+            logEvent('✅ Login con email exitoso');
+            checkStatus();
+            
+            alert('✅ ¡Login exitoso con email!');
+        }
+
+        function simulateLogout() {
+            logEvent('🔧 Cerrando sesión...');
+            
+            // Limpiar localStorage
+            localStorage.removeItem('currentUser');
+            localStorage.removeItem('userName');
+            localStorage.removeItem('userEmail');
+            localStorage.removeItem('userPhoto');
+
+            // Notificar al sistema global
+            window.dispatchEvent(new CustomEvent('userLogout'));
+            
+            logEvent('✅ Sesión cerrada');
+            checkStatus();
+            
+            alert('✅ Sesión cerrada exitosamente');
+        }
+
+        function goToMainPage() {
+            logEvent('🔗 Redirigiendo a página principal...');
+            window.location.href = 'prueba.html';
+        }
+
+        function checkStatus() {
+            const savedUser = localStorage.getItem('currentUser');
+            const isLoggedIn = !!savedUser;
+            
+            document.getElementById('login-status').textContent = isLoggedIn ? 'Sí' : 'No';
+            
+            if (isLoggedIn) {
+                const user = JSON.parse(savedUser);
+                document.getElementById('user-name').textContent = user.name;
+                document.getElementById('user-email').textContent = user.email;
+                document.getElementById('user-provider').textContent = user.provider;
+            } else {
+                document.getElementById('user-name').textContent = '-';
+                document.getElementById('user-email').textContent = '-';
+                document.getElementById('user-provider').textContent = '-';
+            }
+
+            logEvent(`🔍 Estado: ${isLoggedIn ? 'Usuario logueado' : 'Usuario no logueado'}`);
+        }
+
+        // Inicializar
+        document.addEventListener('DOMContentLoaded', function() {
+            logEvent('🚀 Página cargada');
+            checkStatus();
+            
+            // Escuchar eventos del sistema global
+            window.addEventListener('userLogin', function(e) {
+                logEvent('📢 Evento userLogin recibido');
+                checkStatus();
+            });
+            
+            window.addEventListener('userLogout', function(e) {
+                logEvent('📢 Evento userLogout recibido');
+                checkStatus();
+            });
+        });
+    </script>
+</body>
+</html>

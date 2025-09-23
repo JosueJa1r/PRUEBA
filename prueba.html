@@ -6,7 +6,44 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>EmprendeIA - Adquiere Habilidades Emprendedoras</title>
     <link rel="stylesheet" href="STYLES/prueba-style.css">
+    <link rel="stylesheet" href="css/button-center.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        /* Botón de tema original */
+        .btn-theme {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background: var(--bg-primary, #ffffff);
+            border: 2px solid var(--border-color, #e2e8f0);
+            color: var(--text-primary, #1e293b);
+            padding: 12px;
+            border-radius: 50%;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+            z-index: 1000;
+            width: 50px;
+            height: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 18px;
+        }
+
+        .btn-theme:hover {
+            background: var(--accent-color, #3b82f6);
+            color: white;
+            transform: scale(1.1);
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+        }
+
+        [data-theme="dark"] .btn-theme {
+            background: var(--bg-primary, #0f172a);
+            border-color: var(--border-color, #475569);
+            color: var(--text-primary, #f8fafc);
+        }
+    </style>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
@@ -42,14 +79,14 @@
                     <li class="dropdown">
                         <a href="#inscripcion">Comunidad <i class="fas fa-chevron-down"></i></a>
                         <div class="dropdown-content">
-                            <a href="https://v0-user-types-for-website.vercel.app/creadoras">Creadoras IA</a>
-                            <a href="https://v0-user-types-for-website.vercel.app/innovadores">Innovadores del Futuro</a>
-                            <a href="https://v0-user-types-for-website.vercel.app/legado">Legado Emprendedor</a>
+                            <a href="creadoras.html">Creadoras IA</a>
+                            <a href="innovadores.html">Innovadores del Futuro</a>
+                            <a href="legado.html">Legado Emprendedor</a>
                         </div>
                     </li>
                 </ul>
                 <div class="nav-actions">
-                    <a href="Usuario/usuario.html" class="btn btn-primary">ACCEDE</a>
+                    <a href="#" class="btn btn-primary access-btn" id="header-access-btn">ACCEDE</a>
                     <button id="theme-toggle" class="btn-theme"><i class="fas fa-moon"></i></button>
                     <select class="language-selector">
                         <option value="es">🇲🇽</option>
@@ -72,7 +109,7 @@
             <div class="hero-content">
                 <h1>ADQUIERE LAS <span class="highlight-blue">HABILIDADES</span> QUE TODO <span class="highlight-green">EMPRENDEDOR</span> NECESITA TENER</h1>
                 <p>Herramientas y acompañamiento para que tomes decisiones con claridad y crezcas con confianza.</p>
-                <a href="Usuario/usuario.html" class="btn btn-primary large-btn">INSCRIBIRME AHORA <i class="fas fa-arrow-right"></i></a>
+                <a href="#" class="btn btn-primary large-btn access-btn" id="hero-access-btn">INSCRIBIRME AHORA <i class="fas fa-arrow-right"></i></a>
             </div>
             <div class="hero-video-container">
                 <div class="video-placeholder">
@@ -409,34 +446,34 @@
             <p>Únete a miles de emprendedores que ya están construyendo el futuro.</p>
             <div class="cta-features-grid">
                 <!-- Feature 1 -->
-                <div class="cta-feature-item">
-                    <div class="cta-feature-image" style="background-image: url('IMG/business-woman-professional.jpg');"></div>
+                <div class="cta-feature-item creadoras-shadow">
+                    <div class="cta-feature-image" style="background-image: url('IMG/mujeresEmprtendedoras.jpg');"></div>
                     <div class="cta-feature-content">
                         <h4>Creadoras IA</h4>
                         <p>Más que una emprendedora, eres una arquitecta del futuro. Desata tu poder creativo y construye la próxima era de la innovación con nosotras.</p>
-                        <a href="https://v0-user-types-for-website.vercel.app/creadoras" class="btn btn-cta-card">Más Información</a>
+                        <a href="creadoras.html" class="btn btn-cta-card">Más Información</a>
                     </div>
                 </div>
                 <!-- Feature 2 -->
-                <div class="cta-feature-item">
-                    <div class="cta-feature-image" style="background-image: url('IMG/JOVEN.png');"></div>
+                <div class="cta-feature-item innovadores-shadow">
+                    <div class="cta-feature-image" style="background-image: url('IMG/jovenesEscribiendoElFuturo.jpg');"></div>
                     <div class="cta-feature-content">
                         <h4>Innovadores del Futuro</h4>
                         <p>Una invitación para jóvenes talentosos a unirse a un movimiento que busca transformar el mundo y construir el futuro a través del emprendimiento y la tecnología.</p>
-                        <a href="https://v0-user-types-for-website.vercel.app/innovadores" class="btn btn-cta-card">Más Información</a>
+                        <a href="innovadores.html" class="btn btn-cta-card">Más Información</a>
                     </div>
                 </div>
                 <!-- Feature 3 -->
-                <div class="cta-feature-item">
-                    <div class="cta-feature-image" style="background-image: url('IMG/business-woman-professional.jpg');"></div>
+                <div class="cta-feature-item legado-shadow">
+                    <div class="cta-feature-image" style="background-image: url('IMG/Santa.jpg');"></div>
                     <div class="cta-feature-content">
                         <h4>Legado Emprendedor</h4>
                         <p>Tu conocimiento y tu trayectoria son el capital más valioso que tienes.</p>
-                        <a href="https://v0-user-types-for-website.vercel.app/legado" class="btn btn-cta-card">Más Información</a>
+                        <a href="legado.html" class="btn btn-cta-card">Más Información</a>
                     </div>
                 </div>
             </div>
-            <a href="https://v0-user-types-for-website.vercel.app/" class="btn btn-primary large-btn">Comienza tu viaje ahora <i class="fas fa-rocket"></i></a>
+            <a href="#" class="btn btn-primary large-btn access-btn" id="cta-access-btn">Comienza tu viaje ahora <i class="fas fa-rocket"></i></a>
         </div>
     </section>
 
@@ -561,7 +598,7 @@
                         <a href="https://www.facebook.com/share/1EovDKoRYw/" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
                         <a href="https://www.instagram.com/emprendeia1?utm_source=qr" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
                         <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
-                        <a href="#" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+                        <a href="https://youtube.com/@emprendeia-q4e?si=Nk3_L7nmJXYaQVZB" target="_blank" rel="noopener noreferrer" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
                     </div>
                 </div>
             </div>
@@ -572,6 +609,8 @@
     </footer>
 
     <script src="script.js"></script>
+    <!-- Sistema Global de Usuario -->
+    <script src="js/global-user-manager.js"></script>
 </body>
 </html>
 

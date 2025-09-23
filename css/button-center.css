@@ -1,0 +1,48 @@
+/* Estilos adicionales para centrado perfecto de botones */
+.access-btn,
+.user-profile-btn,
+.btn-primary,
+.large-btn {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    text-align: center !important;
+    width: 100% !important;
+}
+
+/* Centrado específico para botones de acceso */
+.access-btn {
+    justify-content: center !important;
+    align-items: center !important;
+}
+
+/* Centrado específico para botones de perfil */
+.user-profile-btn {
+    justify-content: center !important;
+    align-items: center !important;
+}
+
+/* Centrado para botones grandes */
+.large-btn {
+    justify-content: center !important;
+    align-items: center !important;
+    text-align: center !important;
+}
+
+/* Asegurar que el contenido interno esté centrado */
+.access-btn *,
+.user-profile-btn * {
+    text-align: center !important;
+}
+
+/* Centrado para iconos y texto */
+.access-btn i,
+.user-profile-btn i {
+    margin: 0 !important;
+}
+
+.access-btn span,
+.user-profile-btn span {
+    text-align: center !important;
+    margin: 0 !important;
+}

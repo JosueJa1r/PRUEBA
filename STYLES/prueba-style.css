@@ -861,6 +861,42 @@ a:hover {
     box-shadow: 0 8px 20px rgba(0,0,0,0.12); /* Se mantiene una sombra sutil para feedback */
 }
 
+/* Sombra rosa específica para Creadoras IA */
+.cta-feature-item.creadoras-shadow {
+    box-shadow: 0 8px 25px rgba(236, 72, 153, 0.3), 0 4px 15px rgba(236, 72, 153, 0.2);
+    border: 2px solid rgba(236, 72, 153, 0.2);
+}
+
+.cta-feature-item.creadoras-shadow:hover {
+    box-shadow: 0 12px 35px rgba(236, 72, 153, 0.4), 0 6px 20px rgba(236, 72, 153, 0.3);
+    border-color: rgba(236, 72, 153, 0.4);
+    transform: translateY(-2px);
+}
+
+/* Sombra azul específica para Innovadores del Futuro */
+.cta-feature-item.innovadores-shadow {
+    box-shadow: 0 8px 25px rgba(59, 130, 246, 0.3), 0 4px 15px rgba(59, 130, 246, 0.2);
+    border: 2px solid rgba(59, 130, 246, 0.2);
+}
+
+.cta-feature-item.innovadores-shadow:hover {
+    box-shadow: 0 12px 35px rgba(59, 130, 246, 0.4), 0 6px 20px rgba(59, 130, 246, 0.3);
+    border-color: rgba(59, 130, 246, 0.4);
+    transform: translateY(-2px);
+}
+
+/* Sombra dorada específica para Legado Emprendedor */
+.cta-feature-item.legado-shadow {
+    box-shadow: 0 8px 25px rgba(251, 191, 36, 0.3), 0 4px 15px rgba(251, 191, 36, 0.2);
+    border: 2px solid rgba(251, 191, 36, 0.2);
+}
+
+.cta-feature-item.legado-shadow:hover {
+    box-shadow: 0 12px 35px rgba(251, 191, 36, 0.4), 0 6px 20px rgba(251, 191, 36, 0.3);
+    border-color: rgba(251, 191, 36, 0.4);
+    transform: translateY(-2px);
+}
+
 .cta-feature-image {
     height: 180px; /* Altura para la imagen */
     background-color: rgba(255, 255, 255, 0.15); /* Placeholder para la imagen */

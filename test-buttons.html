@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test Botones - EmprendeIA</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        :root {
+            --bg-primary: #ffffff;
+            --text-primary: #1e293b;
+            --border-color: #e2e8f0;
+        }
+
+        [data-theme="dark"] {
+            --bg-primary: #0f172a;
+            --text-primary: #f8fafc;
+            --border-color: #475569;
+        }
+
+        body {
+            background: var(--bg-primary);
+            color: var(--text-primary);
+            font-family: Arial, sans-serif;
+            padding: 20px;
+            transition: all 0.3s ease;
+        }
+
+        .test-header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 30px;
+            border-radius: 15px;
+            margin-bottom: 30px;
+            position: relative;
+        }
+
+        .back-btn {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            background: rgba(255, 255, 255, 0.2);
+            border: none;
+            color: white;
+            padding: 12px 20px;
+            border-radius: 25px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            z-index: 10;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            pointer-events: auto;
+        }
+
+        .back-btn:hover {
+            background: rgba(255, 255, 255, 0.3);
+            transform: translateX(-5px);
+            color: white;
+            text-decoration: none;
+        }
+
+        .theme-toggle {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: rgba(255, 255, 255, 0.2);
+            border: none;
+            color: white;
+            padding: 12px;
+            border-radius: 50%;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            z-index: 10;
+            width: 45px;
+            height: 45px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            pointer-events: auto;
+        }
+
+        .theme-toggle:hover {
+            background: rgba(255, 255, 255, 0.3);
+            transform: scale(1.1);
+        }
+
+        .test-content {
+            background: var(--bg-primary);
+            border: 2px solid var(--border-color);
+            border-radius: 15px;
+            padding: 30px;
+            margin-bottom: 20px;
+        }
+
+        .status {
+            background: var(--border-color);
+            padding: 15px;
+            border-radius: 10px;
+            margin: 15px 0;
+        }
+
+        .btn {
+            background: #3b82f6;
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            border-radius: 8px;
+            cursor: pointer;
+            margin: 5px;
+            font-weight: 600;
+        }
+
+        .btn:hover {
+            background: #2563eb;
+        }
+    </style>
+</head>
+<body>
+    <div class="test-header">
+        <a href="../prueba.html" class="back-btn" onclick="goBack()">
+            <i class="fas fa-arrow-left"></i>
+            Volver
+        </a>
+        <button class="theme-toggle" id="theme-toggle">
+            <i class="fas fa-moon"></i>
+        </button>
+        <h1>Test de Botones</h1>
+        <p>Prueba los botones de regresar y modo oscuro</p>
+    </div>
+
+    <div class="test-content">
+        <h2>Estado Actual</h2>
+        <div class="status">
+            <p><strong>Tema actual:</strong> <span id="current-theme">light</span></p>
+            <p><strong>Botón de tema encontrado:</strong> <span id="theme-button-status">Verificando...</span></p>
+            <p><strong>Event listeners:</strong> <span id="event-status">Verificando...</span></p>
+        </div>
+
+        <h2>Controles de Prueba</h2>
+        <button class="btn" onclick="testGoBack()">Probar Regresar</button>
+        <button class="btn" onclick="testThemeToggle()">Probar Cambio de Tema</button>
+        <button class="btn" onclick="resetTheme()">Resetear Tema</button>
+        <button class="btn" onclick="checkStatus()">Verificar Estado</button>
+    </div>
+
+    <script>
+        // Función para regresar
+        function goBack() {
+            console.log('Función goBack() ejecutada');
+            if (window.history.length > 1) {
+                window.history.back();
+            } else {
+                window.location.href = '../prueba.html';
+            }
+        }
+
+        // Función de prueba para regresar
+        function testGoBack() {
+            console.log('Probando función goBack...');
+            goBack();
+        }
+
+        // Función para cambiar tema
+        function toggleTheme() {
+            const currentTheme = document.body.getAttribute('data-theme');
+            const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+            
+            document.body.setAttribute('data-theme', newTheme);
+            localStorage.setItem('theme', newTheme);
+            
+            updateThemeIcon(newTheme);
+            updateStatus();
+            
+            console.log('Tema cambiado a:', newTheme);
+        }
+
+        // Función de prueba para tema
+        function testThemeToggle() {
+            console.log('Probando cambio de tema...');
+            toggleTheme();
+        }
+
+        // Actualizar icono del tema
+        function updateThemeIcon(theme) {
+            const themeToggle = document.getElementById('theme-toggle');
+            if (themeToggle) {
+                const icon = themeToggle.querySelector('i');
+                if (icon) {
+                    if (theme === 'dark') {
+                        icon.className = 'fas fa-sun';
+                        icon.style.color = '#fbbf24';
+                        themeToggle.title = 'Cambiar a modo claro';
+                    } else {
+                        icon.className = 'fas fa-moon';
+                        icon.style.color = '#6366f1';
+                        themeToggle.title = 'Cambiar a modo oscuro';
+                    }
+                }
+            }
+        }
+
+        // Actualizar estado
+        function updateStatus() {
+            const currentTheme = document.body.getAttribute('data-theme') || 'light';
+            document.getElementById('current-theme').textContent = currentTheme;
+            
+            const themeButton = document.getElementById('theme-toggle');
+            document.getElementById('theme-button-status').textContent = themeButton ? 'Sí' : 'No';
+            
+            document.getElementById('event-status').textContent = 'Configurado';
+        }
+
+        // Verificar estado
+        function checkStatus() {
+            updateStatus();
+            console.log('Estado verificado');
+        }
+
+        // Resetear tema
+        function resetTheme() {
+            localStorage.removeItem('theme');
+            document.body.setAttribute('data-theme', 'light');
+            updateThemeIcon('light');
+            updateStatus();
+            console.log('Tema reseteado a claro');
+        }
+
+        // Inicializar
+        document.addEventListener('DOMContentLoaded', function() {
+            console.log('DOM cargado, inicializando...');
+            
+            // Cargar tema guardado
+            const savedTheme = localStorage.getItem('theme') || 'light';
+            document.body.setAttribute('data-theme', savedTheme);
+            updateThemeIcon(savedTheme);
+            
+            // Configurar botón de tema
+            const themeToggle = document.getElementById('theme-toggle');
+            if (themeToggle) {
+                themeToggle.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    toggleTheme();
+                });
+                console.log('Event listener agregado al botón de tema');
+            } else {
+                console.error('No se encontró el botón de tema');
+            }
+            
+            // Actualizar estado inicial
+            updateStatus();
+            
+            console.log('Inicialización completada');
+        });
+    </script>
+</body>
+</html>

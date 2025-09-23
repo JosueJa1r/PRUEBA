@@ -1,0 +1,1479 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Creadoras del Futuro - EmprendeIA</title>
+    <link rel="stylesheet" href="STYLES/prueba-style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="css/button-center.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        /* Variables CSS para consistencia */
+        :root {
+            --primary-gradient: linear-gradient(135deg, #ec4899 0%, #8b5cf6 50%, #a855f7 100%);
+            --secondary-gradient: linear-gradient(135deg, #fdf2f8 0%, #f3e8ff 100%);
+            --accent-color: #ec4899;
+            --text-primary: #1f2937;
+            --text-secondary: #6b7280;
+            --shadow-soft: 0 4px 20px rgba(236, 72, 153, 0.15);
+            --shadow-medium: 0 8px 30px rgba(236, 72, 153, 0.2);
+            --shadow-strong: 0 20px 40px rgba(236, 72, 153, 0.3);
+            
+            /* Variables para modo oscuro */
+            --bg-primary: #ffffff;
+            --bg-secondary: #f8fafc;
+            --bg-tertiary: #f1f5f9;
+            --border-color: #e2e8f0;
+            --card-bg: #ffffff;
+        }
+
+        /* Modo oscuro */
+        [data-theme="dark"] {
+            --primary-gradient: linear-gradient(135deg, #f472b6 0%, #a78bfa 50%, #c084fc 100%);
+            --secondary-gradient: linear-gradient(135deg, #1f1b2e 0%, #2d1b69 100%);
+            --accent-color: #f472b6;
+            --text-primary: #f8fafc;
+            --text-secondary: #cbd5e1;
+            --shadow-soft: 0 4px 20px rgba(244, 114, 182, 0.2);
+            --shadow-medium: 0 8px 30px rgba(244, 114, 182, 0.3);
+            --shadow-strong: 0 20px 40px rgba(244, 114, 182, 0.4);
+            
+            --bg-primary: #0f0f23;
+            --bg-secondary: #1a1a2e;
+            --bg-tertiary: #16213e;
+            --border-color: #2d3748;
+            --card-bg: #1a1a2e;
+        }
+
+        /* Animaciones globales */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+        }
+
+        @keyframes shimmer {
+            0% { background-position: -200% 0; }
+            100% { background-position: 200% 0; }
+        }
+
+        .community-header {
+            background: var(--primary-gradient);
+            color: white;
+            padding: 6rem 0;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .community-header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grain" width="100" height="100" patternUnits="userSpaceOnUse"><circle cx="25" cy="25" r="1" fill="white" opacity="0.1"/><circle cx="75" cy="75" r="1" fill="white" opacity="0.1"/><circle cx="50" cy="10" r="0.5" fill="white" opacity="0.1"/><circle cx="10" cy="60" r="0.5" fill="white" opacity="0.1"/><circle cx="90" cy="40" r="0.5" fill="white" opacity="0.1"/></pattern></defs><rect width="100" height="100" fill="url(%23grain)"/></svg>');
+            animation: float 6s ease-in-out infinite;
+        }
+
+        .community-header h1 {
+            font-size: 4rem;
+            font-weight: 800;
+            margin-bottom: 1.5rem;
+            text-shadow: 0 4px 8px rgba(0,0,0,0.3);
+            background: linear-gradient(45deg, #ffffff, #fdf2f8);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            animation: fadeInUp 1s ease-out;
+            position: relative;
+            z-index: 1;
+        }
+
+        .community-header .subtitle {
+            font-size: 1.75rem;
+            margin-bottom: 2rem;
+            font-weight: 600;
+            opacity: 0.95;
+            animation: fadeInUp 1s ease-out 0.2s both;
+            position: relative;
+            z-index: 1;
+        }
+
+        .community-header .description {
+            font-size: 1.2rem;
+            max-width: 900px;
+            margin: 0 auto 3rem;
+            opacity: 0.9;
+            line-height: 1.7;
+            animation: fadeInUp 1s ease-out 0.4s both;
+            position: relative;
+            z-index: 1;
+        }
+
+        .back-button {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.75rem;
+            background: rgba(255,255,255,0.15);
+            color: white;
+            padding: 1rem 2rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 700;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            backdrop-filter: blur(20px);
+            border: 2px solid rgba(255,255,255,0.2);
+            box-shadow: 0 8px 32px rgba(0,0,0,0.1);
+            animation: fadeInUp 1s ease-out 0.6s both;
+            position: relative;
+            z-index: 1;
+        }
+
+        .back-button:hover {
+            background: rgba(255,255,255,0.25);
+            transform: translateY(-3px) scale(1.05);
+            box-shadow: 0 12px 40px rgba(0,0,0,0.2);
+            border-color: rgba(255,255,255,0.4);
+        }
+
+        .back-button::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(45deg, transparent, rgba(255,255,255,0.1), transparent);
+            border-radius: 50px;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .back-button:hover::before {
+            opacity: 1;
+            animation: shimmer 1.5s ease-in-out;
+        }
+        
+        .stats-section {
+            background: var(--secondary-gradient);
+            padding: 4rem 0;
+            position: relative;
+            overflow: hidden;
+            transition: all 0.5s ease;
+        }
+
+        .stats-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="dots" width="20" height="20" patternUnits="userSpaceOnUse"><circle cx="10" cy="10" r="1" fill="%23ec4899" opacity="0.1"/></pattern></defs><rect width="100" height="100" fill="url(%23dots)"/></svg>');
+            animation: float 8s ease-in-out infinite reverse;
+        }
+        
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 3rem;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .stat-item {
+            text-align: center;
+            background: var(--card-bg);
+            padding: 2.5rem 2rem;
+            border-radius: 20px;
+            box-shadow: var(--shadow-soft);
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            overflow: hidden;
+            animation: fadeInUp 0.8s ease-out;
+            border: 1px solid var(--border-color);
+        }
+
+        .stat-item:nth-child(1) { animation-delay: 0.1s; }
+        .stat-item:nth-child(2) { animation-delay: 0.2s; }
+        .stat-item:nth-child(3) { animation-delay: 0.3s; }
+        .stat-item:nth-child(4) { animation-delay: 0.4s; }
+
+        .stat-item::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: var(--primary-gradient);
+            transform: scaleX(0);
+            transition: transform 0.3s ease;
+        }
+
+        .stat-item:hover {
+            transform: translateY(-8px) scale(1.02);
+            box-shadow: var(--shadow-medium);
+        }
+
+        .stat-item:hover::before {
+            transform: scaleX(1);
+        }
+        
+        .stat-icon {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            background: var(--primary-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            animation: pulse 2s ease-in-out infinite;
+        }
+        
+        .stat-number {
+            font-size: 3rem;
+            font-weight: 800;
+            background: var(--primary-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 0.5rem;
+            line-height: 1;
+        }
+        
+        .stat-label {
+            font-size: 1rem;
+            color: var(--text-secondary);
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        
+        .tabs-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 3rem 2rem;
+            background: var(--card-bg);
+            border-radius: 24px;
+            box-shadow: var(--shadow-soft);
+            margin-top: -2rem;
+            position: relative;
+            z-index: 2;
+            border: 1px solid var(--border-color);
+            transition: all 0.5s ease;
+        }
+        
+        .tabs-nav {
+            display: flex;
+            background: var(--secondary-gradient);
+            border-radius: 16px;
+            padding: 0.75rem;
+            margin-bottom: 3rem;
+            overflow-x: auto;
+            box-shadow: inset 0 2px 8px rgba(0,0,0,0.05);
+            border: 1px solid rgba(236, 72, 153, 0.1);
+        }
+        
+        .tab-button {
+            flex: 1;
+            padding: 1.25rem 2rem;
+            background: transparent;
+            border: none;
+            border-radius: 12px;
+            font-weight: 700;
+            color: var(--text-secondary);
+            cursor: pointer;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            white-space: nowrap;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .tab-button::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: var(--primary-gradient);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            border-radius: 12px;
+        }
+
+        .tab-button span {
+            position: relative;
+            z-index: 1;
+        }
+        
+        .tab-button.active {
+            color: white;
+            box-shadow: var(--shadow-medium);
+            transform: translateY(-2px);
+        }
+
+        .tab-button.active::before {
+            opacity: 1;
+        }
+
+        .tab-button:hover:not(.active) {
+            background: rgba(236, 72, 153, 0.1);
+            color: var(--accent-color);
+            transform: translateY(-1px);
+        }
+        
+        .tab-content {
+            display: none;
+            animation: fadeInUp 0.6s ease-out;
+        }
+        
+        .tab-content.active {
+            display: block;
+        }
+        
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+        
+        .feature-card {
+            background: var(--card-bg);
+            border: 2px solid var(--border-color);
+            border-radius: 20px;
+            padding: 2.5rem;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            box-shadow: var(--shadow-soft);
+            position: relative;
+            overflow: hidden;
+            animation: fadeInUp 0.8s ease-out;
+        }
+
+        .feature-card:nth-child(1) { animation-delay: 0.1s; }
+        .feature-card:nth-child(2) { animation-delay: 0.2s; }
+        .feature-card:nth-child(3) { animation-delay: 0.3s; }
+        .feature-card:nth-child(4) { animation-delay: 0.4s; }
+        .feature-card:nth-child(5) { animation-delay: 0.5s; }
+
+        .feature-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: var(--primary-gradient);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            border-radius: 20px;
+        }
+
+        .feature-card::after {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(45deg, transparent, rgba(255,255,255,0.1), transparent);
+            transform: rotate(45deg);
+            transition: all 0.6s ease;
+            opacity: 0;
+        }
+        
+        .feature-card:hover {
+            border-color: var(--accent-color);
+            transform: translateY(-8px) scale(1.02);
+            box-shadow: var(--shadow-strong);
+        }
+
+        .feature-card:hover::before {
+            opacity: 0.05;
+        }
+
+        .feature-card:hover::after {
+            opacity: 1;
+            animation: shimmer 1.5s ease-in-out;
+        }
+
+        .feature-card-content {
+            position: relative;
+            z-index: 1;
+        }
+        
+        .feature-icon {
+            font-size: 4rem;
+            margin-bottom: 1.5rem;
+            display: block;
+            animation: float 3s ease-in-out infinite;
+        }
+
+        .feature-icon:nth-child(1) { animation-delay: 0s; }
+        .feature-icon:nth-child(2) { animation-delay: 0.5s; }
+        .feature-icon:nth-child(3) { animation-delay: 1s; }
+        .feature-icon:nth-child(4) { animation-delay: 1.5s; }
+        .feature-icon:nth-child(5) { animation-delay: 2s; }
+        
+        .feature-title {
+            font-size: 1.5rem;
+            font-weight: 800;
+            color: var(--text-primary);
+            margin-bottom: 1rem;
+            line-height: 1.3;
+        }
+        
+        .feature-description {
+            color: var(--text-secondary);
+            line-height: 1.7;
+            font-size: 1rem;
+        }
+        
+        .community-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+        
+        .community-card {
+            background: white;
+            border: 2px solid #f1f5f9;
+            border-radius: 16px;
+            padding: 2rem;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+        }
+        
+        .community-card h3 {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: #1f2937;
+            margin-bottom: 1rem;
+        }
+        
+        .community-card .icon {
+            color: #ec4899;
+            font-size: 1.25rem;
+        }
+        
+        .forum-item {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 1rem;
+            background: #f8fafc;
+            border-radius: 8px;
+            margin-bottom: 0.75rem;
+            border: 1px solid #e2e8f0;
+        }
+        
+        .forum-item:hover {
+            background: #f1f5f9;
+        }
+        
+        .forum-name {
+            font-weight: 600;
+            color: #1f2937;
+        }
+        
+        .badge {
+            background: #ec4899;
+            color: white;
+            padding: 0.25rem 0.75rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+        }
+        
+        .partnerships-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+        }
+        
+        .partnership-card {
+            background: white;
+            border: 2px solid #f1f5f9;
+            border-radius: 16px;
+            padding: 1.5rem;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+        }
+        
+        .partnership-card::before {
+            content: '';
+            display: block;
+            width: 8px;
+            height: 8px;
+            background: linear-gradient(135deg, #ec4899 0%, #8b5cf6 100%);
+            border-radius: 50%;
+            margin-bottom: 1rem;
+        }
+        
+        .partnership-text {
+            color: #6b7280;
+            line-height: 1.6;
+        }
+        
+        .join-section {
+            text-align: center;
+            margin-top: 3rem;
+        }
+        
+        .join-card {
+            background: linear-gradient(135deg, #ec4899 0%, #8b5cf6 100%);
+            color: white;
+            border-radius: 20px;
+            padding: 3rem;
+            max-width: 600px;
+            margin: 0 auto;
+            box-shadow: 0 20px 40px rgba(236, 72, 153, 0.3);
+        }
+        
+        .join-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+        
+        .join-title {
+            font-size: 2rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
+        
+        .join-description {
+            font-size: 1.1rem;
+            margin-bottom: 2rem;
+            opacity: 0.95;
+            line-height: 1.6;
+        }
+        
+        .join-buttons {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+        
+        .btn-primary-join {
+            background: white;
+            color: #ec4899;
+            padding: 1rem 2rem;
+            border-radius: 12px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+        }
+        
+        .btn-primary-join:hover {
+            background: #f8fafc;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+        }
+        
+        .btn-outline-join {
+            background: rgba(255,255,255,0.1);
+            color: white;
+            padding: 1rem 2rem;
+            border-radius: 12px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+            border: 2px solid rgba(255,255,255,0.3);
+            backdrop-filter: blur(10px);
+        }
+        
+        .btn-outline-join:hover {
+            background: rgba(255,255,255,0.2);
+            transform: translateY(-2px);
+        }
+        
+        /* Estilos específicos para modo oscuro */
+        [data-theme="dark"] .community-header::before {
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grain-dark" width="100" height="100" patternUnits="userSpaceOnUse"><circle cx="25" cy="25" r="1" fill="white" opacity="0.05"/><circle cx="75" cy="75" r="1" fill="white" opacity="0.05"/><circle cx="50" cy="10" r="0.5" fill="white" opacity="0.05"/><circle cx="10" cy="60" r="0.5" fill="white" opacity="0.05"/><circle cx="90" cy="40" r="0.5" fill="white" opacity="0.05"/></pattern></defs><rect width="100" height="100" fill="url(%23grain-dark)"/></svg>');
+        }
+
+        [data-theme="dark"] .stats-section::before {
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="dots-dark" width="20" height="20" patternUnits="userSpaceOnUse"><circle cx="10" cy="10" r="1" fill="%23f472b6" opacity="0.1"/></pattern></defs><rect width="100" height="100" fill="url(%23dots-dark)"/></svg>');
+        }
+
+        /* Botón de cambio de tema original */
+        .btn-theme {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background: var(--bg-primary, #ffffff);
+            border: 2px solid var(--border-color, #e2e8f0);
+            color: var(--text-primary, #1e293b);
+            padding: 12px;
+            border-radius: 50%;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+            z-index: 1000;
+            width: 50px;
+            height: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 18px;
+        }
+
+        .btn-theme:hover {
+            background: var(--accent-color, #3b82f6);
+            color: white;
+            transform: scale(1.1);
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+        }
+
+        [data-theme="dark"] .btn-theme {
+            background: var(--bg-primary, #0f172a);
+            border-color: var(--border-color, #475569);
+            color: var(--text-primary, #f8fafc);
+        }
+
+        /* Transición suave para el cambio de tema */
+        * {
+            transition: background-color 0.3s ease, border-color 0.3s ease, color 0.3s ease;
+        }
+
+        /* Estilos para el body en modo oscuro */
+        [data-theme="dark"] body {
+            background: var(--bg-primary);
+            color: var(--text-primary);
+        }
+
+        [data-theme="dark"] .navbar {
+            background: var(--bg-secondary);
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        [data-theme="dark"] .footer {
+            background: var(--bg-secondary);
+            border-top: 1px solid var(--border-color);
+        }
+
+        @media (max-width: 768px) {
+            .community-header h1 {
+                font-size: 2.5rem;
+            }
+            
+            .community-header .subtitle {
+                font-size: 1.25rem;
+            }
+            
+            .stats-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .features-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .community-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .partnerships-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .tabs-nav {
+                flex-direction: column;
+            }
+            
+            .join-buttons {
+                flex-direction: column;
+            }
+        /* Widget flotante de perfil */
+        .profile-widget {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background: var(--bg-primary);
+            border-radius: 20px;
+            padding: 15px;
+            box-shadow: var(--shadow-large);
+            border: 1px solid var(--border-color);
+            cursor: pointer;
+            transition: all 0.3s ease;
+            z-index: 1000;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            min-width: 200px;
+            opacity: 0;
+            transform: translateY(100px);
+            animation: slideUpWidget 0.5s ease forwards;
+        }
+
+        @keyframes slideUpWidget {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .profile-widget:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+        }
+
+        .widget-photo {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            border: 2px solid var(--accent-color);
+            object-fit: cover;
+        }
+
+        .widget-info h4 {
+            font-size: 14px;
+            font-weight: 600;
+            color: var(--text-primary);
+            margin-bottom: 2px;
+        }
+
+        .widget-info p {
+            font-size: 12px;
+            color: var(--text-secondary);
+        }
+
+        .widget-close {
+            position: absolute;
+            top: -8px;
+            right: -8px;
+            background: var(--error-color);
+            color: white;
+            border: none;
+            border-radius: 50%;
+            width: 24px;
+            height: 24px;
+            cursor: pointer;
+            font-size: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        /* Ocultar widget cuando no hay usuario */
+        .profile-widget.hidden {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header / Navbar -->
+    <header class="navbar">
+        <div class="container">
+            <div class="logo">
+                <img src="IMG/emprendeia-logo.png" alt="EmprendeIA Logo">
+                <div class="logo-text">
+                    <span>
+                        <span style="color: #FCD25A">E</span>
+                        <span style="color: #FCD25A">m</span>
+                        <span style="color: #5EBF8D">p</span>
+                        <span style="color: #5EBF8D">r</span>
+                        <span style="color: #5EBF8D">e</span>
+                        <span style="color: #F37C2D">n</span>
+                        <span style="color: #F37C2D">d</span>
+                        <span style="color: #F37C2D">e</span>
+                        <span style="color: #4285F4">I</span>
+                        <span style="color: #4285F4">A</span>
+                    </span>
+                    <span class="powered-by">Powered by Google</span>
+                </div>
+            </div>
+            <nav class="nav-links">
+                <ul>
+                    <li><a href="prueba.html">Inicio</a></li>
+                    <li><a href="nosotros.html">Nosotros</a></li>
+                    <li><a href="prueba.html#cursos">Cursos</a></li>
+                    <li><a href="chatbot.html">IA</a></li>
+                    <li><a href="prueba.html#contacto">Contacto</a></li>
+                    <li class="dropdown">
+                        <a href="#inscripcion">Comunidad <i class="fas fa-chevron-down"></i></a>
+                        <div class="dropdown-content">
+                            <a href="creadoras.html">Creadoras IA</a>
+                            <a href="innovadores.html">Innovadores del Futuro</a>
+                            <a href="legado.html">Legado Emprendedor</a>
+                        </div>
+                    </li>
+                </ul>
+                <div class="nav-actions">
+                    <a href="#" class="btn btn-primary access-btn" id="creadoras-access-btn">ACCEDE</a>
+                    <button id="theme-toggle" class="btn-theme"><i class="fas fa-moon"></i></button>
+                    <select class="language-selector">
+                        <option value="es">🇲🇽</option>
+                        <option value="en">🇺🇸</option>
+                        <option value="fr">🇫🇷</option>
+                        <option value="de">🇩🇪</option>
+                        <option value="it">🇮🇹</option>
+                    </select>
+                </div>
+            </nav>
+            <div class="menu-toggle">
+                <i class="fas fa-bars"></i>
+            </div>
+        </div>
+    </header>
+
+    <!-- Community Header -->
+    <section class="community-header">
+        <div class="container">
+            <a href="prueba.html" class="back-button">
+                <i class="fas fa-arrow-left"></i>
+                Volver a la selección
+            </a>
+            
+            <h1>Creadoras del Futuro</h1>
+            <p class="subtitle">Un Espacio Creado por y para Mujeres Visionarias</p>
+            <p class="description">
+                Inspiradas por el movimiento global "Empowered Women", lanzamos "Creadoras AI", una comunidad exclusiva para mujeres emprendedoras que, como tú, están listas para transformar sus ideas en negocios de alto impacto.
+            </p>
+        </div>
+    </section>
+
+    <!-- Stats Section -->
+    <section class="stats-section">
+        <div class="stats-grid">
+            <div class="stat-item">
+                <div class="stat-icon">
+                    <i class="fas fa-users"></i>
+                </div>
+                <div class="stat-number">2,500+</div>
+                <div class="stat-label">Miembros Activos</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-icon">
+                    <i class="fas fa-bullseye"></i>
+                </div>
+                <div class="stat-number">450+</div>
+                <div class="stat-label">Proyectos Activos</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-icon">
+                    <i class="fas fa-dollar-sign"></i>
+                </div>
+                <div class="stat-number">$12M+</div>
+                <div class="stat-label">Financiamiento Obtenido</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-icon">
+                    <i class="fas fa-globe"></i>
+                </div>
+                <div class="stat-number">25+</div>
+                <div class="stat-label">Países Representados</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Main Content -->
+    <div class="tabs-container">
+        <div class="tabs-nav">
+            <button class="tab-button active" onclick="showTab('features')"><span>Características</span></button>
+            <button class="tab-button" onclick="showTab('community')"><span>Comunidad</span></button>
+            <button class="tab-button" onclick="showTab('forum')"><span>Foros</span></button>
+            <button class="tab-button" onclick="showTab('partnerships')"><span>Alianzas</span></button>
+            <button class="tab-button" onclick="showTab('join')"><span>Únete</span></button>
+        </div>
+
+        <!-- Features Tab -->
+        <div id="features" class="tab-content active">
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-card-content">
+                        <div class="feature-icon">🎯</div>
+                        <h3 class="feature-title">Acceso Prioritario y Reconocimiento</h3>
+                        <p class="feature-description">
+                            Nuestra IA identifica a los proyectos con mayor potencial. Si tu idea es validada, obtendrás una invitación prioritaria al programa.
+                        </p>
+                    </div>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-card-content">
+                        <div class="feature-icon">👥</div>
+                        <h3 class="feature-title">Mentoría a Tu Medida</h3>
+                        <p class="feature-description">
+                            Te conectamos uno a uno con mujeres líderes en tecnología e inversión. Recibirás una guía humana que comprende los desafíos únicos que enfrentas.
+                        </p>
+                    </div>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-card-content">
+                        <div class="feature-icon">🤝</div>
+                        <h3 class="feature-title">Un Círculo de Confianza</h3>
+                        <p class="feature-description">
+                            Te damos la bienvenida a un foro seguro y colaborativo, moderado con cuidado para garantizar un ambiente de respeto y apoyo mutuo.
+                        </p>
+                    </div>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-card-content">
+                        <div class="feature-icon">✨</div>
+                        <h3 class="feature-title">Historias que Inspiran</h3>
+                        <p class="feature-description">
+                            Con el "Creadoras AI Spotlight", destacaremos tu historia de éxito en nuestra página principal y redes sociales.
+                        </p>
+                    </div>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-card-content">
+                        <div class="feature-icon">📚</div>
+                        <h3 class="feature-title">Conviértete en Mentora y Creadora de Contenido</h3>
+                        <p class="feature-description">
+                            A través de un programa de becas, te animamos a crear microcursos en temas de tu experiencia.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Community Tab -->
+        <div id="community" class="tab-content">
+            <div class="community-grid">
+                <div class="community-card">
+                    <h3>
+                        <i class="fas fa-comments icon"></i>
+                        Foros de Discusión
+                    </h3>
+                    <p style="color: #6b7280; margin-bottom: 1.5rem;">Espacios seguros para compartir ideas, resolver dudas y colaborar</p>
+                    <div class="forum-item">
+                        <span class="forum-name">💡 Ideas y Proyectos</span>
+                        <span class="badge">Activo</span>
+                    </div>
+                    <div class="forum-item">
+                        <span class="forum-name">🤝 Busco Cofundador</span>
+                        <span class="badge">Activo</span>
+                    </div>
+                    <div class="forum-item">
+                        <span class="forum-name">💰 Financiamiento</span>
+                        <span class="badge">Activo</span>
+                    </div>
+                    <button class="btn-primary-join" style="width: 100%; margin-top: 1rem;">Acceder a los Foros</button>
+                </div>
+
+                <div class="community-card">
+                    <h3>
+                        <i class="fas fa-calendar-alt icon"></i>
+                        Eventos y Webinars
+                    </h3>
+                    <p style="color: #6b7280; margin-bottom: 1.5rem;">Sesiones de mentoría, talleres y networking exclusivos</p>
+                    <div class="forum-item">
+                        <div>
+                            <div class="forum-name">Mentoría Grupal</div>
+                            <div style="font-size: 0.9rem; color: #6b7280;">Próximo: Viernes 2:00 PM</div>
+                        </div>
+                    </div>
+                    <div class="forum-item">
+                        <div>
+                            <div class="forum-name">Taller de Pitch</div>
+                            <div style="font-size: 0.9rem; color: #6b7280;">Próximo: Lunes 6:00 PM</div>
+                        </div>
+                    </div>
+                    <div class="forum-item">
+                        <div>
+                            <div class="forum-name">Networking Virtual</div>
+                            <div style="font-size: 0.9rem; color: #6b7280;">Próximo: Miércoles 7:00 PM</div>
+                        </div>
+                    </div>
+                    <button class="btn-primary-join" style="width: 100%; margin-top: 1rem;">Ver Calendario Completo</button>
+                </div>
+            </div>
+            
+            <!-- Directorio de Usuarios -->
+            <div id="user-directory"></div>
+        </div>
+
+        <!-- Forum Tab -->
+        <div id="forum" class="tab-content">
+            <div class="community-card">
+                <h3>
+                    <i class="fas fa-comments icon"></i>
+                    Foro Creadoras del Futuro
+                </h3>
+                <p style="color: #6b7280; margin-bottom: 2rem;">Conecta con otras mujeres emprendedoras, comparte experiencias y encuentra apoyo en tu camino empresarial.</p>
+                
+                <!-- Botón para crear nuevo post (FIJO) -->
+                <div class="new-post-section" style="margin-bottom: 25px; text-align: center;">
+                    <button class="new-post-btn" onclick="showNewPostModal()" style="
+                        background: linear-gradient(135deg, #ec4899 0%, #be185d 100%);
+                        color: white;
+                        border: none;
+                        padding: 18px 35px;
+                        border-radius: 30px;
+                        font-size: 18px;
+                        font-weight: 700;
+                        cursor: pointer;
+                        display: inline-flex;
+                        align-items: center;
+                        gap: 12px;
+                        box-shadow: 0 6px 20px rgba(236, 72, 153, 0.4);
+                        transition: all 0.3s ease;
+                        text-transform: uppercase;
+                        letter-spacing: 0.5px;
+                    " onmouseover="this.style.transform='translateY(-3px)'; this.style.boxShadow='0 8px 25px rgba(236, 72, 153, 0.5)'" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 6px 20px rgba(236, 72, 153, 0.4)'">
+                        <i class="fas fa-plus" style="font-size: 20px;"></i>
+                        Crear Nuevo Post
+                    </button>
+                </div>
+                
+                <!-- Foro Interactivo -->
+                <div id="forum-posts" class="forum-posts-container">
+                    <!-- Los posts se cargarán dinámicamente aquí -->
+                </div>
+            </div>
+        </div>
+
+        <!-- Partnerships Tab -->
+        <div id="partnerships" class="tab-content">
+            <div class="partnerships-grid">
+                <div class="partnership-card">
+                    <p class="partnership-text">
+                        Santander W50: Para acceder a una red de élite y mentoría de ejecutivas de alto rango.
+                    </p>
+                </div>
+                <div class="partnership-card">
+                    <p class="partnership-text">
+                        Academia para Mujeres Emprendedoras (AWE): Para potenciar tu capacitación virtual con nuestras herramientas de IA.
+                    </p>
+                </div>
+                <div class="partnership-card">
+                    <p class="partnership-text">
+                        Cherie Blair Foundation for Women: Para escalar tu impacto en el mercado global.
+                    </p>
+                </div>
+                <div class="partnership-card">
+                    <p class="partnership-text">
+                        UN Women y Corporaciones: Para que te conectes directamente con los objetivos de sostenibilidad (ESG) de empresas líderes como Procter & Gamble.
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Join Tab -->
+        <div id="join" class="tab-content">
+            <div class="join-section">
+                <div class="join-card">
+                    <div class="join-icon">🏆</div>
+                    <h3 class="join-title">¡Únete a Nuestra Comunidad!</h3>
+                    <p class="join-description">
+                        No eres solo una emprendedora. Eres una Creadora AI. Descubre todo tu potencial, rompe las barreras y construye el futuro con nosotros.
+                    </p>
+                    <div class="join-buttons">
+                        <a href="#" class="btn-primary-join access-btn" id="creadoras-join-btn">Solicitar Invitación</a>
+                        <a href="#" class="btn-outline-join">Agendar Llamada Informativa</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer id="contacto" class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <div class="logo">
+                        <video src="IMG/video/Video_Generado_Por_Gemini.mp4" class="footer-logo" autoplay loop muted playsinline loading="lazy"></video>
+                    </div>
+                    <p>Transformamos ideas en realidades exitosas.</p>
+                </div>
+                <div class="footer-col">
+                    <h4>Explorar</h4>
+                    <ul>
+                        <li><a href="prueba.html">Inicio</a></li>
+                        <li><a href="prueba.html#cursos">Cursos</a></li>
+                        <li><a href="chatbot.html">AI Studio</a></li>
+                        <li><a href="prueba.html#testimonios">Testimonios</a></li>
+                        <li><a href="prueba.html#faq">FAQ</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Comunidades</h4>
+                    <ul>
+                        <li><a href="creadoras.html">Creadoras del Futuro</a></li>
+                        <li><a href="innovadores.html">Innovadores del Futuro</a></li>
+                        <li><a href="legado.html">Legado Emprendedor</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Síguenos</h4>
+                    <div class="social-icons">
+                        <a href="https://www.facebook.com/share/1EovDKoRYw/" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                        <a href="https://www.instagram.com/emprendeia1?utm_source=qr" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                        <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="https://youtube.com/@emprendeia-q4e?si=Nk3_L7nmJXYaQVZB" target="_blank" rel="noopener noreferrer" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 EmprendeIA. Todos los derechos reservados.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        function showTab(tabName) {
+            // Hide all tab contents
+            const tabContents = document.querySelectorAll('.tab-content');
+            tabContents.forEach(content => {
+                content.classList.remove('active');
+            });
+            
+            // Remove active class from all tab buttons
+            const tabButtons = document.querySelectorAll('.tab-button');
+            tabButtons.forEach(button => {
+                button.classList.remove('active');
+            });
+            
+            // Show selected tab content
+            document.getElementById(tabName).classList.add('active');
+            
+            // Add active class to clicked button
+            event.target.classList.add('active');
+        }
+    </script>
+    <script src="script.js"></script>
+    <!-- Sistema Global de Usuario -->
+    <script src="js/global-user-manager.js"></script>
+    <!-- Supabase CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    
+    <!-- Scripts de configuración y autenticación -->
+    <script src="js/supabase-config.js"></script>
+    <script src="js/user-auth.js"></script>
+    <script src="js/user-directory.js"></script>
+    <script src="js/user-directory-styles.js"></script>
+    
+    <!-- Scripts existentes -->
+    <script src="js/theme-manager.js"></script>
+    <script src="js/forum-interactions.js"></script>
+    
+    <!-- Función para mostrar modal de nuevo post -->
+    <script>
+        function showNewPostModal() {
+            // Crear modal si no existe
+            let modal = document.getElementById('new-post-modal');
+            if (!modal) {
+                modal = document.createElement('div');
+                modal.id = 'new-post-modal';
+                modal.className = 'modal-overlay';
+                modal.innerHTML = `
+                    <div class="modal-content" style="
+                        background: white;
+                        border-radius: 20px;
+                        padding: 30px;
+                        max-width: 600px;
+                        width: 90%;
+                        box-shadow: 0 20px 60px rgba(0,0,0,0.2);
+                    ">
+                        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;">
+                            <h3 style="margin: 0; color: #1f2937;">Crear Nuevo Post</h3>
+                            <button onclick="hideNewPostModal()" style="
+                                background: none;
+                                border: none;
+                                font-size: 24px;
+                                cursor: pointer;
+                                color: #6b7280;
+                            ">&times;</button>
+                        </div>
+                        
+                        <div style="margin-bottom: 20px;">
+                            <label style="display: block; margin-bottom: 8px; font-weight: 600; color: #374151;">Título:</label>
+                            <input type="text" id="post-title" placeholder="Título de tu post..." style="
+                                width: 100%;
+                                padding: 12px;
+                                border: 2px solid #e5e7eb;
+                                border-radius: 10px;
+                                font-size: 16px;
+                                box-sizing: border-box;
+                            ">
+                        </div>
+                        
+                        <div style="margin-bottom: 20px;">
+                            <label style="display: block; margin-bottom: 8px; font-weight: 600; color: #374151;">Contenido:</label>
+                            <textarea id="post-content" placeholder="Escribe tu post aquí..." style="
+                                width: 100%;
+                                padding: 12px;
+                                border: 2px solid #e5e7eb;
+                                border-radius: 10px;
+                                font-size: 16px;
+                                min-height: 120px;
+                                resize: vertical;
+                                box-sizing: border-box;
+                            "></textarea>
+                        </div>
+                        
+                        <div style="margin-bottom: 20px;">
+                            <label style="display: block; margin-bottom: 8px; font-weight: 600; color: #374151;">Categoría:</label>
+                            <select id="post-category" style="
+                                width: 100%;
+                                padding: 12px;
+                                border: 2px solid #e5e7eb;
+                                border-radius: 10px;
+                                font-size: 16px;
+                                box-sizing: border-box;
+                            ">
+                                <option value="general">General</option>
+                                <option value="startups">Startups</option>
+                                <option value="finanzas">Finanzas</option>
+                                <option value="networking">Networking</option>
+                                <option value="mentoring">Mentoring</option>
+                            </select>
+                        </div>
+                        
+                        <div style="display: flex; gap: 10px; justify-content: flex-end;">
+                            <button onclick="hideNewPostModal()" style="
+                                background: #6b7280;
+                                color: white;
+                                border: none;
+                                padding: 12px 24px;
+                                border-radius: 10px;
+                                font-size: 16px;
+                                cursor: pointer;
+                            ">Cancelar</button>
+                            <button onclick="createNewPost()" style="
+                                background: linear-gradient(135deg, #ec4899 0%, #be185d 100%);
+                                color: white;
+                                border: none;
+                                padding: 12px 24px;
+                                border-radius: 10px;
+                                font-size: 16px;
+                                cursor: pointer;
+                            ">Crear Post</button>
+                        </div>
+                    </div>
+                `;
+                document.body.appendChild(modal);
+            }
+            
+            // Mostrar modal
+            modal.style.display = 'flex';
+            modal.style.position = 'fixed';
+            modal.style.top = '0';
+            modal.style.left = '0';
+            modal.style.width = '100%';
+            modal.style.height = '100%';
+            modal.style.backgroundColor = 'rgba(0,0,0,0.5)';
+            modal.style.justifyContent = 'center';
+            modal.style.alignItems = 'center';
+            modal.style.zIndex = '1000';
+        }
+        
+        function hideNewPostModal() {
+            const modal = document.getElementById('new-post-modal');
+            if (modal) {
+                modal.style.display = 'none';
+            }
+        }
+        
+        function createNewPost() {
+            const title = document.getElementById('post-title').value;
+            const content = document.getElementById('post-content').value;
+            const category = document.getElementById('post-category').value;
+            
+            if (!title || !content) {
+                alert('Por favor completa el título y contenido del post');
+                return;
+            }
+            
+            // Crear post simulado
+            const newPost = {
+                id: 'post-' + Date.now(),
+                title: title,
+                content: content,
+                category: category,
+                author: 'Usuario EmprendeIA',
+                timestamp: new Date().toISOString(),
+                likes: 0,
+                comments: []
+            };
+            
+            // Agregar post al foro
+            const postsContainer = document.querySelector('.posts-container');
+            if (!postsContainer) {
+                // Crear contenedor si no existe
+                const forumContainer = document.getElementById('forum-posts');
+                const container = document.createElement('div');
+                container.className = 'posts-container';
+                forumContainer.appendChild(container);
+            }
+            
+            // Crear HTML del post
+            const postHTML = `
+                <div class="forum-post" style="
+                    background: white;
+                    border-radius: 20px;
+                    padding: 25px;
+                    margin-bottom: 25px;
+                    box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+                    border: 1px solid rgba(255,255,255,0.2);
+                ">
+                    <div style="display: flex; align-items: center; margin-bottom: 15px;">
+                        <img src="IMG/placeholder-user.jpg" alt="Avatar" style="
+                            width: 48px;
+                            height: 48px;
+                            border-radius: 50%;
+                            margin-right: 16px;
+                            object-fit: cover;
+                        ">
+                        <div>
+                            <h4 style="margin: 0; color: #1f2937; font-size: 18px;">${newPost.author}</h4>
+                            <p style="margin: 0; color: #6b7280; font-size: 14px;">Ahora mismo</p>
+                        </div>
+                        <span style="
+                            background: #ec4899;
+                            color: white;
+                            padding: 6px 12px;
+                            border-radius: 12px;
+                            font-size: 12px;
+                            font-weight: 600;
+                            margin-left: auto;
+                        ">${category}</span>
+                    </div>
+                    
+                    <h3 style="margin: 0 0 15px 0; color: #1f2937; font-size: 22px;">${newPost.title}</h3>
+                    <p style="margin: 0 0 20px 0; color: #4b5563; line-height: 1.6;">${newPost.content}</p>
+                    
+                    <div style="display: flex; gap: 20px; align-items: center;">
+                        <button style="
+                            background: none;
+                            border: none;
+                            color: #6b7280;
+                            cursor: pointer;
+                            display: flex;
+                            align-items: center;
+                            gap: 8px;
+                        ">
+                            <i class="fas fa-heart"></i>
+                            <span>0</span>
+                        </button>
+                        <button style="
+                            background: none;
+                            border: none;
+                            color: #6b7280;
+                            cursor: pointer;
+                            display: flex;
+                            align-items: center;
+                            gap: 8px;
+                        ">
+                            <i class="fas fa-comment"></i>
+                            <span>0</span>
+                        </button>
+                        <button style="
+                            background: none;
+                            border: none;
+                            color: #6b7280;
+                            cursor: pointer;
+                            display: flex;
+                            align-items: center;
+                            gap: 8px;
+                        ">
+                            <i class="fas fa-bookmark"></i>
+                            <span>Guardar</span>
+                        </button>
+                        <button style="
+                            background: none;
+                            border: none;
+                            color: #6b7280;
+                            cursor: pointer;
+                            display: flex;
+                            align-items: center;
+                            gap: 8px;
+                        ">
+                            <i class="fas fa-share"></i>
+                            <span>Compartir</span>
+                        </button>
+                    </div>
+                </div>
+            `;
+            
+            // Agregar post al contenedor
+            const container = document.querySelector('.posts-container');
+            container.insertAdjacentHTML('afterbegin', postHTML);
+            
+            // Limpiar formulario y cerrar modal
+            document.getElementById('post-title').value = '';
+            document.getElementById('post-content').value = '';
+            document.getElementById('post-category').value = 'general';
+            hideNewPostModal();
+            
+            alert('✅ Post creado exitosamente!');
+        }
+    </script>
+
+    <!-- Widget flotante de perfil -->
+    <div class="profile-widget" id="profile-widget" style="display: none;">
+        <button class="widget-close" onclick="hideProfileWidget()">×</button>
+        <img src="IMG/placeholder-user.jpg" alt="Foto de perfil" class="widget-photo" id="widget-photo">
+        <div class="widget-info">
+            <h4 id="widget-name">Usuario EmprendeIA</h4>
+            <p id="widget-community">Comunidad: Creadoras del Futuro</p>
+        </div>
+    </div>
+
+    <!-- Script para mostrar widget de perfil -->
+    <script>
+        // Mostrar widget cuando el usuario esté logueado
+        function checkUserLogin() {
+            const savedUser = localStorage.getItem('currentUser');
+            if (savedUser) {
+                const user = JSON.parse(savedUser);
+                const widget = document.getElementById('profile-widget');
+                if (widget) {
+                    widget.style.display = 'flex';
+                    
+                    // Actualizar información del widget
+                    const widgetName = document.getElementById('widget-name');
+                    const widgetPhoto = document.getElementById('widget-photo');
+                    
+                    if (widgetName) widgetName.textContent = user.name;
+                    if (widgetPhoto) {
+                        const savedPhoto = localStorage.getItem('userPhoto');
+                        widgetPhoto.src = savedPhoto || user.avatar;
+                    }
+                }
+            }
+        }
+
+        function hideProfileWidget() {
+            const widget = document.getElementById('profile-widget');
+            if (widget) widget.style.display = 'none';
+        }
+
+        // Verificar estado de login al cargar la página
+        document.addEventListener('DOMContentLoaded', function() {
+            setTimeout(checkUserLogin, 1000);
+        });
+    </script>
+</body>
+</html>

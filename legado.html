@@ -1,0 +1,1185 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Legado Emprendedor - EmprendeIA</title>
+    <link rel="stylesheet" href="STYLES/prueba-style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="css/button-center.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        /* Variables CSS para Legado */
+        :root {
+            --primary-gradient: linear-gradient(135deg, #1e40af 0%, #1e3a8a 50%, #1e3a8a 100%);
+            --secondary-gradient: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+            --accent-blue: #1e40af;
+            --accent-dark: #1e3a8a;
+            --text-primary: #1f2937;
+            --text-secondary: #6b7280;
+            --shadow-soft: 0 4px 20px rgba(30, 64, 175, 0.15);
+            --shadow-medium: 0 8px 30px rgba(30, 64, 175, 0.2);
+            --shadow-strong: 0 20px 40px rgba(30, 64, 175, 0.3);
+            
+            /* Variables para modo oscuro */
+            --bg-primary: #ffffff;
+            --bg-secondary: #f8fafc;
+            --bg-tertiary: #f1f5f9;
+            --border-color: #e2e8f0;
+            --card-bg: #ffffff;
+        }
+
+        /* Modo oscuro para Legado */
+        [data-theme="dark"] {
+            --primary-gradient: linear-gradient(135deg, #3b82f6 0%, #1e40af 50%, #1e3a8a 100%);
+            --secondary-gradient: linear-gradient(135deg, #1e1b2e 0%, #1e3a8a 100%);
+            --accent-blue: #3b82f6;
+            --accent-dark: #1e40af;
+            --text-primary: #f8fafc;
+            --text-secondary: #cbd5e1;
+            --shadow-soft: 0 4px 20px rgba(59, 130, 246, 0.2);
+            --shadow-medium: 0 8px 30px rgba(59, 130, 246, 0.3);
+            --shadow-strong: 0 20px 40px rgba(59, 130, 246, 0.4);
+            
+            --bg-primary: #0f0f23;
+            --bg-secondary: #1a1a2e;
+            --bg-tertiary: #16213e;
+            --border-color: #2d3748;
+            --card-bg: #1a1a2e;
+        }
+
+        /* Animaciones elegantes */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+        }
+
+        @keyframes shimmer {
+            0% { background-position: -200% 0; }
+            100% { background-position: 200% 0; }
+        }
+
+        @keyframes elegantGlow {
+            0%, 100% { 
+                box-shadow: 0 8px 32px rgba(30, 64, 175, 0.3),
+                           0 0 0 1px rgba(255,255,255,0.1);
+            }
+            50% { 
+                box-shadow: 0 12px 40px rgba(30, 64, 175, 0.4),
+                           0 0 0 1px rgba(255,255,255,0.2);
+            }
+        }
+
+        .community-header {
+            background: var(--primary-gradient);
+            color: white;
+            padding: 6rem 0;
+            text-align: center;
+            animation: elegantGlow 4s ease-in-out infinite;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .community-header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="elegant-pattern" width="40" height="40" patternUnits="userSpaceOnUse"><rect x="0" y="0" width="40" height="40" fill="none" stroke="white" stroke-width="0.3" opacity="0.1"/><circle cx="20" cy="20" r="2" fill="white" opacity="0.15"/><path d="M10,10 L30,30 M30,10 L10,30" stroke="white" stroke-width="0.2" opacity="0.1"/></pattern></defs><rect width="100" height="100" fill="url(%23elegant-pattern)"/></svg>');
+            animation: float 8s ease-in-out infinite;
+        }
+
+        .community-header h1 {
+            font-size: 4rem;
+            font-weight: 800;
+            margin-bottom: 1.5rem;
+            background: linear-gradient(45deg, #ffffff, #f0f9ff, #ffffff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            animation: fadeInUp 1s ease-out;
+            position: relative;
+            z-index: 1;
+            letter-spacing: -0.02em;
+        }
+
+        .community-header .subtitle {
+            font-size: 1.75rem;
+            margin-bottom: 2rem;
+            font-weight: 600;
+            opacity: 0.95;
+            animation: fadeInUp 1s ease-out 0.2s both;
+            position: relative;
+            z-index: 1;
+        }
+
+        .community-header .description {
+            font-size: 1.2rem;
+            max-width: 900px;
+            margin: 0 auto 3rem;
+            opacity: 0.9;
+            line-height: 1.7;
+            animation: fadeInUp 1s ease-out 0.4s both;
+            position: relative;
+            z-index: 1;
+        }
+
+        .back-button {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.75rem;
+            background: white;
+            color: var(--accent-blue);
+            padding: 1rem 2rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 700;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            border: 2px solid rgba(255,255,255,0.2);
+            box-shadow: 0 8px 32px rgba(0,0,0,0.1);
+            animation: fadeInUp 1s ease-out 0.6s both;
+            position: relative;
+            z-index: 1;
+        }
+
+        .back-button:hover {
+            background: #f8fafc;
+            transform: translateY(-3px) scale(1.05);
+            box-shadow: 0 12px 40px rgba(0,0,0,0.15);
+            border-color: rgba(30, 64, 175, 0.2);
+        }
+
+        .back-button::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(45deg, transparent, rgba(30, 64, 175, 0.05), transparent);
+            border-radius: 50px;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .back-button:hover::before {
+            opacity: 1;
+            animation: shimmer 1.5s ease-in-out;
+        }
+        
+        .stats-section {
+            background: var(--secondary-gradient);
+            padding: 4rem 0;
+            position: relative;
+            overflow: hidden;
+            transition: all 0.5s ease;
+        }
+
+        .stats-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="dots-elegant" width="20" height="20" patternUnits="userSpaceOnUse"><circle cx="10" cy="10" r="1" fill="%231e40af" opacity="0.1"/></pattern></defs><rect width="100" height="100" fill="url(%23dots-elegant)"/></svg>');
+            animation: float 8s ease-in-out infinite;
+        }
+        
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+        
+        .stat-item {
+            text-align: center;
+            background: var(--card-bg);
+            padding: 2.5rem 2rem;
+            border-radius: 20px;
+            box-shadow: var(--shadow-soft);
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            overflow: hidden;
+            animation: fadeInUp 0.8s ease-out;
+            border: 1px solid var(--border-color);
+        }
+
+        .stat-item:nth-child(1) { animation-delay: 0.1s; }
+        .stat-item:nth-child(2) { animation-delay: 0.2s; }
+        .stat-item:nth-child(3) { animation-delay: 0.3s; }
+        .stat-item:nth-child(4) { animation-delay: 0.4s; }
+
+        .stat-item:hover {
+            transform: translateY(-8px) scale(1.02);
+            box-shadow: var(--shadow-strong);
+            border-color: var(--accent-blue);
+        }
+
+        .stat-item::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: var(--primary-gradient);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .stat-item:hover::before {
+            opacity: 1;
+        }
+        
+        .stat-icon {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            background: var(--primary-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            animation: float 3s ease-in-out infinite;
+        }
+        
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: 800;
+            background: var(--primary-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 0.5rem;
+            animation: pulse 2s ease-in-out infinite;
+        }
+        
+        .stat-label {
+            font-size: 0.9rem;
+            color: #6b7280;
+            font-weight: 500;
+        }
+        
+        .tabs-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 3rem 2rem;
+            background: var(--card-bg);
+            border-radius: 24px;
+            box-shadow: var(--shadow-soft);
+            margin-top: -2rem;
+            position: relative;
+            z-index: 2;
+            border: 1px solid var(--border-color);
+            transition: all 0.5s ease;
+        }
+        
+        .tabs-nav {
+            display: flex;
+            background: white;
+            border-radius: 12px;
+            padding: 0.5rem;
+            margin-bottom: 2rem;
+            overflow-x: auto;
+            border: 1px solid #e5e7eb;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+        }
+        
+        .tab-button {
+            flex: 1;
+            padding: 1rem 1.5rem;
+            background: transparent;
+            border: none;
+            border-radius: 8px;
+            font-weight: 600;
+            color: #6b7280;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            white-space: nowrap;
+        }
+        
+        .tab-button.active {
+            background: #1e40af;
+            color: white;
+            box-shadow: 0 2px 8px rgba(30, 64, 175, 0.3);
+        }
+        
+        .tab-button:hover:not(.active) {
+            background: #f1f5f9;
+        }
+        
+        .tab-content {
+            display: none;
+        }
+        
+        .tab-content.active {
+            display: block;
+        }
+        
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+        }
+        
+        .feature-card {
+            background: var(--card-bg);
+            border: 2px solid var(--border-color);
+            border-radius: 20px;
+            padding: 2.5rem;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            box-shadow: var(--shadow-soft);
+            position: relative;
+            overflow: hidden;
+            animation: fadeInUp 0.8s ease-out;
+        }
+
+        .feature-card:nth-child(1) { animation-delay: 0.1s; }
+        .feature-card:nth-child(2) { animation-delay: 0.2s; }
+        .feature-card:nth-child(3) { animation-delay: 0.3s; }
+        .feature-card:nth-child(4) { animation-delay: 0.4s; }
+
+        .feature-card:hover {
+            border-color: var(--accent-blue);
+            transform: translateY(-8px) scale(1.02);
+            box-shadow: var(--shadow-strong);
+        }
+
+        .feature-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: var(--primary-gradient);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            border-radius: 20px;
+        }
+
+        .feature-card:hover::before {
+            opacity: 0.05;
+        }
+        
+        .feature-icon {
+            font-size: 3.5rem;
+            margin-bottom: 1.5rem;
+            background: var(--primary-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            animation: float 3s ease-in-out infinite;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .feature-title {
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: #1e3a8a;
+            margin-bottom: 0.75rem;
+        }
+        
+        .feature-description {
+            color: #6b7280;
+            line-height: 1.6;
+        }
+        
+        .community-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+        
+        .community-card {
+            background: white;
+            border: 1px solid #e5e7eb;
+            border-radius: 16px;
+            padding: 2rem;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+        }
+        
+        .community-card h3 {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: #1e3a8a;
+            margin-bottom: 1rem;
+        }
+        
+        .community-card .icon {
+            color: #1e40af;
+            font-size: 1.25rem;
+        }
+        
+        .forum-item {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 1rem;
+            background: #f8fafc;
+            border-radius: 8px;
+            margin-bottom: 0.75rem;
+            border: 1px solid #e2e8f0;
+        }
+        
+        .forum-item:hover {
+            background: #f1f5f9;
+        }
+        
+        .forum-name {
+            font-weight: 600;
+            color: #1f2937;
+        }
+        
+        .badge {
+            background: #1e40af;
+            color: white;
+            padding: 0.25rem 0.75rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+        }
+        
+        .partnerships-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+        }
+        
+        .partnership-card {
+            background: white;
+            border: 1px solid #e5e7eb;
+            border-radius: 16px;
+            padding: 1.5rem;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+        }
+        
+        .partnership-card::before {
+            content: '';
+            display: block;
+            width: 8px;
+            height: 8px;
+            background: #1e40af;
+            border-radius: 50%;
+            margin-bottom: 1rem;
+        }
+        
+        .partnership-text {
+            color: #6b7280;
+            line-height: 1.6;
+        }
+        
+        .join-section {
+            text-align: center;
+            margin-top: 3rem;
+        }
+        
+        .join-card {
+            background: linear-gradient(135deg, #1e40af 0%, #1e3a8a 50%, #1e3a8a 100%);
+            color: white;
+            border-radius: 20px;
+            padding: 3rem;
+            max-width: 600px;
+            margin: 0 auto;
+            box-shadow: 0 20px 40px rgba(30, 64, 175, 0.3);
+        }
+        
+        .join-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+        
+        .join-title {
+            font-size: 2rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
+        
+        .join-description {
+            font-size: 1.1rem;
+            margin-bottom: 2rem;
+            opacity: 0.95;
+            line-height: 1.6;
+        }
+        
+        .join-buttons {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+        
+        .btn-primary-join {
+            background: white;
+            color: #1e40af;
+            padding: 1rem 2rem;
+            border-radius: 12px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+        }
+        
+        .btn-primary-join:hover {
+            background: #f8fafc;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+        }
+        
+        .btn-outline-join {
+            background: rgba(255,255,255,0.1);
+            color: white;
+            padding: 1rem 2rem;
+            border-radius: 12px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+            border: 2px solid rgba(255,255,255,0.3);
+            backdrop-filter: blur(10px);
+        }
+        
+        .btn-outline-join:hover {
+            background: rgba(255,255,255,0.2);
+            transform: translateY(-2px);
+        }
+        
+        /* Estilos específicos para modo oscuro - Legado */
+        [data-theme="dark"] .community-header::before {
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="elegant-pattern-dark" width="20" height="20" patternUnits="userSpaceOnUse"><rect x="0" y="0" width="20" height="20" fill="none" stroke="white" stroke-width="0.3" opacity="0.05"/><circle cx="10" cy="10" r="1" fill="white" opacity="0.1"/></pattern></defs><rect width="100" height="100" fill="url(%23elegant-pattern-dark)"/></svg>');
+        }
+
+        [data-theme="dark"] .stats-section::before {
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="dots-elegant-dark" width="20" height="20" patternUnits="userSpaceOnUse"><circle cx="10" cy="10" r="1" fill="%233b82f6" opacity="0.1"/></pattern></defs><rect width="100" height="100" fill="url(%23dots-elegant-dark)"/></svg>');
+        }
+
+        /* Botón de cambio de tema mejorado */
+        .btn-theme {
+            background: var(--card-bg);
+            border: 2px solid var(--border-color);
+            color: var(--text-primary);
+            padding: 0.75rem;
+            border-radius: 50%;
+            width: 48px;
+            height: 48px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            box-shadow: var(--shadow-soft);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn-theme:hover {
+            transform: translateY(-2px) scale(1.05);
+            box-shadow: var(--shadow-medium);
+            border-color: var(--accent-blue);
+        }
+
+        .btn-theme::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: var(--primary-gradient);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            border-radius: 50%;
+        }
+
+        .btn-theme:hover::before {
+            opacity: 0.1;
+        }
+
+        .btn-theme i {
+            position: relative;
+            z-index: 1;
+            transition: all 0.3s ease;
+        }
+
+        .btn-theme:hover i {
+            color: var(--accent-blue);
+            transform: rotate(180deg);
+        }
+
+        /* Transición suave para el cambio de tema */
+        * {
+            transition: background-color 0.3s ease, border-color 0.3s ease, color 0.3s ease;
+        }
+
+        /* Estilos para el body en modo oscuro */
+        [data-theme="dark"] body {
+            background: var(--bg-primary);
+            color: var(--text-primary);
+        }
+
+        [data-theme="dark"] .navbar {
+            background: var(--bg-secondary);
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        [data-theme="dark"] .footer {
+            background: var(--bg-secondary);
+            border-top: 1px solid var(--border-color);
+        }
+
+        @media (max-width: 768px) {
+            .community-header h1 {
+                font-size: 2.5rem;
+            }
+            
+            .community-header .subtitle {
+                font-size: 1.25rem;
+            }
+            
+            .stats-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .features-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .community-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .partnerships-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .tabs-nav {
+                flex-direction: column;
+            }
+            
+            .join-buttons {
+                flex-direction: column;
+            }
+        /* Widget flotante de perfil */
+        .profile-widget {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background: var(--bg-primary);
+            border-radius: 20px;
+            padding: 15px;
+            box-shadow: var(--shadow-large);
+            border: 1px solid var(--border-color);
+            cursor: pointer;
+            transition: all 0.3s ease;
+            z-index: 1000;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            min-width: 200px;
+            opacity: 0;
+            transform: translateY(100px);
+            animation: slideUpWidget 0.5s ease forwards;
+        }
+
+        @keyframes slideUpWidget {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .profile-widget:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+        }
+
+        .widget-photo {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            border: 2px solid var(--accent-color);
+            object-fit: cover;
+        }
+
+        .widget-info h4 {
+            font-size: 14px;
+            font-weight: 600;
+            color: var(--text-primary);
+            margin-bottom: 2px;
+        }
+
+        .widget-info p {
+            font-size: 12px;
+            color: var(--text-secondary);
+        }
+
+        .widget-close {
+            position: absolute;
+            top: -8px;
+            right: -8px;
+            background: var(--error-color);
+            color: white;
+            border: none;
+            border-radius: 50%;
+            width: 24px;
+            height: 24px;
+            cursor: pointer;
+            font-size: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        /* Ocultar widget cuando no hay usuario */
+        .profile-widget.hidden {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header / Navbar -->
+    <header class="navbar">
+        <div class="container">
+            <div class="logo">
+                <img src="IMG/emprendeia-logo.png" alt="EmprendeIA Logo">
+                <div class="logo-text">
+                    <span>
+                        <span style="color: #FCD25A">E</span>
+                        <span style="color: #FCD25A">m</span>
+                        <span style="color: #5EBF8D">p</span>
+                        <span style="color: #5EBF8D">r</span>
+                        <span style="color: #5EBF8D">e</span>
+                        <span style="color: #F37C2D">n</span>
+                        <span style="color: #F37C2D">d</span>
+                        <span style="color: #F37C2D">e</span>
+                        <span style="color: #4285F4">I</span>
+                        <span style="color: #4285F4">A</span>
+                    </span>
+                    <span class="powered-by">Powered by Google</span>
+                </div>
+            </div>
+            <nav class="nav-links">
+                <ul>
+                    <li><a href="prueba.html">Inicio</a></li>
+                    <li><a href="nosotros.html">Nosotros</a></li>
+                    <li><a href="prueba.html#cursos">Cursos</a></li>
+                    <li><a href="chatbot.html">IA</a></li>
+                    <li><a href="prueba.html#contacto">Contacto</a></li>
+                    <li class="dropdown">
+                        <a href="#inscripcion">Comunidad <i class="fas fa-chevron-down"></i></a>
+                        <div class="dropdown-content">
+                            <a href="creadoras.html">Creadoras IA</a>
+                            <a href="innovadores.html">Innovadores del Futuro</a>
+                            <a href="legado.html">Legado Emprendedor</a>
+                        </div>
+                    </li>
+                </ul>
+                <div class="nav-actions">
+                    <a href="#" class="btn btn-primary access-btn" id="legado-access-btn">ACCEDE</a>
+                    <button id="theme-toggle" class="btn-theme"><i class="fas fa-moon"></i></button>
+                    <select class="language-selector">
+                        <option value="es">🇲🇽</option>
+                        <option value="en">🇺🇸</option>
+                        <option value="fr">🇫🇷</option>
+                        <option value="de">🇩🇪</option>
+                        <option value="it">🇮🇹</option>
+                    </select>
+                </div>
+            </nav>
+            <div class="menu-toggle">
+                <i class="fas fa-bars"></i>
+            </div>
+        </div>
+    </header>
+
+    <!-- Community Header -->
+    <section class="community-header">
+        <div class="container">
+            <a href="prueba.html" class="back-button">
+                <i class="fas fa-arrow-left"></i>
+                Volver a la selección
+            </a>
+            
+            <h1>Legado Emprendedor</h1>
+            <p class="subtitle">Capitaliza tu Experiencia y Conocimiento</p>
+            <p class="description">
+                Esta iniciativa se dirige a los adultos de 36 a 55 años, y a los adultos mayores, que a menudo poseen capital y experiencia en la industria, pero pueden carecer de habilidades tecnológicas. El nombre "Legado Emprendedor" apela a su experiencia de vida y profesional.
+            </p>
+        </div>
+    </section>
+
+    <!-- Stats Section -->
+    <section class="stats-section">
+        <div class="stats-grid">
+            <div class="stat-item">
+                <div class="stat-icon">
+                    <i class="fas fa-users"></i>
+                </div>
+                <div class="stat-number">1,800+</div>
+                <div class="stat-label">Miembros Activos</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-icon">
+                    <i class="fas fa-bullseye"></i>
+                </div>
+                <div class="stat-number">320+</div>
+                <div class="stat-label">Proyectos Activos</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-icon">
+                    <i class="fas fa-dollar-sign"></i>
+                </div>
+                <div class="stat-number">$18M+</div>
+                <div class="stat-label">Financiamiento Obtenido</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-icon">
+                    <i class="fas fa-globe"></i>
+                </div>
+                <div class="stat-number">20+</div>
+                <div class="stat-label">Países Representados</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Main Content -->
+    <div class="tabs-container">
+        <div class="tabs-nav">
+            <button class="tab-button active" onclick="showTab('features')">Características</button>
+            <button class="tab-button" onclick="showTab('community')">Comunidad</button>
+            <button class="tab-button" onclick="showTab('forum')">Foros</button>
+            <button class="tab-button" onclick="showTab('partnerships')">Alianzas</button>
+            <button class="tab-button" onclick="showTab('join')">Únete</button>
+        </div>
+
+        <!-- Features Tab -->
+        <div id="features" class="tab-content active">
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">🏆</div>
+                    <h3 class="feature-title">Acceso Prioritario y Asesoría Personalizada</h3>
+                    <p class="feature-description">
+                        La plataforma utilizará la interacción basada en voz para que la experiencia sea intuitiva y conversacional. La IA detectará tu área de experiencia y te ofrecerá acceso especial.
+                    </p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">👑</div>
+                    <h3 class="feature-title">Mentoría de Expertos y Networking</h3>
+                    <p class="feature-description">
+                        Te conectamos con mentores que entiendan los desafíos de tu sector. Organizamos webinars y meetups virtuales para crear redes de apoyo.
+                    </p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🥇</div>
+                    <h3 class="feature-title">Un Círculo de Asesoría Mutua</h3>
+                    <p class="feature-description">
+                        Foro exclusivo para que los adultos discutan sus proyectos y se apoyen mutuamente, donde la experiencia y el conocimiento de la industria son los principales motores.
+                    </p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🗝️</div>
+                    <h3 class="feature-title">Programa "De la Experiencia al Conocimiento"</h3>
+                    <p class="feature-description">
+                        A través de un programa de becas, tendrás prioridad para crear micro-lecciones sobre tus áreas de experiencia, generando ingresos adicionales.
+                    </p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">⭐</div>
+                    <h3 class="feature-title">Exposición y Visibilidad</h3>
+                    <p class="feature-description">
+                        El "Legado Spotlight" destacará las historias de éxito, enfocándose en cómo tu experiencia de vida se convirtió en un motor para un nuevo negocio.
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Community Tab -->
+        <div id="community" class="tab-content">
+            <div class="community-grid">
+                <div class="community-card">
+                    <h3>
+                        <i class="fas fa-comments icon"></i>
+                        Foros de Discusión
+                    </h3>
+                    <p style="color: #6b7280; margin-bottom: 1.5rem;">Espacios profesionales para compartir experiencia y conocimiento</p>
+                    <div class="forum-item">
+                        <span class="forum-name">💡 Proyectos con Experiencia</span>
+                        <span class="badge">Activo</span>
+                    </div>
+                    <div class="forum-item">
+                        <span class="forum-name">🤝 Busco Socio Estratégico</span>
+                        <span class="badge">Activo</span>
+                    </div>
+                    <div class="forum-item">
+                        <span class="forum-name">💰 Inversión y Capital</span>
+                        <span class="badge">Activo</span>
+                    </div>
+                    <button class="btn-primary-join" style="width: 100%; margin-top: 1rem;">Acceder a los Foros</button>
+                </div>
+
+                <div class="community-card">
+                    <h3>
+                        <i class="fas fa-calendar-alt icon"></i>
+                        Eventos y Webinars
+                    </h3>
+                    <p style="color: #6b7280; margin-bottom: 1.5rem;">Sesiones de mentoría, talleres y networking profesional</p>
+                    <div class="forum-item">
+                        <div>
+                            <div class="forum-name">Mentoría Ejecutiva</div>
+                            <div style="font-size: 0.9rem; color: #6b7280;">Próximo: Viernes 2:00 PM</div>
+                        </div>
+                    </div>
+                    <div class="forum-item">
+                        <div>
+                            <div class="forum-name">Taller de Transición Digital</div>
+                            <div style="font-size: 0.9rem; color: #6b7280;">Próximo: Lunes 6:00 PM</div>
+                        </div>
+                    </div>
+                    <div class="forum-item">
+                        <div>
+                            <div class="forum-name">Networking Profesional</div>
+                            <div style="font-size: 0.9rem; color: #6b7280;">Próximo: Miércoles 7:00 PM</div>
+                        </div>
+                    </div>
+                    <button class="btn-primary-join" style="width: 100%; margin-top: 1rem;">Ver Calendario Completo</button>
+                </div>
+            </div>
+            
+            <!-- Directorio de Usuarios -->
+            <div id="user-directory"></div>
+        </div>
+
+        <!-- Forum Tab -->
+        <div id="forum" class="tab-content">
+            <div class="community-card">
+                <h3>
+                    <i class="fas fa-comments icon"></i>
+                    Foro Legado Emprendedor
+                </h3>
+                <p style="color: #6b7280; margin-bottom: 2rem;">Conecta con otros profesionales experimentados, comparte tu conocimiento y encuentra oportunidades de colaboración.</p>
+                
+                <!-- Botón para crear nuevo post (FIJO) -->
+                <div class="new-post-section" style="margin-bottom: 25px; text-align: center;">
+                    <button class="new-post-btn" onclick="showNewPostModal()" style="
+                        background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%);
+                        color: white;
+                        border: none;
+                        padding: 18px 35px;
+                        border-radius: 30px;
+                        font-size: 18px;
+                        font-weight: 700;
+                        cursor: pointer;
+                        display: inline-flex;
+                        align-items: center;
+                        gap: 12px;
+                        box-shadow: 0 6px 20px rgba(245, 158, 11, 0.4);
+                        transition: all 0.3s ease;
+                        text-transform: uppercase;
+                        letter-spacing: 0.5px;
+                    " onmouseover="this.style.transform='translateY(-3px)'; this.style.boxShadow='0 8px 25px rgba(245, 158, 11, 0.5)'" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 6px 20px rgba(245, 158, 11, 0.4)'">
+                        <i class="fas fa-plus" style="font-size: 20px;"></i>
+                        Crear Nuevo Post
+                    </button>
+                </div>
+                
+                <!-- Foro Interactivo -->
+                <div id="forum-posts" class="forum-posts-container">
+                    <!-- Los posts se cargarán dinámicamente aquí -->
+                </div>
+            </div>
+        </div>
+
+        <!-- Partnerships Tab -->
+        <div id="partnerships" class="tab-content">
+            <div class="partnerships-grid">
+                <div class="partnership-card">
+                    <p class="partnership-text">
+                        Google for Business: Acceso a herramientas empresariales y capacitación tecnológica.
+                    </p>
+                </div>
+                <div class="partnership-card">
+                    <p class="partnership-text">
+                        Mentores Expertos: Red de profesionales con décadas de experiencia en diferentes industrias.
+                    </p>
+                </div>
+                <div class="partnership-card">
+                    <p class="partnership-text">
+                        Redes Profesionales: Conexiones con cámaras de comercio y asociaciones empresariales.
+                    </p>
+                </div>
+                <div class="partnership-card">
+                    <p class="partnership-text">
+                        Programas de Inversión: Acceso a fondos especializados en emprendedores con experiencia.
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Join Tab -->
+        <div id="join" class="tab-content">
+            <div class="join-section">
+                <div class="join-card">
+                    <div class="join-icon">🏆</div>
+                    <h3 class="join-title">¡Únete a Nuestra Comunidad!</h3>
+                    <p class="join-description">
+                        Tu experiencia es tu mayor activo. Únete a Legado Emprendedor y convierte décadas de conocimiento en tu próximo gran éxito empresarial.
+                    </p>
+                    <div class="join-buttons">
+                        <a href="#" class="btn-primary-join access-btn" id="legado-join-btn">Solicitar Invitación</a>
+                        <a href="#" class="btn-outline-join">Agendar Llamada Informativa</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer id="contacto" class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <div class="logo">
+                        <video src="IMG/video/Video_Generado_Por_Gemini.mp4" class="footer-logo" autoplay loop muted playsinline loading="lazy"></video>
+                    </div>
+                    <p>Transformamos ideas en realidades exitosas.</p>
+                </div>
+                <div class="footer-col">
+                    <h4>Explorar</h4>
+                    <ul>
+                        <li><a href="prueba.html">Inicio</a></li>
+                        <li><a href="prueba.html#cursos">Cursos</a></li>
+                        <li><a href="chatbot.html">AI Studio</a></li>
+                        <li><a href="prueba.html#testimonios">Testimonios</a></li>
+                        <li><a href="prueba.html#faq">FAQ</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Comunidades</h4>
+                    <ul>
+                        <li><a href="creadoras.html">Creadoras del Futuro</a></li>
+                        <li><a href="innovadores.html">Innovadores del Futuro</a></li>
+                        <li><a href="legado.html">Legado Emprendedor</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Síguenos</h4>
+                    <div class="social-icons">
+                        <a href="https://www.facebook.com/share/1EovDKoRYw/" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                        <a href="https://www.instagram.com/emprendeia1?utm_source=qr" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                        <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="https://youtube.com/@emprendeia-q4e?si=Nk3_L7nmJXYaQVZB" target="_blank" rel="noopener noreferrer" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 EmprendeIA. Todos los derechos reservados.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        function showTab(tabName) {
+            // Hide all tab contents
+            const tabContents = document.querySelectorAll('.tab-content');
+            tabContents.forEach(content => {
+                content.classList.remove('active');
+            });
+            
+            // Remove active class from all tab buttons
+            const tabButtons = document.querySelectorAll('.tab-button');
+            tabButtons.forEach(button => {
+                button.classList.remove('active');
+            });
+            
+            // Show selected tab content
+            document.getElementById(tabName).classList.add('active');
+            
+            // Add active class to clicked button
+            event.target.classList.add('active');
+        }
+    </script>
+    <script src="script.js"></script>
+    <!-- Sistema Global de Usuario -->
+    <script src="js/global-user-manager.js"></script>
+    <!-- Supabase CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    
+    <!-- Scripts de configuración y autenticación -->
+    <script src="js/supabase-config.js"></script>
+    <script src="js/user-auth.js"></script>
+    <script src="js/user-directory.js"></script>
+    <script src="js/user-directory-styles.js"></script>
+    
+    <!-- Scripts existentes -->
+    <script src="js/theme-manager.js"></script>
+    <script src="js/forum-interactions.js">    </script>
+
+    <!-- Widget flotante de perfil -->
+    <div class="profile-widget" id="profile-widget" style="display: none;">
+        <button class="widget-close" onclick="hideProfileWidget()">×</button>
+        <img src="IMG/placeholder-user.jpg" alt="Foto de perfil" class="widget-photo" id="widget-photo">
+        <div class="widget-info">
+            <h4 id="widget-name">Usuario EmprendeIA</h4>
+            <p id="widget-community">Comunidad: Legado Emprendedor</p>
+        </div>
+    </div>
+
+    <!-- Script para mostrar widget de perfil -->
+    <script>
+        // Mostrar widget cuando el usuario esté logueado
+        function checkUserLogin() {
+            const savedUser = localStorage.getItem('currentUser');
+            if (savedUser) {
+                const user = JSON.parse(savedUser);
+                const widget = document.getElementById('profile-widget');
+                if (widget) {
+                    widget.style.display = 'flex';
+                    
+                    // Actualizar información del widget
+                    const widgetName = document.getElementById('widget-name');
+                    const widgetPhoto = document.getElementById('widget-photo');
+                    
+                    if (widgetName) widgetName.textContent = user.name;
+                    if (widgetPhoto) {
+                        const savedPhoto = localStorage.getItem('userPhoto');
+                        widgetPhoto.src = savedPhoto || user.avatar;
+                    }
+                }
+            }
+        }
+
+        function hideProfileWidget() {
+            const widget = document.getElementById('profile-widget');
+            if (widget) widget.style.display = 'none';
+        }
+
+        // Verificar estado de login al cargar la página
+        document.addEventListener('DOMContentLoaded', function() {
+            setTimeout(checkUserLogin, 1000);
+        });
+    </script>
+</body>
+</html>

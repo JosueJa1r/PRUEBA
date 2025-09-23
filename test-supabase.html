@@ -1,0 +1,418 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test Supabase - EmprendeIA</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            color: white;
+        }
+        
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 30px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+        }
+        
+        h1 {
+            text-align: center;
+            margin-bottom: 30px;
+            font-size: 2.5em;
+        }
+        
+        .test-section {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 15px;
+            padding: 20px;
+            margin-bottom: 20px;
+            border-left: 4px solid #4CAF50;
+        }
+        
+        .test-section.error {
+            border-left-color: #f44336;
+        }
+        
+        .test-section.warning {
+            border-left-color: #ff9800;
+        }
+        
+        .test-title {
+            font-size: 1.3em;
+            font-weight: bold;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .test-result {
+            margin-top: 10px;
+            padding: 10px;
+            border-radius: 8px;
+            background: rgba(0, 0, 0, 0.2);
+        }
+        
+        .btn {
+            background: linear-gradient(135deg, #4CAF50 0%, #45a049 100%);
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 16px;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            margin: 10px 5px;
+        }
+        
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+        }
+        
+        .btn.danger {
+            background: linear-gradient(135deg, #f44336 0%, #d32f2f 100%);
+        }
+        
+        .btn.warning {
+            background: linear-gradient(135deg, #ff9800 0%, #f57c00 100%);
+        }
+        
+        .config-display {
+            background: rgba(0, 0, 0, 0.3);
+            padding: 15px;
+            border-radius: 8px;
+            margin: 10px 0;
+            font-family: 'Courier New', monospace;
+            font-size: 14px;
+            word-break: break-all;
+        }
+        
+        .status {
+            display: inline-block;
+            padding: 4px 8px;
+            border-radius: 4px;
+            font-size: 12px;
+            font-weight: bold;
+            text-transform: uppercase;
+        }
+        
+        .status.success {
+            background: #4CAF50;
+            color: white;
+        }
+        
+        .status.error {
+            background: #f44336;
+            color: white;
+        }
+        
+        .status.warning {
+            background: #ff9800;
+            color: white;
+        }
+        
+        .status.info {
+            background: #2196F3;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1><i class="fas fa-database"></i> Test de Conexión Supabase</h1>
+        
+        <div class="test-section">
+            <div class="test-title">
+                <i class="fas fa-cog"></i>
+                Configuración Actual
+            </div>
+            <div id="config-display" class="config-display">
+                Cargando configuración...
+            </div>
+            <button class="btn" onclick="loadConfig()">
+                <i class="fas fa-sync"></i> Recargar Configuración
+            </button>
+            <button class="btn warning" onclick="setupSupabase()">
+                <i class="fas fa-edit"></i> Configurar Supabase
+            </button>
+        </div>
+        
+        <div class="test-section">
+            <div class="test-title">
+                <i class="fas fa-plug"></i>
+                Test de Conexión
+            </div>
+            <div id="connection-result" class="test-result">
+                Haz clic en "Probar Conexión" para verificar la conexión con Supabase.
+            </div>
+            <button class="btn" onclick="testConnection()">
+                <i class="fas fa-play"></i> Probar Conexión
+            </button>
+        </div>
+        
+        <div class="test-section">
+            <div class="test-title">
+                <i class="fas fa-table"></i>
+                Test de Base de Datos
+            </div>
+            <div id="database-result" class="test-result">
+                Haz clic en "Probar Base de Datos" para verificar las tablas.
+            </div>
+            <button class="btn" onclick="testDatabase()">
+                <i class="fas fa-database"></i> Probar Base de Datos
+            </button>
+        </div>
+        
+        <div class="test-section">
+            <div class="test-title">
+                <i class="fas fa-user"></i>
+                Test de Autenticación
+            </div>
+            <div id="auth-result" class="test-result">
+                Haz clic en "Probar Autenticación" para verificar el sistema de auth.
+            </div>
+            <button class="btn" onclick="testAuth()">
+                <i class="fas fa-sign-in-alt"></i> Probar Autenticación
+            </button>
+        </div>
+        
+        <div class="test-section">
+            <div class="test-title">
+                <i class="fas fa-list"></i>
+                Resumen de Tests
+            </div>
+            <div id="summary-result" class="test-result">
+                Ejecuta todos los tests para ver el resumen completo.
+            </div>
+            <button class="btn" onclick="runAllTests()">
+                <i class="fas fa-play-circle"></i> Ejecutar Todos los Tests
+            </button>
+            <button class="btn danger" onclick="clearResults()">
+                <i class="fas fa-trash"></i> Limpiar Resultados
+            </button>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="config.js"></script>
+    <script src="mi-supabase-config.js"></script>
+    <script src="setup-supabase.js"></script>
+    <script src="js/supabase-config.js"></script>
+    
+    <script>
+        let testResults = {
+            config: null,
+            connection: null,
+            database: null,
+            auth: null
+        };
+        
+        function loadConfig() {
+            const configDisplay = document.getElementById('config-display');
+            
+            try {
+                const storedConfig = localStorage.getItem('emprendeia-config');
+                const config = storedConfig ? JSON.parse(storedConfig) : window.CONFIG;
+                
+                if (config && config.SUPABASE) {
+                    configDisplay.innerHTML = `
+                        <strong>Project URL:</strong> ${config.SUPABASE.URL}<br>
+                        <strong>Anon Key:</strong> ${config.SUPABASE.ANON_KEY.substring(0, 20)}...<br>
+                        <strong>Fuente:</strong> ${storedConfig ? 'localStorage' : 'config.js'}
+                    `;
+                    testResults.config = 'success';
+                } else {
+                    configDisplay.innerHTML = '❌ No se encontró configuración válida';
+                    testResults.config = 'error';
+                }
+            } catch (error) {
+                configDisplay.innerHTML = `❌ Error cargando configuración: ${error.message}`;
+                testResults.config = 'error';
+            }
+            
+            updateSummary();
+        }
+        
+        function testConnection() {
+            const resultDiv = document.getElementById('connection-result');
+            resultDiv.innerHTML = '🔄 Probando conexión...';
+            
+            try {
+                const storedConfig = localStorage.getItem('emprendeia-config');
+                const config = storedConfig ? JSON.parse(storedConfig) : window.CONFIG;
+                
+                if (!config || !config.SUPABASE || !config.SUPABASE.URL || !config.SUPABASE.ANON_KEY) {
+                    throw new Error('Configuración incompleta');
+                }
+                
+                const client = supabase.createClient(config.SUPABASE.URL, config.SUPABASE.ANON_KEY);
+                
+                client.auth.getUser().then(({ data, error }) => {
+                    if (error) {
+                        resultDiv.innerHTML = `❌ Error de conexión: ${error.message}`;
+                        testResults.connection = 'error';
+                    } else {
+                        resultDiv.innerHTML = `✅ Conexión exitosa!<br>Usuario actual: ${data.user ? data.user.email : 'No autenticado'}`;
+                        testResults.connection = 'success';
+                    }
+                    updateSummary();
+                });
+                
+            } catch (error) {
+                resultDiv.innerHTML = `❌ Error: ${error.message}`;
+                testResults.connection = 'error';
+                updateSummary();
+            }
+        }
+        
+        function testDatabase() {
+            const resultDiv = document.getElementById('database-result');
+            resultDiv.innerHTML = '🔄 Probando base de datos...';
+            
+            try {
+                const storedConfig = localStorage.getItem('emprendeia-config');
+                const config = storedConfig ? JSON.parse(storedConfig) : window.CONFIG;
+                
+                if (!config || !config.SUPABASE) {
+                    throw new Error('Configuración no encontrada');
+                }
+                
+                const client = supabase.createClient(config.SUPABASE.URL, config.SUPABASE.ANON_KEY);
+                
+                // Probar consulta a user_profiles
+                client.from('user_profiles').select('count').then(({ data, error }) => {
+                    if (error) {
+                        resultDiv.innerHTML = `❌ Error de base de datos: ${error.message}<br><small>¿Ejecutaste el script SQL?</small>`;
+                        testResults.database = 'error';
+                    } else {
+                        resultDiv.innerHTML = `✅ Base de datos funcionando!<br>Tabla user_profiles accesible`;
+                        testResults.database = 'success';
+                    }
+                    updateSummary();
+                });
+                
+            } catch (error) {
+                resultDiv.innerHTML = `❌ Error: ${error.message}`;
+                testResults.database = 'error';
+                updateSummary();
+            }
+        }
+        
+        function testAuth() {
+            const resultDiv = document.getElementById('auth-result');
+            resultDiv.innerHTML = '🔄 Probando autenticación...';
+            
+            try {
+                const storedConfig = localStorage.getItem('emprendeia-config');
+                const config = storedConfig ? JSON.parse(storedConfig) : window.CONFIG;
+                
+                if (!config || !config.SUPABASE) {
+                    throw new Error('Configuración no encontrada');
+                }
+                
+                const client = supabase.createClient(config.SUPABASE.URL, config.SUPABASE.ANON_KEY);
+                
+                // Probar autenticación básica (sin OAuth)
+                client.auth.getUser().then(({ data, error }) => {
+                    if (error && error.message.includes('provider is not enabled')) {
+                        resultDiv.innerHTML = `✅ Sistema de autenticación funcionando<br><small>OAuth no configurado - esto es normal</small>`;
+                        testResults.auth = 'success';
+                    } else if (error) {
+                        resultDiv.innerHTML = `❌ Error de autenticación: ${error.message}`;
+                        testResults.auth = 'error';
+                    } else {
+                        resultDiv.innerHTML = `✅ Autenticación funcionando correctamente<br><small>Usuario: ${data.user ? data.user.email : 'No autenticado'}</small>`;
+                        testResults.auth = 'success';
+                    }
+                    updateSummary();
+                });
+                
+            } catch (error) {
+                resultDiv.innerHTML = `❌ Error: ${error.message}`;
+                testResults.auth = 'error';
+                updateSummary();
+            }
+        }
+        
+        function updateSummary() {
+            const summaryDiv = document.getElementById('summary-result');
+            const results = Object.values(testResults);
+            const successCount = results.filter(r => r === 'success').length;
+            const errorCount = results.filter(r => r === 'error').length;
+            const totalTests = results.filter(r => r !== null).length;
+            
+            if (totalTests === 0) {
+                summaryDiv.innerHTML = 'Ejecuta todos los tests para ver el resumen completo.';
+                return;
+            }
+            
+            let summaryHTML = `<strong>Resumen de Tests:</strong><br>`;
+            summaryHTML += `<span class="status success">✅ ${successCount} Exitosos</span> `;
+            summaryHTML += `<span class="status error">❌ ${errorCount} Fallidos</span><br><br>`;
+            
+            summaryHTML += `<strong>Detalles:</strong><br>`;
+            summaryHTML += `• Configuración: ${getStatusIcon(testResults.config)}<br>`;
+            summaryHTML += `• Conexión: ${getStatusIcon(testResults.connection)}<br>`;
+            summaryHTML += `• Base de Datos: ${getStatusIcon(testResults.database)}<br>`;
+            summaryHTML += `• Autenticación: ${getStatusIcon(testResults.auth)}<br>`;
+            
+            if (successCount === totalTests) {
+                summaryHTML += `<br><strong>🎉 ¡Todos los tests pasaron! Tu configuración está lista.</strong>`;
+            } else if (errorCount > 0) {
+                summaryHTML += `<br><strong>⚠️ Algunos tests fallaron. Revisa la configuración.</strong>`;
+            }
+            
+            summaryDiv.innerHTML = summaryHTML;
+        }
+        
+        function getStatusIcon(status) {
+            switch (status) {
+                case 'success': return '✅';
+                case 'error': return '❌';
+                default: return '⏳';
+            }
+        }
+        
+        function runAllTests() {
+            clearResults();
+            loadConfig();
+            setTimeout(() => testConnection(), 500);
+            setTimeout(() => testDatabase(), 1000);
+            setTimeout(() => testAuth(), 1500);
+        }
+        
+        function clearResults() {
+            testResults = {
+                config: null,
+                connection: null,
+                database: null,
+                auth: null
+            };
+            
+            document.getElementById('config-display').innerHTML = 'Cargando configuración...';
+            document.getElementById('connection-result').innerHTML = 'Haz clic en "Probar Conexión" para verificar la conexión con Supabase.';
+            document.getElementById('database-result').innerHTML = 'Haz clic en "Probar Base de Datos" para verificar las tablas.';
+            document.getElementById('auth-result').innerHTML = 'Haz clic en "Probar Autenticación" para verificar el sistema de auth.';
+            document.getElementById('summary-result').innerHTML = 'Ejecuta todos los tests para ver el resumen completo.';
+        }
+        
+        // Cargar configuración al iniciar
+        window.addEventListener('load', () => {
+            loadConfig();
+        });
+    </script>
+</body>
+</html>
