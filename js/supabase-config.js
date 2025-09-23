@@ -136,10 +136,18 @@ class SupabaseConfig {
     // Métodos de utilidad
     async signInWithGoogle() {
         try {
+            // Verificar si estamos en modo simulado
+            const config = window.CONFIG || {};
+            if (config.AUTH?.MODE === 'mock' || !config.AUTH?.ENABLE_REAL_GOOGLE) {
+                console.log('🎭 Usando autenticación simulada');
+                return await this.mockGoogleAuth();
+            }
+            
+            // Usar Google OAuth real
             const result = await this.supabase.auth.signInWithOAuth({
                 provider: 'google',
                 options: {
-                    redirectTo: window.location.origin + '/usuario.html'
+                    redirectTo: window.location.origin + '/prueba.html'
                 }
             });
             return result;
