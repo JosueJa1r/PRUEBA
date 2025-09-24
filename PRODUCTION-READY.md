@@ -20,7 +20,6 @@
 ├── nosotros.html             # Página "Nosotros"
 ├── innovadores.html          # Página "Innovadores"
 ├── creadoras.html           # Página "Creadoras"
-├── legado.html              # Página "Legado"
 ├── perfil.html              # Página de perfil
 ├── chatbot.html             # Chatbot
 ├── config.js                # Configuración principal

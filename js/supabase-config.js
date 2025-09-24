@@ -129,7 +129,6 @@ class SupabaseConfig {
         const path = window.location.pathname;
         if (path.includes('creadoras')) return 'creadoras';
         if (path.includes('innovadores')) return 'innovadores';
-        if (path.includes('legado')) return 'legado';
         return 'general';
     }
 

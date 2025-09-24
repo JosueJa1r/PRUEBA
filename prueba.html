@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>EmprendeIA - Adquiere Habilidades Emprendedoras</title>
-    <link rel="stylesheet" href="STYLES/prueba-style.css">
+    <link rel="stylesheet" href="STYLES/prueba-style.css?v=20250103-body-dark-mode">
     <link rel="stylesheet" href="css/button-center.css">
     <link rel="stylesheet" href="css/mobile-visibility.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
@@ -82,7 +82,6 @@
                         <div class="dropdown-content">
                             <a href="creadoras.html">Creadoras IA</a>
                             <a href="innovadores.html">Innovadores del Futuro</a>
-                            <a href="legado.html">Legado Emprendedor</a>
                         </div>
                     </li>
                 </ul>
@@ -116,7 +115,7 @@
                 <div class="video-placeholder">
                     <p>Cargando video...</p>
                     <!-- VIDEO DE YOUTUBE -->
-                    <iframe loading="lazy" src="https://www.youtube.com/embed/GutS8pdfIfc" title="Video de presentación de EmprendeIA" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                    <iframe loading="lazy" src="https://www.youtube.com/embed/F1Wwwlc2Lrk" title="Video de presentación de EmprendeIA" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                 </div>
             </div>
         </div>
@@ -464,17 +463,187 @@
                         <a href="innovadores.html" class="btn btn-cta-card">Más Información</a>
                     </div>
                 </div>
-                <!-- Feature 3 -->
-                <div class="cta-feature-item legado-shadow">
-                    <div class="cta-feature-image" style="background-image: url('IMG/Santa.jpg');"></div>
-                    <div class="cta-feature-content">
-                        <h4>Legado Emprendedor</h4>
-                        <p>Tu conocimiento y tu trayectoria son el capital más valioso que tienes.</p>
-                        <a href="legado.html" class="btn btn-cta-card">Más Información</a>
+            </div>
+            <a href="#" class="btn btn-primary large-btn access-btn" id="cta-access-btn">Comienza tu viaje ahora <i class="fas fa-rocket"></i></a>
+        </div>
+    </section>
+
+    <!-- Pricing Plans Section - ORDEN CORRECTO: 1. Planes de Acceso -->
+    <section id="planes" class="pricing-section light-bg">
+        <div class="container">
+            <h2 class="section-title-icon"><i class="fas fa-crown"></i> Planes de Acceso</h2>
+            <!-- ORDEN: 1. Planes de Acceso (PRIMERO) -->
+            <p class="section-description">Elige el plan que mejor se adapte a tu nivel de emprendimiento y necesidades de crecimiento.</p>
+            
+            <!-- Pricing Cards -->
+            <div class="pricing-grid">
+                <!-- Plan Básico -->
+                <div class="pricing-card basic-plan">
+                    <div class="plan-header">
+                        <h3>EmprendeIA Starter</h3>
+                        <div class="price">
+                            <span class="currency">$</span>
+                            <span class="amount">0</span>
+                            <span class="period">/mes</span>
+                        </div>
+                        <p class="plan-subtitle">Plan Básico</p>
+                    </div>
+                    <div class="plan-features">
+                        <ul>
+                            <li><i class="fas fa-check"></i> Acceso ilimitado a BrandForge</li>
+                            <li><i class="fas fa-check"></i> 10 tokens semanales para EcoChain</li>
+                            <li><i class="fas fa-check"></i> Cursos introductorios gratuitos</li>
+                            <li><i class="fas fa-check"></i> Acceso a la comunidad básica</li>
+                            <li><i class="fas fa-check"></i> Soporte por email</li>
+                        </ul>
+                    </div>
+                    <div class="plan-footer">
+                        <a href="#" class="btn btn-outline access-btn">Comenzar Gratis</a>
+                    </div>
+                </div>
+
+                <!-- Plan Premium -->
+                <div class="pricing-card premium-plan featured">
+                    <div class="plan-badge">Más Popular</div>
+                    <div class="plan-header">
+                        <h3>EmprendeIA Pro</h3>
+                        <div class="price">
+                            <span class="currency">$</span>
+                            <span class="amount">49</span>
+                            <span class="period">/mes</span>
+                        </div>
+                        <p class="plan-subtitle">Plan Premium</p>
+                        <p class="plan-savings">Ahorra $89/año con el plan anual ($499/año)</p>
+                    </div>
+                    <div class="plan-features">
+                        <ul>
+                            <li><i class="fas fa-check"></i> Todo lo del plan Starter</li>
+                            <li><i class="fas fa-check"></i> Acceso a todos los cursos avanzados</li>
+                            <li><i class="fas fa-check"></i> 50 tokens mensuales para EcoChain</li>
+                            <li><i class="fas fa-check"></i> Acceso prioritario a la comunidad</li>
+                            <li><i class="fas fa-check"></i> Eventos exclusivos</li>
+                            <li><i class="fas fa-check"></i> Soporte prioritario</li>
+                            <li><i class="fas fa-check"></i> Certificaciones con aval de Google</li>
+                        </ul>
+                    </div>
+                    <div class="plan-footer">
+                        <a href="#" class="btn btn-primary access-btn">Elegir Pro</a>
                     </div>
                 </div>
             </div>
-            <a href="#" class="btn btn-primary large-btn access-btn" id="cta-access-btn">Comienza tu viaje ahora <i class="fas fa-rocket"></i></a>
+
+            <!-- Monetización - ORDEN CORRECTO: 2. Oportunidades de Monetización -->
+            <div class="monetization-info">
+                <h3>Oportunidades de Monetización</h3>
+                <!-- ORDEN: 2. Oportunidades de Monetización (SEGUNDO) -->
+                <div class="monetization-grid">
+                    <div class="monetization-item">
+                        <i class="fas fa-chart-line"></i>
+                        <h4>Deal Flow</h4>
+                        <p>Comisión del 2% sobre inversiones canalizadas a fondos externos</p>
+                    </div>
+                    <div class="monetization-item">
+                        <i class="fas fa-database"></i>
+                        <h4>Data-as-a-Service</h4>
+                        <p>Informes de tendencias de emprendimiento para corporaciones y gobiernos</p>
+                    </div>
+                    <div class="monetization-item">
+                        <i class="fab fa-google-pay"></i>
+                        <h4>Google Pay Integration</h4>
+                        <p>Transacciones simplificadas con comisiones por transacción exitosa</p>
+                    </div>
+                    <div class="monetization-item">
+                        <i class="fas fa-bullhorn"></i>
+                        <h4>Publicidad Dirigida</h4>
+                        <p>Recomendaciones de servicios relevantes basadas en necesidades específicas</p>
+                    </div>
+                    <div class="monetization-item">
+                        <i class="fas fa-rocket"></i>
+                        <h4>Programa de Aceleración</h4>
+                        <p>Inversión directa en startups prometedoras a cambio de equity</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Additional Services - ORDEN CORRECTO: 3. Servicios Adicionales -->
+            <div class="additional-services">
+                <h3>Servicios Adicionales</h3>
+                <!-- ORDEN: 3. Servicios Adicionales (TERCERO) -->
+                <div class="services-grid">
+                    <!-- Bootcamps -->
+                    <div class="service-card">
+                        <div class="service-icon">
+                            <i class="fas fa-bolt"></i>
+                        </div>
+                        <h4>Bootcamps de Inmersión</h4>
+                        <p class="service-price">$199 USD por bootcamp</p>
+                        <p class="service-description">Eventos intensivos de aprendizaje con expertos certificados</p>
+                    </div>
+
+                    <!-- Cursos Individuales -->
+                    <div class="service-card">
+                        <div class="service-icon">
+                            <i class="fas fa-graduation-cap"></i>
+                        </div>
+                        <h4>Cursos Individuales</h4>
+                        <p class="service-price">$29 USD por curso</p>
+                        <p class="service-description">Acceso a cursos específicos del catálogo avanzado</p>
+                    </div>
+
+                    <!-- Tokens EcoChain -->
+                    <div class="service-card">
+                        <div class="service-icon">
+                            <i class="fas fa-coins"></i>
+                        </div>
+                        <h4>Paquetes de Tokens EcoChain</h4>
+                        <div class="token-packages">
+                            <div class="token-option">
+                                <span class="token-count">100 tokens</span>
+                                <span class="token-price">$9.99 USD</span>
+                            </div>
+                            <div class="token-option">
+                                <span class="token-count">500 tokens</span>
+                                <span class="token-price">$39.99 USD</span>
+                            </div>
+                            <div class="token-option">
+                                <span class="token-count">1,000 tokens</span>
+                                <span class="token-price">$59.99 USD</span>
+                            </div>
+                        </div>
+                        <p class="service-description">Para funcionalidades avanzadas de trazabilidad</p>
+                    </div>
+
+                    <!-- Mentoría -->
+                    <div class="service-card">
+                        <div class="service-icon">
+                            <i class="fas fa-user-tie"></i>
+                        </div>
+                        <h4>Mentoría Especializada</h4>
+                        <p class="service-price">Tarifas variables</p>
+                        <p class="service-description">Sesiones personalizadas con expertos certificados</p>
+                    </div>
+
+                    <!-- Eventos de Pitching -->
+                    <div class="service-card">
+                        <div class="service-icon">
+                            <i class="fas fa-laptop"></i>
+                        </div>
+                        <h4>Eventos de Pitching</h4>
+                        <p class="service-price">Tarifa de inscripción</p>
+                        <p class="service-description">Presenta tu proyecto a inversionistas</p>
+                    </div>
+
+                    <!-- Círculos de Pago -->
+                    <div class="service-card">
+                        <div class="service-icon">
+                            <i class="fas fa-users"></i>
+                        </div>
+                        <h4>Círculos de Mentoría Grupal</h4>
+                        <p class="service-price">Tarifa mensual</p>
+                        <p class="service-description">Espacios exclusivos de retroalimentación continua</p>
+                    </div>
+                </div>
+            </div>
         </div>
     </section>
 

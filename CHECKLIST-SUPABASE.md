@@ -44,7 +44,6 @@
    - `http://localhost:3000/usuario.html`
    - `http://localhost:3000/creadoras.html`
    - `http://localhost:3000/innovadores.html`
-   - `http://localhost:3000/legado.html`
 
 ---
 

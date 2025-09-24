@@ -15,7 +15,7 @@ CREATE TABLE user_profiles (
     website TEXT,
     linkedin TEXT,
     twitter TEXT,
-    community TEXT NOT NULL CHECK (community IN ('creadoras', 'innovadores', 'legado', 'general')),
+    community TEXT NOT NULL CHECK (community IN ('creadoras', 'innovadores', 'general')),
     is_mentor BOOLEAN DEFAULT FALSE,
     is_mentee BOOLEAN DEFAULT FALSE,
     mentor_categories TEXT[] DEFAULT '{}',
@@ -30,7 +30,7 @@ CREATE TABLE user_profiles (
 CREATE TABLE forum_posts (
     id UUID DEFAULT gen_random_uuid() PRIMARY KEY,
     user_id UUID REFERENCES auth.users(id) ON DELETE CASCADE,
-    community TEXT NOT NULL CHECK (community IN ('creadoras', 'innovadores', 'legado', 'general')),
+    community TEXT NOT NULL CHECK (community IN ('creadoras', 'innovadores', 'general')),
     category TEXT DEFAULT 'general',
     title TEXT NOT NULL,
     content TEXT NOT NULL,

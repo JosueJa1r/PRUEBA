@@ -34,10 +34,10 @@ class MockGoogleAuth {
             },
             {
                 id: 'mock_user_3',
-                email: 'maria.legado@emprendeia.com',
+                email: 'maria.general@emprendeia.com',
                 name: 'María López',
                 avatar_url: 'IMG/placeholder-user.jpg',
-                community: 'legado',
+                community: 'general',
                 bio: 'Experta en negocios tradicionales y mentoría empresarial',
                 created_at: new Date().toISOString(),
                 last_sign_in: new Date().toISOString()

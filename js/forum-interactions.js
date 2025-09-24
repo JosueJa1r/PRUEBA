@@ -31,7 +31,6 @@ class ForumInteractions {
         const path = window.location.pathname;
         if (path.includes('creadoras')) return 'creadoras';
         if (path.includes('innovadores')) return 'innovadores';
-        if (path.includes('legado')) return 'legado';
         return 'general';
     }
 
@@ -52,8 +51,6 @@ class ForumInteractions {
                 { id: 'startups', name: '🚀 Startups', icon: 'fas fa-rocket' },
                 { id: 'colaboracion', name: '🤝 Colaboración', icon: 'fas fa-users' }
             ],
-            legado: [
-                { id: 'general', name: '💬 General', icon: 'fas fa-comments' },
                 { id: 'experiencia', name: '🎯 Experiencia', icon: 'fas fa-trophy' },
                 { id: 'transicion', name: '🔄 Transición', icon: 'fas fa-exchange-alt' },
                 { id: 'inversion', name: '💼 Inversión', icon: 'fas fa-chart-line' },
@@ -165,8 +162,6 @@ class ForumInteractions {
                     commentsList: []
                 }
             ],
-            legado: [
-                {
                     id: 'post_5',
                     title: '🏢 Mi transición de ejecutivo a emprendedor',
                     content: 'Después de 20 años en corporaciones, decidí emprender. Comparto mi experiencia y busco consejos de otros que hayan hecho esta transición.',
