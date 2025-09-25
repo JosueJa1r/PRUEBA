@@ -16,9 +16,6 @@ genai.configure(api_key=API_KEY)
 
 app = Flask(__name__)
 
-# Crea una instancia del modelo Gemini-Pro
-model = genai.GenerativeModel("models/gemini-1.5-flash")
-
 @app.route("/")
 def index():
     return render_template("index.html")
@@ -30,6 +27,9 @@ def chat():
         return jsonify({"error": "No message provided"}), 400
 
     try:
+        # Inicializamos el modelo aquí para capturar cualquier error de inicialización
+        model = genai.GenerativeModel("models/gemini-1.5-flash")
+
         # Preparamos el prompt para darle contexto al modelo
         prompt = f"""Eres EmprendeIA, un asistente experto en emprendimiento. Tu tono es amigable, profesional y motivador. Responde siempre en español.
         El usuario pregunta: {user_input}"""
