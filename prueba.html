@@ -44,6 +44,17 @@
             border-color: var(--border-color, #475569);
             color: var(--text-primary, #f8fafc);
         }
+
+        /* Efecto de brillo para la imagen del footer */
+        .footer-future-image {
+            transition: box-shadow 0.3s ease, transform 0.3s ease; /* Transición suave */
+        }
+
+        .footer-future-image:hover {
+            transform: scale(1.03); /* Ligero zoom al pasar el cursor */
+            /* Sombra con dos capas para un efecto de brillo más intenso */
+            box-shadow: 0 0 15px rgba(0, 123, 255, 0.5), 0 0 25px rgba(118, 75, 162, 0.4);
+        }
     </style>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
 </head>
@@ -774,7 +785,13 @@
                         <a href="https://www.tiktok.com/@emprende.ia3?_t=ZS-8zvqk7USEsb&_r=1" target="_blank" rel="noopener noreferrer" aria-label="TikTok"><i class="fab fa-tiktok"></i></a>
                     </div>
                 </div>
-            </div>
+                <div class="footer-col" style="margin-top: 20px;">
+                     <h4>Una mirada al futuro:</h4>
+                     <!-- Imagen clickeable: reemplaza el href y el src -->
+                     <a href="https://emprendenexus.netlify.app/">
+                         <img class="footer-future-image" src="IMG/logo Nexus1.png" alt="Descripción de la imagen" style="width: 100%; max-width: 200px; border-radius: 8px; margin-top: 0; border: 1px solid var(--border-color);">
+                     </a>
+                </div>
             <div class="footer-bottom">
                 <p>&copy; 2025 EmprendeIA. Todos los derechos reservados.</p>
             </div>
