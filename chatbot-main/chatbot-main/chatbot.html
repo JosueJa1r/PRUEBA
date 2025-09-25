@@ -406,9 +406,6 @@
         const sendBtn = document.getElementById('send-btn');
         const typingIndicator = document.getElementById('typing-indicator');
 
-        // API Key conectada directamente para funcionamiento inmediato
-        const apiKey = 'AIzaSyAyNuoyfZwRpTTYt1pu2khQPi6r_sWUSXE';
-
         function addMessage(text, type) {
             const messageDiv = document.createElement('div');
             messageDiv.className = `message ${type}`;
@@ -427,32 +424,17 @@
             sendBtn.disabled = true;
             typingIndicator.style.display = 'flex';
 
-            const API_URL = `https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash-latest:generateContent?key=${apiKey}`;
-
             try {
-                const response = await fetch(API_URL, {
+                // AHORA: Se comunica con nuestro servidor seguro (app.py) en la ruta /chat
+                const response = await fetch('/chat', {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify({
-                        contents: [{
-                            parts: [{
-                                text: `Eres EmprendeIA, un asistente experto en emprendimiento. Tu tono es amigable, profesional y motivador. Responde en español sin presentarte nuevamente. El usuario pregunta: ${messageText}`
-                            }]
-                        }]
-                    })
+                    body: JSON.stringify({ message: messageText }) // Enviamos solo el mensaje
                 });
 
-                if (!response.ok) {
-                    const errorData = await response.json();
-                    if (errorData.error && errorData.error.message.includes("API key not valid")) {
-                         throw new Error(`Error de API: La API Key que proporcionaste no es válida. Por favor, verifica que sea correcta.`);
-                    }
-                    throw new Error(`Error de API: ${response.statusText}.`);
-                }
-
+                // Recibimos la respuesta simple de nuestro servidor
                 const data = await response.json();
-                const botResponse = data.candidates[0].content.parts[0].text;
-                addMessage(botResponse, 'bot');
+                addMessage(data.reply, 'bot');
 
             } catch (error) {
                 addMessage(`Error: ${error.message}`, 'bot error');

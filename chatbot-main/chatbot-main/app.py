@@ -6,14 +6,6 @@ import google.generativeai as genai
 # Carga las variables del archivo .env
 load_dotenv()
 
-# Obtiene la API key desde las variables de entorno (prioriza GEMINI_API_KEY para Vercel)
-API_KEY = os.getenv("GEMINI_API_KEY") or os.getenv("GOOGLE_API_KEY")
-if not API_KEY:
-    raise ValueError("No se encontró la variable de entorno GEMINI_API_KEY o GOOGLE_API_KEY")
-
-# Configuración API key para Gemini AI
-genai.configure(api_key=API_KEY)
-
 app = Flask(__name__)
 
 @app.route("/")
@@ -27,7 +19,16 @@ def chat():
         return jsonify({"error": "No message provided"}), 400
 
     try:
-        # Inicializamos el modelo aquí para capturar cualquier error de inicialización
+        # PASO 1: Obtener la API Key de forma segura DENTRO del request.
+        api_key = os.getenv("GEMINI_API_KEY") or os.getenv("GOOGLE_API_KEY")
+        if not api_key:
+            # Si no hay clave, devolvemos un error JSON, no rompemos la app.
+            return jsonify({"reply": "Error del servidor: La clave API no está configurada."}), 500
+
+        # PASO 2: Configurar la API DENTRO del request.
+        genai.configure(api_key=api_key)
+
+        # PASO 3: Inicializar el modelo.
         model = genai.GenerativeModel("models/gemini-1.5-flash")
 
         # Preparamos el prompt para darle contexto al modelo
